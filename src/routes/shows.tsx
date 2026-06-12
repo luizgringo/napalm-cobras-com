@@ -41,7 +41,7 @@ function ShowsPage() {
         <div className="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-20">
           <Reveal>
             <div className="border-2 border-paper/20 bg-ink p-2 md:p-4 hard-shadow">
-              <
+              <a
                 className="bit-widget-initializer"
                 data-artist-name="Napalm Cobras"
                 data-events-to-display=""

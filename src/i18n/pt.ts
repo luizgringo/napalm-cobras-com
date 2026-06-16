@@ -29,6 +29,13 @@ export const pt = {
     membersTitle: "A formação",
     watchLive: "Assistir ao vivo",
     liveCaption: "Metalpunk Overkill · ao vivo · Goblin TV",
+    scrollHint: "Entre · role · sobreviva",
+    rooms: {
+      studio: { label: "Studio", title: "A caverna sonora", subtitle: "Coloque o fone. Aperte o play. O EP \"Homens Brancos de Terno\" cospe fora do alto-falante.", cta: "EP completo no Bandcamp" },
+      stage: { label: "Stage", title: "Palco / ao vivo", subtitle: "Set completo registrado pela Goblin TV em uma única tomada. Sem corte, sem rede, sem pedido de desculpas." },
+      tour: { label: "Tour", title: "Próximas datas", subtitle: "Onde a banda vai aterrissar. Datas atualizadas via Bandsintown.", cta: "Ver agenda completa" },
+      archive: { label: "Archive", title: "Quem dispara o gatilho", subtitle: "Três pessoas. Baixo, guitarra, bateria. Sem floreio." },
+    },
   },
   band: {
     title: "A Banda",

@@ -31,6 +31,13 @@ export const en: typeof pt = {
     membersTitle: "The line-up",
     watchLive: "Watch live",
     liveCaption: "Metalpunk Overkill · live · Goblin TV",
+    scrollHint: "Enter · scroll · survive",
+    rooms: {
+      studio: { label: "Studio", title: "The sonic cave", subtitle: "Plug the headphones. Hit play. The EP \"Homens Brancos de Terno\" spits out of the speaker.", cta: "Full EP on Bandcamp" },
+      stage: { label: "Stage", title: "Stage / live", subtitle: "Full set filmed by Goblin TV in a single take. No cuts, no safety net, no apologies." },
+      tour: { label: "Tour", title: "Next dates", subtitle: "Where the band will land. Dates synced from Bandsintown.", cta: "See full schedule" },
+      archive: { label: "Archive", title: "Who pulls the trigger", subtitle: "Three people. Bass, guitar, drums. No frills." },
+    },
   },
   band: {
     title: "The Band",

@@ -139,6 +139,78 @@
   animation: marquee 30s linear infinite;
 }
 
+/* --- Waveform bars (audio player) --- */
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+.waveform-bar {
+  height: var(--bar-h, 50%);
+  transform-origin: bottom;
+  animation: waveform 0.9s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+/* --- Pulse glow under the play button --- */
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.25); opacity: 0; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 1.6s ease-out infinite;
+}
+
+/* --- Glitch text (RGB split on hover, one-shot on mount) --- */
+@keyframes glitch-x {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -2px); }
+  80% { transform: translate(1px, 2px); }
+}
+.glitch { position: relative; }
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.glitch::before { color: var(--blood); mix-blend-mode: screen; transform: translate(-2px, 0); }
+.glitch::after  { color: #00e5ff; mix-blend-mode: screen; transform: translate(2px, 0); }
+.glitch:hover::before,
+.glitch:hover::after { opacity: 0.85; animation: glitch-x 0.45s steps(2) infinite; }
+
+/* --- Scanlines overlay --- */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(245,241,232,0.025) 2px,
+    rgba(245,241,232,0.025) 3px
+  );
+}
+
+/* --- Hover pulse on CTA buttons --- */
+@utility pulse-cta {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--blood);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  &:hover::before {
+    opacity: 1;
+    animation: pulse-glow 1.2s ease-out infinite;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

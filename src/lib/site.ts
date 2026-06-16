@@ -26,4 +26,9 @@ export const SITE = {
   },
   liveVideoId: "O4TLQGISTR4",
   bandcampAlbumEmbed: "https://bandcamp.com/EmbeddedPlayer/album=2877232628/size=large/bgcol=181a1b/linkcol=c8102e/tracklist=false/transparent=true/",
+  // Drop a public MP3 URL here to enable real playback in the home audio player.
+  // When empty, the player runs in "DEMO MODE" with simulated waveform feedback.
+  previewMp3: "",
+  featuredTrackTitle: "Homens Brancos de Terno",
+  featuredTrackMeta: "EP · Side A · 2022",
 };

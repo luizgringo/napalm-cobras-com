@@ -24,7 +24,7 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img src={logo} alt="Napalm Cobras" width={44} height={44} className="invert" />
-          <span className="font-display text-2xl tracking-wide text-paper">NAPALM COBRAS</span>
+          <span className="font-display chrome-text text-3xl tracking-wide">Napalm Cobras</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

@@ -30,12 +30,8 @@
   --color-blood: var(--blood);
   --color-smoke: var(--smoke);
   --color-bone: var(--bone);
-  --color-chrome: var(--chrome);
-  --color-gold: var(--gold);
 
-  --font-display: "UnifrakturCook", "Pirata One", "Bebas Neue", "Impact", serif;
-  --font-blackletter: "UnifrakturMaguntia", "UnifrakturCook", serif;
-  --font-banner: "Bebas Neue", "Impact", sans-serif;
+  --font-display: "Bebas Neue", "Impact", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-sans: "Inter", system-ui, sans-serif;
 
@@ -45,14 +41,11 @@
 }
 
 :root {
-  /* Motörhead flyer palette: aged black, bone parchment, chrome, blood */
-  --ink: #07060a;
-  --smoke: #14110d;
-  --paper: #ece4cf;
-  --bone: #b8ad8e;
-  --blood: #b51820;
-  --chrome: #c9c4b8;
-  --gold: #b8923a;
+  --ink: #0a0a0a;
+  --smoke: #1a1a1a;
+  --paper: #f5f1e8;
+  --bone: #d9d3c2;
+  --blood: #c8102e;
 
   --background: var(--ink);
   --foreground: var(--paper);
@@ -66,12 +59,12 @@
   --secondary-foreground: var(--paper);
   --muted: var(--smoke);
   --muted-foreground: var(--bone);
-  --accent: var(--gold);
-  --accent-foreground: var(--ink);
+  --accent: var(--blood);
+  --accent-foreground: var(--paper);
   --destructive: var(--blood);
   --destructive-foreground: var(--paper);
-  --border: rgba(236, 228, 207, 0.18);
-  --input: rgba(236, 228, 207, 0.18);
+  --border: rgba(245, 241, 232, 0.12);
+  --input: rgba(245, 241, 232, 0.15);
   --ring: var(--blood);
   --radius: 0px;
 }
@@ -89,19 +82,13 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* Aged parchment grime in the background */
-    background-image:
-      radial-gradient(ellipse at top, rgba(184, 146, 58, 0.05), transparent 60%),
-      radial-gradient(ellipse at bottom, rgba(181, 24, 32, 0.07), transparent 70%);
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: 0.005em;
+    letter-spacing: 0.02em;
     line-height: 0.95;
-    /* Fraktur reads better in mixed case but keep impact */
-    text-transform: none;
-    text-shadow: 0 2px 0 rgba(0,0,0,0.4);
+    text-transform: uppercase;
   }
 
   ::selection { background: var(--blood); color: var(--paper); }
@@ -112,7 +99,7 @@
   }
 }
 
-/* --- Heavy xerox/parchment grain --- */
+/* Brutalist xerox noise overlay */
 @utility noise {
   position: relative;
   &::after {
@@ -120,13 +107,12 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.18;
+    opacity: 0.08;
     mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 }
 
-/* --- "Tape" label, slight rotation, Motörhead poster style --- */
 @utility tape {
   background: var(--blood);
   color: var(--paper);
@@ -138,80 +124,10 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   font-weight: 700;
-  box-shadow: 2px 2px 0 0 rgba(0,0,0,0.6);
 }
 
 @utility hard-shadow {
   box-shadow: 6px 6px 0 0 var(--blood);
-}
-
-/* --- Chrome / silver-foil heading effect (Motörhead lettering) --- */
-@utility chrome-text {
-  background: linear-gradient(
-    180deg,
-    #f8f4e4 0%,
-    #c9c4b8 35%,
-    #5c5851 50%,
-    #b8b3a3 65%,
-    #ece4cf 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(0,0,0,0.45);
-  filter: drop-shadow(0 3px 0 rgba(0,0,0,0.55)) drop-shadow(0 0 12px rgba(181,24,32,0.25));
-}
-
-/* --- Blood-foil variant --- */
-@utility blood-text {
-  background: linear-gradient(180deg, #f3c8ca 0%, #b51820 45%, #5a0b10 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(0,0,0,0.55);
-  filter: drop-shadow(0 2px 0 rgba(0,0,0,0.6));
-}
-
-/* --- Ornate flyer frame: double rule with iron-cross corners --- */
-@utility flyer-frame {
-  position: relative;
-  border: 2px solid var(--paper);
-  outline: 1px solid var(--paper);
-  outline-offset: 6px;
-  background:
-    linear-gradient(rgba(7,6,10,0.85), rgba(7,6,10,0.85)),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.89  0 0 0 0 0.81  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
-
-/* --- Iron-cross divider (used between sections) --- */
-@utility iron-cross-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--paper);
-  &::before,
-  &::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--paper) 40%, var(--paper) 60%, transparent);
-    opacity: 0.6;
-  }
-}
-
-/* --- Heraldic / banner ribbon look for eyebrows --- */
-@utility ribbon {
-  display: inline-block;
-  background: var(--blood);
-  color: var(--paper);
-  padding: 0.35rem 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  position: relative;
-  box-shadow: 3px 3px 0 0 rgba(0,0,0,0.6);
 }
 
 @keyframes marquee {
@@ -263,7 +179,7 @@
   transition: opacity 0.15s;
 }
 .glitch::before { color: var(--blood); mix-blend-mode: screen; transform: translate(-2px, 0); }
-.glitch::after  { color: var(--chrome); mix-blend-mode: screen; transform: translate(2px, 0); }
+.glitch::after  { color: #00e5ff; mix-blend-mode: screen; transform: translate(2px, 0); }
 .glitch:hover::before,
 .glitch:hover::after { opacity: 0.85; animation: glitch-x 0.45s steps(2) infinite; }
 
@@ -273,8 +189,8 @@
     to bottom,
     transparent 0,
     transparent 2px,
-    rgba(236,228,207,0.03) 2px,
-    rgba(236,228,207,0.03) 3px
+    rgba(245,241,232,0.025) 2px,
+    rgba(245,241,232,0.025) 3px
   );
 }
 

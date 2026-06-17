@@ -70,10 +70,10 @@ function Home() {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mt-4 font-display text-[16vw] leading-[0.9] tracking-tight md:text-[11rem]"
+            className="mt-4 font-display text-[18vw] leading-[0.85] tracking-tight text-paper md:text-[13rem]"
           >
-            <GlitchText as="span" className="chrome-text block">{t.home.heroLine1}</GlitchText>
-            <GlitchText as="span" className="blood-text block">{t.home.heroLine2}</GlitchText>
+            <GlitchText as="span" className="block">{t.home.heroLine1}</GlitchText>
+            <GlitchText as="span" className="block text-blood">{t.home.heroLine2}</GlitchText>
           </motion.h1>
 
           <motion.p

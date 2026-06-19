@@ -161,13 +161,15 @@ function Home() {
               </h2>
             </div>
             <div className="p-4 md:p-5">
-              <AudioPlayer
-                src={SITE.previewMp3 || undefined}
-                trackTitle={SITE.featuredTrackTitle}
-                trackMeta={SITE.featuredTrackMeta}
-                bandcampHref={SITE.socials.bandcamp}
-                cta={t.home.rooms.studio.cta}
-              />
+              <div className="border-2 border-ink bg-ink p-4 text-paper">
+                <AudioPlayer
+                  src={SITE.previewMp3 || undefined}
+                  trackTitle={SITE.featuredTrackTitle}
+                  trackMeta={SITE.featuredTrackMeta}
+                  bandcampHref={SITE.socials.bandcamp}
+                  cta={t.home.rooms.studio.cta}
+                />
+              </div>
               <p className="mt-4 font-mono text-[11px] uppercase leading-tight">
                 {t.home.rooms.studio.subtitle}
               </p>

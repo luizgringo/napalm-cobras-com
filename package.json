@@ -2,6 +2,7 @@
   "name": "napalm-cobras-com",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@9.3.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

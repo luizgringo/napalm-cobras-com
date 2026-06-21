@@ -38,9 +38,3 @@
     transform: scaleX(0.75);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .snake-trail__tongue {
-    animation: none;
-  }
-}

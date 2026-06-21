@@ -75,10 +75,3 @@
     transform: translate(1px, -1px);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .glitch-text--continuous::before,
-  .glitch-text--continuous::after {
-    animation: none;
-  }
-}

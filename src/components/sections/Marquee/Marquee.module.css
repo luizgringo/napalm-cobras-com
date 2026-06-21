@@ -1,0 +1,24 @@
+@reference "../../../styles/globals.css";
+
+.marquee {
+  @apply overflow-hidden border-y-4 border-blood bg-blood py-3;
+}
+.marquee__track {
+  @apply flex w-max items-center gap-8 whitespace-nowrap;
+  animation: marquee-scroll 30s linear infinite;
+}
+.marquee__word {
+  @apply font-display text-3xl uppercase tracking-wider text-paper;
+}
+.marquee__cross {
+  @apply font-display text-2xl leading-none text-paper/80;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

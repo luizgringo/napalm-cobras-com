@@ -1,5 +1,5 @@
 @import "tailwindcss" source(none);
-@source "../src";
+@source "../../src";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -31,9 +31,10 @@
   --color-smoke: var(--smoke);
   --color-bone: var(--bone);
 
-  --font-display: "Bebas Neue", "Impact", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-brand: var(--font-cattedrale), "Cattedrale-Demo", serif;
+  --font-display: var(--font-bebas), "Impact", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 
   --radius-sm: 0px;
   --radius-md: 0px;
@@ -69,12 +70,19 @@
   --radius: 0px;
 }
 
-.dark { color-scheme: dark; }
+.dark {
+  color-scheme: dark;
+}
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
 
-  html { background: var(--ink); color-scheme: dark; }
+  html {
+    background: var(--ink);
+    color-scheme: dark;
+  }
 
   body {
     background-color: var(--ink);
@@ -84,20 +92,31 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
     line-height: 0.95;
     text-transform: uppercase;
   }
 
-  ::selection { background: var(--blood); color: var(--paper); }
+  ::selection {
+    background: var(--blood);
+    color: var(--paper);
+  }
 
   *:focus-visible {
     outline: 2px solid var(--blood);
     outline-offset: 2px;
   }
 }
+
+/* =====================================================================
+   Utilitários e keyframes globais
+   Reutilizados via @apply nos CSS Modules de cada componente.
+   ===================================================================== */
 
 /* Brutalist xerox noise overlay */
 @utility noise {
@@ -130,67 +149,58 @@
   box-shadow: 6px 6px 0 0 var(--blood);
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@utility marquee-track {
-  animation: marquee 30s linear infinite;
-}
-
 /* --- Waveform bars (audio player) --- */
 @keyframes waveform {
-  0%, 100% { transform: scaleY(0.35); }
-  50% { transform: scaleY(1); }
-}
-.waveform-bar {
-  height: var(--bar-h, 50%);
-  transform-origin: bottom;
-  animation: waveform 0.9s ease-in-out infinite;
-  animation-play-state: paused;
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
 }
 
 /* --- Pulse glow under the play button --- */
 @keyframes pulse-glow {
-  0%, 100% { transform: scale(1); opacity: 0.55; }
-  50% { transform: scale(1.25); opacity: 0; }
-}
-.animate-pulse-glow {
-  animation: pulse-glow 1.6s ease-out infinite;
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
 }
 
 /* --- Glitch text (RGB split on hover, one-shot on mount) --- */
 @keyframes glitch-x {
-  0%, 100% { transform: translate(0, 0); }
-  20% { transform: translate(-2px, 1px); }
-  40% { transform: translate(2px, -1px); }
-  60% { transform: translate(-1px, -2px); }
-  80% { transform: translate(1px, 2px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(2px, -1px);
+  }
+  60% {
+    transform: translate(-1px, -2px);
+  }
+  80% {
+    transform: translate(1px, 2px);
+  }
 }
-.glitch { position: relative; }
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.15s;
-}
-.glitch::before { color: var(--blood); mix-blend-mode: screen; transform: translate(-2px, 0); }
-.glitch::after  { color: #00e5ff; mix-blend-mode: screen; transform: translate(2px, 0); }
-.glitch:hover::before,
-.glitch:hover::after { opacity: 0.85; animation: glitch-x 0.45s steps(2) infinite; }
 
 /* --- Scanlines overlay --- */
-.scanlines {
+@utility scanlines {
   background-image: repeating-linear-gradient(
     to bottom,
     transparent 0,
     transparent 2px,
-    rgba(245,241,232,0.025) 2px,
-    rgba(245,241,232,0.025) 3px
+    rgba(245, 241, 232, 0.025) 2px,
+    rgba(245, 241, 232, 0.025) 3px
   );
 }
 
@@ -212,7 +222,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

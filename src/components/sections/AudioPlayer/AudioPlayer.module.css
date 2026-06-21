@@ -1,0 +1,55 @@
+@reference "../../../styles/globals.css";
+
+.audio-player {
+  @apply border-2 border-paper/20 bg-ink p-5 hard-shadow md:p-7;
+}
+.audio-player__head {
+  @apply flex items-start justify-between gap-4;
+}
+.audio-player__info {
+  @apply min-w-0;
+}
+.audio-player__eyebrow {
+  @apply font-mono text-[10px] uppercase tracking-[0.3em] text-blood;
+}
+.audio-player__title {
+  @apply mt-2 truncate font-display text-2xl uppercase text-paper md:text-3xl;
+}
+.audio-player__meta {
+  @apply mt-1 font-mono text-xs uppercase tracking-widest text-paper/60;
+}
+.audio-player__badge {
+  @apply shrink-0 border border-blood px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-blood;
+}
+.audio-player__selector {
+  @apply mt-5 flex flex-wrap gap-2;
+}
+.audio-player__tab {
+  @apply flex cursor-pointer flex-col items-start gap-1 border border-paper/15 bg-ink px-3 py-2 text-left transition-colors hover:border-blood;
+}
+.audio-player__tab--active {
+  @apply border-blood bg-blood/10;
+}
+.audio-player__tab-name {
+  @apply font-display text-base uppercase leading-none text-paper;
+}
+.audio-player__tab-meta {
+  @apply font-mono text-[10px] uppercase tracking-widest text-paper/50;
+}
+.audio-player__embed {
+  @apply mt-6 overflow-hidden border border-paper/10;
+}
+.audio-player__embed iframe {
+  @apply block w-full;
+  height: 420px;
+  border: 0;
+}
+.audio-player__footer {
+  @apply mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-paper/10 pt-5;
+}
+.audio-player__status {
+  @apply flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-paper/50;
+}
+.audio-player__link {
+  @apply border-b-2 border-blood pb-1 font-mono text-xs uppercase tracking-widest text-paper hover:text-blood;
+}

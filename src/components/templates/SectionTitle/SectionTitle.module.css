@@ -1,0 +1,33 @@
+@reference "../../../styles/globals.css";
+
+.section-title {
+  @apply mb-10;
+}
+.section-title__eyebrow {
+  @apply mb-3 font-mono text-xs uppercase tracking-[0.3em] text-blood;
+}
+.section-title__heading {
+  @apply font-display text-5xl text-paper md:text-7xl;
+}
+.section-title__rule {
+  @apply mt-4 h-1 w-24 bg-blood;
+}
+
+.page-hero {
+  @apply noise border-b border-paper/10 bg-gradient-to-b from-smoke to-ink;
+}
+.page-hero__inner {
+  @apply mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28;
+}
+.page-hero__eyebrow {
+  @apply mb-4 font-mono text-xs uppercase tracking-[0.3em] text-blood;
+}
+.page-hero__title {
+  @apply font-display text-6xl text-paper md:text-8xl;
+}
+.page-hero__intro {
+  @apply mt-6 max-w-2xl text-lg leading-relaxed text-paper/80;
+}
+.page-hero__rule {
+  @apply mt-6 h-1 w-32 bg-blood;
+}

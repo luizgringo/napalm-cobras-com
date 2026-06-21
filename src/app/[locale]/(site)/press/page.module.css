@@ -1,0 +1,62 @@
+@reference "../../../../styles/globals.css";
+
+.press-grid {
+  @apply grid gap-6 md:grid-cols-3;
+}
+.press-card {
+  @apply flex h-full flex-col justify-between border-2 border-paper/15 bg-ink p-6 transition-all hover:border-blood hard-shadow;
+}
+.press-card__title {
+  @apply mt-4 font-display text-3xl text-paper;
+}
+.press-card__desc {
+  @apply mt-2 text-sm text-paper/70;
+}
+.press-card__cta {
+  @apply mt-6 inline-block border-b-2 border-blood pb-1 font-mono text-xs uppercase tracking-widest text-paper transition-colors;
+}
+.press-card:hover .press-card__cta {
+  @apply text-blood;
+}
+.media-kit {
+  @apply mt-12 border-2 border-paper/15 bg-ink p-6 md:p-8;
+}
+.media-kit__link {
+  @apply mt-3 inline-block font-display text-3xl text-paper hover:text-blood md:text-4xl;
+}
+.media-kit__note {
+  @apply mt-2 font-mono text-xs text-paper/60;
+}
+.clipping__intro {
+  @apply mt-3 max-w-2xl text-paper/70;
+}
+.clipping-grid {
+  @apply mt-10 grid auto-rows-fr gap-4 sm:grid-cols-2;
+}
+.clipping-item {
+  @apply h-full;
+}
+.clipping-card {
+  @apply flex h-full flex-col border-2 border-paper/15 bg-ink p-6 transition-all hover:border-blood hard-shadow;
+}
+.clipping-card__head {
+  @apply flex items-center gap-2;
+}
+.clipping-card__outlet {
+  @apply font-mono text-[11px] uppercase tracking-widest text-paper/60;
+}
+.clipping-card__year {
+  @apply ml-auto font-mono text-[11px] text-paper/40;
+}
+.clipping-card__title {
+  @apply mt-3 font-display text-2xl leading-tight text-paper;
+}
+.clipping-card:hover .clipping-card__title {
+  @apply text-blood;
+}
+.clipping-card__cta {
+  @apply mt-auto pt-5 font-mono text-xs uppercase tracking-widest text-paper/70;
+}
+.clipping-card:hover .clipping-card__cta {
+  @apply text-blood;
+}

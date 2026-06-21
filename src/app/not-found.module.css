@@ -1,0 +1,14 @@
+@reference "../styles/globals.css";
+
+.screen {
+  @apply flex min-h-screen flex-col items-center justify-center gap-6 bg-ink px-4 text-center;
+}
+.screen__code {
+  @apply font-display text-[28vw] leading-none text-blood md:text-[12rem];
+}
+.screen__text {
+  @apply font-mono text-xs uppercase tracking-[0.3em] text-paper/70;
+}
+.screen__action {
+  @apply border-2 border-paper px-6 py-3 font-mono text-xs uppercase tracking-widest text-paper hover:bg-paper hover:text-ink;
+}

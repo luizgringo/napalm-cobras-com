@@ -1,0 +1,66 @@
+@reference "../../../styles/globals.css";
+
+.flyer-grid {
+  @apply grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6;
+}
+.flyer {
+  @apply relative block aspect-[3/4] w-full cursor-pointer overflow-hidden border-2 border-paper/20 bg-smoke transition-transform hover:scale-105 hover:border-blood hard-shadow;
+}
+.flyer__img {
+  @apply object-cover grayscale transition-all duration-500;
+}
+.flyer:hover .flyer__img {
+  @apply grayscale-0;
+}
+.flyer__caption {
+  @apply absolute inset-x-0 bottom-0 bg-ink/80 p-2 text-left font-mono text-[10px] uppercase tracking-widest text-paper/80;
+}
+.flyer__placeholder {
+  @apply absolute inset-0 flex items-center justify-center bg-gradient-to-br from-smoke to-ink;
+}
+.flyer__placeholder-inner {
+  @apply text-center;
+}
+.flyer__placeholder-mark {
+  @apply font-display text-7xl text-blood/40;
+}
+.flyer__placeholder-label {
+  @apply mt-2 font-mono text-[10px] uppercase tracking-widest text-paper/40;
+}
+.flyer__placeholder-index {
+  @apply mt-1 font-mono text-[10px] uppercase tracking-widest text-paper/30;
+}
+
+.lightbox {
+  @apply fixed inset-0 z-[60] flex items-center justify-center bg-ink/95 p-4 backdrop-blur md:p-8;
+}
+.lightbox__figure {
+  @apply flex max-h-full flex-col items-center gap-3;
+}
+.lightbox__frame {
+  @apply relative h-[72vh] w-[90vw] max-w-5xl md:w-[80vw];
+}
+.lightbox__img {
+  @apply object-contain;
+}
+.lightbox__caption {
+  @apply flex max-w-3xl flex-col gap-1 text-center font-mono text-paper/70;
+}
+.lightbox__caption-title {
+  @apply text-xs uppercase tracking-widest text-paper;
+}
+.lightbox__caption-meta {
+  @apply text-[11px] normal-case tracking-wide text-paper/60;
+}
+.lightbox__close {
+  @apply absolute right-4 top-4 cursor-pointer p-2 text-paper/80 transition-colors hover:text-blood md:right-8 md:top-8;
+}
+.lightbox__nav {
+  @apply absolute top-1/2 z-[61] -translate-y-1/2 cursor-pointer p-2 text-paper/70 transition-colors hover:text-blood;
+}
+.lightbox__nav--prev {
+  @apply left-2 md:left-6;
+}
+.lightbox__nav--next {
+  @apply right-2 md:right-6;
+}

@@ -1,0 +1,32 @@
+@reference "../../../styles/globals.css";
+
+.footer {
+  @apply noise border-t-4 border-blood bg-smoke;
+}
+.footer__grid {
+  @apply mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-3 md:px-8;
+}
+.footer__brand {
+  @apply font-display text-3xl text-paper;
+}
+.footer__tagline {
+  @apply mt-2 font-mono text-xs uppercase tracking-widest text-paper/60;
+}
+.footer__note {
+  @apply mt-2 font-mono text-[10px] uppercase tracking-widest text-paper/50;
+}
+.footer__socials {
+  @apply mt-3 flex flex-wrap gap-2;
+}
+.footer__social {
+  @apply inline-flex items-center gap-2 border border-paper/20 px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-paper/80 transition-colors hover:border-blood hover:text-blood;
+}
+.footer__email {
+  @apply mt-3 block font-display text-2xl text-paper hover:text-blood;
+}
+.footer__bar {
+  @apply border-t border-paper/10;
+}
+.footer__copy {
+  @apply mx-auto max-w-7xl px-4 py-4 font-mono text-[10px] uppercase tracking-widest text-paper/40 md:px-8;
+}

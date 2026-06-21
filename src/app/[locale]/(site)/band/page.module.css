@@ -1,0 +1,46 @@
+@reference "../../../../styles/globals.css";
+
+.bio-link {
+  @apply text-paper underline decoration-blood decoration-2 underline-offset-2 transition-colors hover:text-blood;
+}
+
+.member-grid {
+  @apply mt-12 grid gap-8 md:grid-cols-3;
+}
+.member-card {
+  @apply border-2 border-paper/15 bg-smoke transition-all hover:border-blood hard-shadow;
+}
+.member-card__media {
+  @apply relative aspect-square overflow-hidden bg-ink;
+}
+.member-card__img {
+  @apply object-cover grayscale transition-all duration-500;
+}
+.member-card:hover .member-card__img {
+  @apply grayscale-0;
+}
+.member-card__body {
+  @apply border-t-2 border-paper/15 p-5;
+}
+.member-card__name {
+  @apply font-display text-3xl text-paper;
+}
+.member-card__role {
+  @apply mt-1 font-mono text-xs uppercase tracking-widest text-blood;
+}
+
+.timeline {
+  @apply mt-12 border-l-2 border-blood/40;
+}
+.timeline__item {
+  @apply relative pb-10 pl-8 last:pb-0;
+}
+.timeline__dot {
+  @apply absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-blood;
+}
+.timeline__year {
+  @apply font-display text-3xl text-paper;
+}
+.timeline__text {
+  @apply mt-2 text-paper/80;
+}

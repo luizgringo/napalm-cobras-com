@@ -1,0 +1,20 @@
+@reference "../../../../styles/globals.css";
+
+.shows-list {
+  @apply divide-y divide-paper/15 border-2 border-paper/20 bg-ink hard-shadow;
+}
+.shows-list__item {
+  @apply flex flex-wrap items-center justify-between gap-4 p-5;
+}
+.shows-list__info {
+  @apply flex items-center gap-5;
+}
+.shows-list__date {
+  @apply border-2 border-blood px-3 py-1 font-display text-2xl text-paper;
+}
+.shows-list__venue {
+  @apply font-display text-2xl uppercase text-paper;
+}
+.shows-list__tickets {
+  @apply inline-flex items-center gap-2 bg-blood px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper hover:bg-paper hover:text-ink;
+}

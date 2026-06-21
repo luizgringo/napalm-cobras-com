@@ -1,0 +1,41 @@
+@reference "../../../../styles/globals.css";
+
+.release-split {
+  @apply mt-10 grid gap-8 md:grid-cols-2 md:items-start lg:gap-12;
+}
+.release-split:first-child {
+  @apply mt-0;
+}
+.release-col {
+  @apply min-w-0;
+}
+
+.release-meta {
+  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood;
+}
+.release-title {
+  @apply mt-2 font-display text-4xl uppercase leading-none text-paper md:text-5xl;
+}
+.release-desc {
+  @apply mt-4 text-sm leading-relaxed text-paper/80;
+}
+.linked {
+  @apply text-paper underline decoration-blood decoration-2 underline-offset-2 transition-colors hover:text-blood;
+}
+
+.release-grid {
+  @apply mt-10 grid gap-6 md:grid-cols-3;
+}
+.release-card {
+  @apply border-2 border-paper/15 bg-smoke p-6 hover:border-blood;
+}
+.release-card__meta {
+  @apply font-mono text-[10px] uppercase tracking-[0.3em] text-blood;
+}
+.release-card__title {
+  @apply mt-4 font-display text-3xl uppercase text-paper;
+}
+
+.credits-list {
+  @apply mt-6 space-y-2 font-mono text-sm text-paper/80;
+}

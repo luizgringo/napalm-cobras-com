@@ -1,0 +1,33 @@
+@reference "../../../../styles/globals.css";
+
+.video-frame {
+  @apply mt-8 aspect-video border-2 border-paper/20 hard-shadow;
+}
+.video-frame__embed {
+  @apply h-full w-full;
+}
+.video-frame__caption {
+  @apply mt-5 max-w-2xl text-paper/70;
+}
+
+.video-grid {
+  @apply mt-8 grid gap-6 md:grid-cols-2 md:gap-8;
+}
+.video-card {
+  @apply flex flex-col;
+}
+.video-card__frame {
+  @apply aspect-video border-2 border-paper/20 transition-colors hard-shadow;
+}
+.video-card:hover .video-card__frame {
+  @apply border-blood;
+}
+.video-card__embed {
+  @apply h-full w-full;
+}
+.video-card__tag {
+  @apply mt-4 font-mono text-[10px] uppercase tracking-widest text-blood;
+}
+.video-card__title {
+  @apply mt-1 font-display text-2xl uppercase leading-tight text-paper;
+}

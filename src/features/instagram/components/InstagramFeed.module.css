@@ -1,0 +1,60 @@
+@reference "../../../styles/globals.css";
+
+.feed {
+  @apply flex flex-col gap-8;
+}
+.feed__header {
+  @apply flex flex-wrap items-center justify-between gap-4 border-2 border-paper/15 bg-ink p-5;
+}
+.feed__profile {
+  @apply flex items-center gap-4;
+}
+.feed__avatar {
+  @apply relative block h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-blood;
+}
+.feed__avatar-img {
+  @apply object-cover;
+}
+.feed__profile-text {
+  @apply flex flex-col;
+}
+.feed__username {
+  @apply font-display text-xl uppercase text-paper transition-colors;
+}
+.feed__profile:hover .feed__username {
+  @apply text-blood;
+}
+.feed__followers {
+  @apply font-mono text-[11px] uppercase tracking-widest text-paper/50;
+}
+
+.feed__grid {
+  @apply grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4;
+}
+.post {
+  @apply relative aspect-square overflow-hidden border-2 border-paper/15 bg-smoke transition-all hover:-translate-y-1 hover:border-blood hard-shadow;
+}
+.post__img {
+  @apply object-cover grayscale transition-all duration-500;
+}
+.post:hover .post__img {
+  @apply scale-105 grayscale-0;
+}
+.post__badge {
+  @apply absolute right-2 top-2 flex h-7 w-7 items-center justify-center bg-ink/70 text-paper;
+}
+.post__overlay {
+  @apply absolute inset-0 flex translate-y-2 flex-col justify-end gap-2 bg-gradient-to-t from-ink via-ink/60 to-transparent p-3 opacity-0 transition-all duration-300;
+}
+.post:hover .post__overlay {
+  @apply translate-y-0 opacity-100;
+}
+.post__caption {
+  @apply line-clamp-3 text-xs leading-snug text-paper/85;
+}
+.post__stats {
+  @apply flex items-center gap-4;
+}
+.post__stat {
+  @apply flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-blood;
+}

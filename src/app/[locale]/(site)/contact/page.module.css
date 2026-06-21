@@ -1,0 +1,11 @@
+@reference "../../../../styles/globals.css";
+
+.booking {
+  @apply border-b border-paper/10 pb-12;
+}
+.contact-email {
+  @apply mt-3 inline-flex items-center gap-3 font-display text-3xl text-paper hover:text-blood md:text-5xl;
+}
+.follow__title {
+  @apply mt-12;
+}

@@ -1,0 +1,8 @@
+@reference "../../../styles/globals.css";
+
+.site {
+  @apply flex min-h-screen flex-col bg-ink;
+}
+.site__main {
+  @apply relative flex-1;
+}

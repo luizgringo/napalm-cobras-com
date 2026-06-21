@@ -1,0 +1,29 @@
+@reference "../../../../styles/globals.css";
+
+.ig-cta {
+  @apply flex items-center justify-between gap-4 border-2 border-paper/20 bg-ink p-6 transition-colors hover:border-blood hard-shadow;
+}
+.ig-cta__handle {
+  @apply flex items-center gap-3 font-display text-3xl uppercase text-paper;
+}
+.ig-cta__icon {
+  @apply text-blood;
+}
+.ig-cta__action {
+  @apply font-mono text-xs uppercase tracking-widest text-paper/60;
+}
+.ig-cta:hover .ig-cta__action {
+  @apply text-blood;
+}
+.ig-grid {
+  @apply grid grid-cols-2 gap-2 md:grid-cols-3;
+}
+.ig-grid__item {
+  @apply relative aspect-square overflow-hidden border-2 border-paper/15;
+}
+.ig-grid__img {
+  @apply h-full w-full object-cover transition-transform duration-300;
+}
+.ig-grid__item:hover .ig-grid__img {
+  @apply scale-105;
+}

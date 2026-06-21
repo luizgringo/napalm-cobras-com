@@ -1,0 +1,41 @@
+@reference "../../../styles/globals.css";
+
+.cave-room {
+  @apply relative isolate overflow-hidden border-b border-paper/10 bg-ink;
+}
+.cave-room--smoke {
+  @apply bg-smoke;
+}
+.cave-room__bg {
+  @apply pointer-events-none absolute inset-0 -z-10 flex items-center justify-center;
+}
+.cave-room__bg-label {
+  @apply font-display text-[28vw] leading-none tracking-tighter text-paper;
+}
+.cave-room__scanlines {
+  @apply scanlines pointer-events-none absolute inset-0 -z-10;
+}
+.cave-room__inner {
+  @apply relative mx-auto max-w-7xl px-4 py-24 md:px-8 md:py-36;
+}
+.cave-room__header {
+  @apply flex flex-wrap items-end justify-between gap-6;
+}
+.cave-room__tags {
+  @apply flex items-center gap-3;
+}
+.cave-room__chip {
+  @apply border-2 border-blood bg-ink px-2 py-1 font-mono text-[10px] uppercase tracking-[0.3em] text-blood;
+}
+.cave-room__label {
+  @apply font-mono text-[10px] uppercase tracking-[0.4em] text-paper/50;
+}
+.cave-room__title {
+  @apply mt-5 font-display text-5xl uppercase leading-[0.9] text-paper md:text-7xl;
+}
+.cave-room__subtitle {
+  @apply mt-4 max-w-xl text-paper/70;
+}
+.cave-room__content {
+  @apply mt-12 md:mt-16;
+}

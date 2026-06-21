@@ -1,0 +1,142 @@
+@reference "../../../styles/globals.css";
+
+/* ---------- Hero ---------- */
+.hero {
+  @apply relative isolate min-h-[100svh] overflow-hidden;
+}
+.hero__bg {
+  @apply absolute inset-0 -z-10;
+}
+.hero__img {
+  @apply object-cover opacity-40 grayscale contrast-125;
+  object-position: center 18%;
+}
+.hero__veil {
+  @apply absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/70 to-ink;
+}
+.hero__frame {
+  @apply pointer-events-none absolute inset-6 -z-10 md:inset-10;
+}
+.hero__corner {
+  @apply absolute h-10 w-10 border-blood;
+}
+.hero__corner--tl {
+  @apply left-0 top-0 border-l-2 border-t-2;
+}
+.hero__corner--tr {
+  @apply right-0 top-0 border-r-2 border-t-2;
+}
+.hero__corner--bl {
+  @apply bottom-0 left-0 border-b-2 border-l-2;
+}
+.hero__corner--br {
+  @apply bottom-0 right-0 border-b-2 border-r-2;
+}
+.hero__scanlines {
+  @apply scanlines pointer-events-none absolute inset-0 -z-10;
+}
+.hero__content {
+  @apply noise relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-24 pt-28 md:px-8 md:pt-36;
+}
+.hero__eyebrow {
+  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood;
+}
+.hero__title {
+  @apply mt-4 font-brand text-[18vw] leading-[0.85] tracking-tight text-paper md:text-[13rem];
+}
+.hero__title-line {
+  @apply block;
+}
+.hero__title-line--blood {
+  @apply block text-blood;
+}
+.hero__sub {
+  @apply mt-8 max-w-xl font-mono text-sm uppercase tracking-widest text-paper/70;
+}
+.hero__actions {
+  @apply mt-10 flex flex-wrap gap-4;
+}
+.hero__scroll {
+  @apply absolute bottom-8 left-1/2 -translate-x-1/2 text-center;
+}
+.hero__scroll-text {
+  @apply font-mono text-[10px] uppercase tracking-[0.4em] text-paper/50;
+}
+.hero__scroll-icon {
+  @apply mt-2 flex justify-center text-blood;
+}
+
+/* ---------- Studio room ---------- */
+.studio {
+  @apply grid gap-10 lg:grid-cols-5;
+}
+.studio__player {
+  @apply lg:col-span-3;
+}
+.studio__credits {
+  @apply lg:col-span-2;
+}
+.credits-card {
+  @apply flex h-full flex-col justify-between border-2 border-paper/15 bg-ink p-6;
+}
+.credits-card__text {
+  @apply mt-4 text-sm leading-relaxed text-paper/75;
+}
+.credits-card__inline-link {
+  @apply font-medium text-blood underline decoration-blood/40 underline-offset-2 transition-colors hover:text-paper hover:decoration-paper;
+}
+.credits-card__list {
+  @apply mt-4 space-y-3 text-sm text-paper/80;
+}
+.credits-card__item {
+  @apply border-l-2 border-blood pl-3;
+}
+.credits-card__link {
+  @apply mt-8;
+}
+
+/* ---------- Stage room ---------- */
+.video-frame {
+  @apply relative aspect-video border-2 border-paper/20 hard-shadow;
+}
+.video-frame__embed {
+  @apply h-full w-full;
+}
+.video-frame__tag {
+  @apply tape absolute -top-4 left-4;
+}
+
+/* ---------- Tour room ---------- */
+.tour {
+  @apply grid gap-6 md:grid-cols-3;
+}
+.tour__card {
+  @apply relative overflow-hidden border-2 border-paper/15 bg-ink p-6 transition-all hover:-translate-y-1 hover:border-blood;
+}
+.tour__date {
+  @apply mt-6 font-display text-5xl text-paper;
+}
+.tour__venue {
+  @apply mt-4 font-display text-xl uppercase leading-tight text-paper;
+}
+.tour__tickets {
+  @apply mt-4 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-blood;
+}
+.tour__bar {
+  @apply absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-blood transition-transform;
+}
+.tour__card:hover .tour__bar {
+  @apply scale-x-100;
+}
+.tour__cta {
+  @apply mt-10;
+}
+.tour-empty {
+  @apply border-2 border-dashed border-paper/15 bg-ink/40 p-8 text-center md:p-12;
+}
+.tour-empty__text {
+  @apply mx-auto mt-3 max-w-xl text-sm leading-relaxed text-paper/70;
+}
+.tour-empty__actions {
+  @apply mt-7 flex flex-wrap items-center justify-center gap-3;
+}

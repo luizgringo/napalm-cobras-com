@@ -1,0 +1,8 @@
+@reference "../../../../styles/globals.css";
+
+.embed-frame {
+  @apply border-2 border-paper/20 bg-ink p-2 hard-shadow md:p-4;
+}
+.shows-widget__fallback {
+  @apply p-6 text-center text-paper/70;
+}

@@ -1,0 +1,117 @@
+@reference "./globals.css";
+
+/* Primitivas compartilhadas (BEM) reutilizadas entre componentes/páginas.
+   Importe como `import p from "@/styles/primitives.module.css"`. */
+
+.eyebrow {
+  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood;
+}
+.eyebrow--sm {
+  @apply text-[10px];
+}
+.eyebrow--wide {
+  @apply tracking-[0.4em] text-paper/50;
+}
+.eyebrow--spaced {
+  @apply mt-8;
+}
+.eyebrow--block {
+  @apply mb-6;
+}
+
+.label {
+  @apply font-mono text-xs uppercase tracking-widest text-paper/60;
+}
+.label--sm {
+  @apply text-[10px] text-paper/50;
+}
+
+.cta {
+  @apply inline-flex items-center gap-2 px-6 py-4 font-mono text-xs uppercase tracking-widest;
+}
+.cta--sm {
+  @apply px-5 py-3;
+}
+.cta--solid {
+  @apply bg-blood text-paper hover:bg-paper hover:text-ink;
+}
+.cta--outline {
+  @apply border-2 border-paper text-paper hover:bg-paper hover:text-ink;
+}
+.cta--outline-blood {
+  @apply border-2 border-paper text-paper hover:border-blood hover:bg-blood;
+}
+.cta--paper {
+  @apply bg-paper text-ink hover:bg-blood hover:text-paper;
+}
+.cta--lift {
+  @apply transition-transform hover:-translate-y-0.5;
+}
+.cta--shadow {
+  @apply hard-shadow;
+}
+.cta--pulse {
+  @apply pulse-cta;
+}
+.cta--standalone {
+  @apply mt-8;
+}
+
+.link-inline {
+  @apply inline-flex items-center gap-2 border-b-2 border-blood pb-1 font-mono text-xs uppercase tracking-widest text-paper hover:text-blood;
+}
+
+.section {
+  @apply border-b border-paper/10;
+}
+.section--smoke {
+  @apply bg-smoke;
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28;
+}
+.container--narrow {
+  @apply max-w-4xl;
+}
+.container--mid {
+  @apply max-w-5xl;
+}
+.container--wide {
+  @apply max-w-6xl;
+}
+.container--snug {
+  @apply py-16 md:py-20;
+}
+.container--cozy {
+  @apply py-16 md:py-24;
+}
+.container--flow {
+  @apply space-y-8;
+}
+.container--grid-2 {
+  @apply grid gap-10 md:grid-cols-2;
+}
+.container--grid-5 {
+  @apply grid gap-10 md:grid-cols-5;
+}
+
+.section-heading {
+  @apply mt-3 font-display text-5xl text-paper md:text-6xl;
+}
+.section-heading--sm {
+  @apply text-4xl md:text-5xl;
+}
+.section-heading--xl {
+  @apply text-5xl md:text-7xl;
+}
+
+.prose-lg {
+  @apply text-lg leading-relaxed text-paper/85;
+}
+.actions {
+  @apply mt-8 flex flex-wrap gap-4;
+}
+.icon-blood {
+  @apply text-blood;
+}

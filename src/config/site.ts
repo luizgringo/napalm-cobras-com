@@ -234,4 +234,5 @@ export const BAND_LINKS: CreditLink[] = [
   { label: "Estado de Fúria", href: "https://www.instagram.com/estadodefuriahc/" },
   { label: "Efecto", href: "https://www.instagram.com/efectobh/" },
   { label: "A Obra", href: "https://www.instagram.com/aobrabh/" },
+  { label: "Glam Slam Party", href: "https://www.instagram.com/glamslamparty/" },
 ];

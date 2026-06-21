@@ -5,6 +5,7 @@ import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { AudioPlayer } from "@/components/sections/AudioPlayer";
 import { CaveRoom } from "@/components/sections/CaveRoom";
 import { GlitchText } from "@/components/sections/GlitchText";
@@ -78,9 +79,11 @@ export function HomeView({
   const localize = (path: string) => `/${lang}${path}`;
 
   const [snakeEnabled, setSnakeEnabled] = useState(false);
+  const [snakeRoot, setSnakeRoot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     setSnakeEnabled(window.localStorage.getItem(SNAKE_STORAGE_KEY) === "on");
+    setSnakeRoot(document.getElementById("site-root"));
   }, []);
 
   const toggleSnake = () => {
@@ -93,7 +96,7 @@ export function HomeView({
 
   return (
     <>
-      {snakeEnabled && <SnakeTrail />}
+      {snakeEnabled && snakeRoot && createPortal(<SnakeTrail />, snakeRoot)}
       <SnakeToggle
         active={snakeEnabled}
         onToggle={toggleSnake}

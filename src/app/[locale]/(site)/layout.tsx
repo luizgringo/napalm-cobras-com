@@ -32,7 +32,7 @@ export default async function LocaleLayout({
       <body>
         <JsonLd data={organizationJsonLd()} />
         <AppProviders locale={locale as Locale}>
-          <div className={styles.site}>
+          <div id="site-root" className={styles.site}>
             <Header />
             <main className={styles.site__main}>{children}</main>
             <Footer />

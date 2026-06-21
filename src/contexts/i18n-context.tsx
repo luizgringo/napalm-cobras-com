@@ -1,11 +1,11 @@
 "use client";
 
 import { createContext, type ReactNode, useContext } from "react";
-import { type Dict, getDictionary, type Locale } from "@/i18n/config";
+import { getDictionary, type Lang, type Locale } from "@/i18n/config";
 
 interface I18nContextValue {
   lang: Locale;
-  t: Dict;
+  t: Lang;
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);

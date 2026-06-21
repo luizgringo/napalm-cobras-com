@@ -1,6 +1,6 @@
 # Napalm Cobras
 
-Site oficial da banda **Napalm Cobras** — Speed Rock and Roll de Belo Horizonte / MG.
+Site oficial da banda **Napalm Cobras** — Metalpunk de Belo Horizonte / MG.
 
 Construído com **Next.js 16 (App Router)**, **React 19**, **TypeScript** estrito, **Tailwind CSS v4**, **Framer Motion** e **Biome**. Internacionalizado por URL (`/pt`, `/en`, `/es`) com renderização estática (SSG/ISR) para máxima performance e SEO.
 

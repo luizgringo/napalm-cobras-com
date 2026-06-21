@@ -1,10 +1,10 @@
-import type { Dict } from "@/i18n/config";
+import type { Lang } from "@/i18n/config";
 
-export type { Dict, Locale } from "@/i18n/config";
+export type { Lang, Locale } from "@/i18n/config";
 
 export interface NavItem {
   href: string;
-  key: keyof Dict["nav"];
+  key: keyof Lang["nav"];
 }
 
 export interface StreamingLink {

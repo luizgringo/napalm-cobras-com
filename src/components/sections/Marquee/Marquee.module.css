@@ -5,7 +5,7 @@
 }
 .marquee__track {
   @apply flex w-max items-center gap-8 whitespace-nowrap;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 60s linear infinite;
 }
 .marquee__word {
   @apply font-display text-3xl uppercase tracking-wider text-paper;

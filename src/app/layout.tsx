@@ -7,7 +7,7 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Napalm Cobras — Speed Rock and Roll de Belo Horizonte",
+    default: "Napalm Cobras — Metalpunk de Belo Horizonte",
     template: "%s — Napalm Cobras",
   },
   description: SITE.album.title,

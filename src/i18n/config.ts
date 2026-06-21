@@ -1,18 +1,18 @@
 import { en } from "./en";
 import { es } from "./es";
-import { pt } from "./pt";
+import { type Lang, pt } from "./pt";
 
 export const locales = ["pt", "en", "es"] as const;
 
 export type Locale = (typeof locales)[number];
 
-export type Dict = typeof pt;
+export type { Lang } from "./pt";
 
 export const defaultLocale: Locale = "pt";
 
-const dictionaries: Record<Locale, Dict> = { pt, en, es };
+const dictionaries: Record<Locale, Lang> = { pt, en, es };
 
-export function getDictionary(locale: Locale): Dict {
+export function getDictionary(locale: Locale): Lang {
   return dictionaries[locale];
 }
 

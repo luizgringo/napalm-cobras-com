@@ -11,10 +11,10 @@ export const pt = {
   },
   meta: {
     siteName: "Napalm Cobras",
-    tagline: "Speed Rock and Roll de Belo Horizonte",
-    homeTitle: "Napalm Cobras — Speed Rock and Roll de Belo Horizonte",
+    tagline: "Metalpunk de Belo Horizonte",
+    homeTitle: "Napalm Cobras — Metalpunk de Belo Horizonte",
     homeDesc:
-      'Banda de Speed Rock and Roll formada em Belo Horizonte em 2021. Ouça o EP "Homens Brancos de Terno" e veja os próximos shows.',
+      'Banda de Metalpunk formada em Belo Horizonte em 2021. Ouça o EP "Homens Brancos de Terno" e veja os próximos shows.',
   },
   home: {
     eyebrow: "Belo Horizonte / Brasil — desde 2021",
@@ -72,9 +72,9 @@ export const pt = {
   band: {
     title: "A Banda",
     intro:
-      "Napalm Cobras é uma banda de Speed Rock and Roll formada em Belo Horizonte em 2021, forjada na interseção entre Metal e Punk. Som rápido e direto, letras sobre indignação, inquietação e o desejo de viver perigosamente.",
+      "Banda de Metalpunk formada em Belo Horizonte em 2021, a Napalm Cobras une o peso do Metal à urgência do Punk em um som rápido, direto e visceral. Suas letras tratam de indignação, inquietação e o desejo de viver perigosamente.",
     bio: [
-      'A Napalm Cobras é uma banda de Speed Rock and Roll fundada em 2021 em Belo Horizonte, Minas Gerais, por Uander Trajano (ex-Drunk Demons e Evil Matchers) nos vocais e no baixo, Luiz "Gringo" Bueno (ex-Evil Matchers, Crackodiles e Dead Goblins) na guitarra e voz, e Fred Souza (ex-Fake) na bateria. A banda apresenta uma sonoridade intensa, rápida e direta, forjada na interseção entre Metal e Punk, com letras que abordam indignação, inquietação e o desejo de viver perigosamente.',
+      'A Napalm Cobras é uma banda de Metalpunk fundada em 2021 em Belo Horizonte, Minas Gerais, por Uander Trajano (ex-Drunk Demons e Evil Matchers) nos vocais e no baixo, Luiz "Gringo" Bueno (ex-Evil Matchers, Crackodiles e Dead Goblins) na guitarra e voz, e Fred Souza (ex-Fake) na bateria. A banda apresenta uma sonoridade intensa, rápida e direta, forjada na interseção entre Metal e Punk, com letras que abordam indignação, inquietação e o desejo de viver perigosamente.',
       'Em 2022, Lucas Chavo (Estática, Evil Idols) assumiu a bateria no lugar de Fred Souza. No mesmo ano, a Napalm Cobras gravou seu primeiro EP, "Homens Brancos de Terno", no Estúdio Moai (BH), sob a supervisão de Fabricio Borges e Débora Coimbra. A mixagem ficou por conta de Felipe Sad, enquanto a masterização foi realizada por Joona Lukala no estúdio Noise for Fiction, em Tuulissuo, Lieto, na Finlândia. O resultado consolidou o peso e a energia que se tornaram marca registrada da banda. Ainda em dezembro de 2022, a Napalm Cobras fez seu show de estreia na Casa Matriz, em Belo Horizonte, ao lado dos Flying Cats.',
       'Em 2023, a banda ampliou seus horizontes: tocou pela primeira vez no tradicional Festival de Inverno de Ouro Preto, participou da festa Glam Slam Party ao lado dos escandinavos Hardcore Superstars e dividiu o palco com o Evil Syndicate, de Manaus. No mesmo ano, lançou seu primeiro videoclipe, "Parei de Beber Socialmente", registrado ao vivo e produzido pela Encontracena.',
       "Em 2024, a Napalm Cobras gravou e lançou seu primeiro disco ao vivo durante o festival Metalpunk Overkill, em Belo Horizonte, dividindo o palco com a lendária banda americana Master. No mesmo ano, fez sua primeira turnê fora de Minas, passando por Curitiba (PR), e participou do Punk no Park ao lado de nomes como Dead Fish e Zander, no Galpão 54.",
@@ -93,7 +93,7 @@ export const pt = {
     timeline: [
       {
         year: "2021",
-        text: 'Formação em Belo Horizonte por Uander Trajano, Luiz "Gringo" Bueno e Fred Souza — Speed Rock and Roll na interseção entre Metal e Punk.',
+        text: 'Formação em Belo Horizonte por Uander Trajano, Luiz "Gringo" Bueno e Fred Souza — Metalpunk na interseção entre Metal e Punk.',
       },
       {
         year: "2022",
@@ -193,3 +193,5 @@ export const pt = {
     builtIn: "Belo Horizonte / MG",
   },
 };
+
+export type Lang = typeof pt;

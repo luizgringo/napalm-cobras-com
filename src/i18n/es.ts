@@ -1,6 +1,6 @@
-import type { pt } from "./pt";
+import type { Lang } from "./pt";
 
-export const es: typeof pt = {
+export const es: Lang = {
   nav: {
     home: "Inicio",
     band: "Banda",
@@ -13,16 +13,16 @@ export const es: typeof pt = {
   },
   meta: {
     siteName: "Napalm Cobras",
-    tagline: "Speed Rock and Roll de Belo Horizonte, Brasil",
-    homeTitle: "Napalm Cobras — Speed Rock and Roll de Belo Horizonte",
+    tagline: "Metalpunk de Belo Horizonte, Brasil",
+    homeTitle: "Napalm Cobras — Metalpunk de Belo Horizonte",
     homeDesc:
-      'Banda de Speed Rock and Roll formada en Belo Horizonte en 2021. Escuchá el EP "Homens Brancos de Terno" y veános en vivo.',
+      'Banda de Metalpunk formada en Belo Horizonte en 2021. Escuchá el EP "Homens Brancos de Terno" y veános en vivo.',
   },
   home: {
     eyebrow: "Belo Horizonte / Brasil — desde 2021",
     heroLine1: "Napalm",
     heroLine2: "Cobras",
-    heroSub: "Metal Punk · Speed Rock · Velocidad alta, actitud mayor.",
+    heroSub: "𖤐 BH • MG • BR 𖤐 Sometimes Metal, sometimes Punk",
     listenNow: "Escuchar ahora",
     nextShows: "Próximos conciertos",
     latestRelease: "Último lanzamiento",
@@ -74,9 +74,9 @@ export const es: typeof pt = {
   band: {
     title: "La Banda",
     intro:
-      "Napalm Cobras es una banda de Speed Rock and Roll formada en Belo Horizonte en 2021, forjada en la intersección entre Metal y Punk. Sonido rápido y directo, con letras sobre indignación, inquietud y el deseo de vivir peligrosamente.",
+      "Formada en Belo Horizonte en 2021, Napalm Cobras es una banda de Metalpunk que une el peso del Metal con la urgencia del Punk en un sonido rápido, directo y visceral. Sus letras abordan la indignación, la inquietud y el deseo de vivir peligrosamente.",
     bio: [
-      'Napalm Cobras es una banda de Speed Rock and Roll fundada en 2021 en Belo Horizonte, Minas Gerais, por Uander Trajano (ex-Drunk Demons y Evil Matchers) en voz y bajo, Luiz "Gringo" Bueno (ex-Evil Matchers, Crackodiles y Dead Goblins) en guitarra y voz, y Fred Souza (ex-Fake) en la batería. La banda presenta un sonido intenso, rápido y directo, forjado en la intersección entre Metal y Punk, con letras que abordan la indignación, la inquietud y el deseo de vivir peligrosamente.',
+      'Napalm Cobras es una banda de Metalpunk fundada en 2021 en Belo Horizonte, Minas Gerais, por Uander Trajano (ex-Drunk Demons y Evil Matchers) en voz y bajo, Luiz "Gringo" Bueno (ex-Evil Matchers, Crackodiles y Dead Goblins) en guitarra y voz, y Fred Souza (ex-Fake) en la batería. La banda presenta un sonido intenso, rápido y directo, forjado en la intersección entre Metal y Punk, con letras que abordan la indignación, la inquietud y el deseo de vivir peligrosamente.',
       'En 2022, Lucas Chavo (Estática, Evil Idols) asumió la batería en lugar de Fred Souza. Ese mismo año, Napalm Cobras grabó su primer EP, "Homens Brancos de Terno", en el Estúdio Moai (BH), bajo la supervisión de Fabricio Borges y Débora Coimbra. La mezcla estuvo a cargo de Felipe Sad, mientras que la masterización fue realizada por Joona Lukala en el estudio Noise for Fiction, en Tuulissuo, Lieto, Finlandia. El resultado consolidó el peso y la energía que se convirtieron en la marca registrada de la banda. Aún en diciembre de 2022, Napalm Cobras hizo su show de estreno en la Casa Matriz, en Belo Horizonte, junto a Flying Cats.',
       'En 2023, la banda amplió sus horizontes: tocó por primera vez en el tradicional Festival de Inverno de Ouro Preto, participó en la fiesta Glam Slam Party junto a los escandinavos Hardcore Superstars y compartió escenario con Evil Syndicate, de Manaus. Ese mismo año, lanzó su primer videoclip, "Parei de Beber Socialmente", registrado en vivo y producido por Encontracena.',
       "En 2024, Napalm Cobras grabó y lanzó su primer disco en vivo durante el festival Metalpunk Overkill, en Belo Horizonte, compartiendo escenario con la legendaria banda estadounidense Master. Ese mismo año, hizo su primera gira fuera de Minas Gerais, pasando por Curitiba (PR), y participó en Punk no Park junto a nombres como Dead Fish y Zander, en Galpão 54.",
@@ -95,7 +95,7 @@ export const es: typeof pt = {
     timeline: [
       {
         year: "2021",
-        text: 'Formación en Belo Horizonte por Uander Trajano, Luiz "Gringo" Bueno y Fred Souza (ex-Fake) — Speed Rock and Roll en la intersección entre Metal y Punk.',
+        text: 'Formación en Belo Horizonte por Uander Trajano, Luiz "Gringo" Bueno y Fred Souza (ex-Fake) — Metalpunk en la intersección entre Metal y Punk.',
       },
       {
         year: "2022",

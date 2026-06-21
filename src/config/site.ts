@@ -153,7 +153,7 @@ const RELEASE_CREDITS: Record<string, LocalizedReleaseCredits> = {
     },
     links: [
       { label: "Estúdio Moai", href: "https://www.instagram.com/estudiomoaibh/" },
-      { label: "Débora Coimbra", href: "https://www.instagram.com/estudiomoaibh/" },
+      { label: "Débora Coimbra", href: "https://www.instagram.com/ddcoimbra/" },
       { label: "Felipe Sad", href: "https://www.instagram.com/felipesad/" },
       { label: "Joona Lukala", href: "https://www.instagram.com/joona_lukala/" },
       {
@@ -235,4 +235,6 @@ export const BAND_LINKS: CreditLink[] = [
   { label: "Efecto", href: "https://www.instagram.com/efectobh/" },
   { label: "A Obra", href: "https://www.instagram.com/aobrabh/" },
   { label: "Glam Slam Party", href: "https://www.instagram.com/glamslamparty/" },
+  { label: "Débora Coimbra", href: "https://www.instagram.com/ddcoimbra/" },
+  { label: "Humberto \"Beto\" Monteiro", href: "https://hasmonteiro.com/" },
 ];

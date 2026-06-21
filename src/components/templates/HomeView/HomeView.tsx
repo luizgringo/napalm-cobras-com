@@ -215,13 +215,13 @@ export function HomeView({
         words={[
           "Sometimes Metal",
           "Sometimes Punk",
-          "Always Antifascist", 
+          "Always Antifascist",
           "From Belo Horizonte",
           "Minas Gerais",
           "Brasil",
-          "Speed Metal", 
-          "Crust", 
-          "Punk", 
+          "Speed Metal",
+          "Crust",
+          "Punk",
           "Hard Rock",
           "Napalm Cobras",
         ]}

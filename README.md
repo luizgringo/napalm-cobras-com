@@ -130,7 +130,7 @@ Todas as rotas são prefixadas pelo locale (`/[locale]/...`). Definição do men
 ## Internacionalização
 
 - Locales: `pt` (padrão), `en`, `es`.
-- O `middleware.ts` detecta o idioma (cookie / `Accept-Language`) e redireciona `/` para o locale apropriado.
+- O `proxy.ts` (antiga convenção `middleware`, renomeada no Next.js 16) detecta o idioma (cookie / `Accept-Language`) e redireciona `/` para o locale apropriado.
 - Os dicionários ficam em `src/i18n/{pt,en,es}.ts` e são **tipados a partir de `pt`** — adicionar uma chave em `pt` torna obrigatório traduzi-la em `en` e `es` (erro de compilação caso contrário).
 
 ## Integrações (Tier 1 / Tier 2)

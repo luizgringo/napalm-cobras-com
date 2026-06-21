@@ -236,5 +236,5 @@ export const BAND_LINKS: CreditLink[] = [
   { label: "A Obra", href: "https://www.instagram.com/aobrabh/" },
   { label: "Glam Slam Party", href: "https://www.instagram.com/glamslamparty/" },
   { label: "Débora Coimbra", href: "https://www.instagram.com/ddcoimbra/" },
-  { label: "Humberto \"Beto\" Monteiro", href: "https://hasmonteiro.com/" },
+  { label: 'Humberto "Beto" Monteiro', href: "https://hasmonteiro.com/" },
 ];

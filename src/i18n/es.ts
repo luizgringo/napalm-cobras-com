@@ -32,7 +32,7 @@ export const es: typeof pt = {
     membersTitle: "La formación",
     watchLive: "Ver en vivo",
     liveCaption: "Metalpunk Overkill · en vivo · Goblin TV",
-    scrollHint: "Entrá · scrolleá · sobreviví",
+    scrollHint: "Ve la banda en acción",
     snake: {
       enable: "Activar animación de la serpiente",
       disable: "Desactivar animación de la serpiente",
@@ -40,9 +40,9 @@ export const es: typeof pt = {
     rooms: {
       studio: {
         label: "Studio",
-        title: "La caverna sonora",
+        title: "Directo del estudio",
         subtitle:
-          'Poné los auriculares. Apretá play. El EP "Homens Brancos de Terno" escupe del parlante.',
+          'Ponte los auriculares y dale play. Escucha el EP "Homens Brancos de Terno" completo, con toda la intensidad de la banda.',
         cta: "EP completo en Bandcamp",
       },
       stage: {

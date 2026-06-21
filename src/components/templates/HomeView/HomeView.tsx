@@ -77,10 +77,10 @@ export function HomeView({
 
   const localize = (path: string) => `/${lang}${path}`;
 
-  const [snakeEnabled, setSnakeEnabled] = useState(true);
+  const [snakeEnabled, setSnakeEnabled] = useState(false);
 
   useEffect(() => {
-    setSnakeEnabled(window.localStorage.getItem(SNAKE_STORAGE_KEY) !== "off");
+    setSnakeEnabled(window.localStorage.getItem(SNAKE_STORAGE_KEY) === "on");
   }, []);
 
   const toggleSnake = () => {
@@ -210,12 +210,13 @@ export function HomeView({
 
       <Marquee
         words={[
-          "Speed Rock",
-          "Metal Punk",
-          "Belo Horizonte",
-          "Homens Brancos de Terno",
+          "Sometimes Metal",
+          "Sometimes Punk",
+          "Always Antifascist",
+          "From Belo Horizonte",
+          "Minas Gerais",
+          "Brazil",
           "Napalm Cobras",
-          "1349 BPM",
         ]}
       />
 

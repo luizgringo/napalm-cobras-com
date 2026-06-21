@@ -32,28 +32,6 @@ export default async function BandPage({ params }: Props) {
       <PageHero eyebrow={t.meta.tagline} title={t.band.title} intro={t.band.intro} />
 
       <section className={mergeClassNames(primitives.section, primitives["section--smoke"])}>
-        <div
-          className={mergeClassNames(
-            primitives.container,
-            primitives["container--narrow"],
-            primitives["container--flow"],
-          )}
-        >
-          {t.band.bio.map((paragraph, index) => (
-            <Reveal key={paragraph} delay={index * 0.1}>
-              <p className={primitives["prose-lg"]}>
-                <LinkedText
-                  text={paragraph}
-                  links={BAND_LINKS}
-                  linkClassName={styles["bio-link"]}
-                />
-              </p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className={primitives.section}>
         <div className={primitives.container}>
           <Reveal>
             <p className={primitives.eyebrow}>// {t.band.membersTitle}</p>
@@ -80,6 +58,28 @@ export default async function BandPage({ params }: Props) {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className={primitives.section}>
+        <div
+          className={mergeClassNames(
+            primitives.container,
+            primitives["container--narrow"],
+            primitives["container--flow"],
+          )}
+        >
+          {t.band.bio.map((paragraph, index) => (
+            <Reveal key={paragraph} delay={index * 0.1}>
+              <p className={primitives["prose-lg"]}>
+                <LinkedText
+                  text={paragraph}
+                  links={BAND_LINKS}
+                  linkClassName={styles["bio-link"]}
+                />
+              </p>
+            </Reveal>
+          ))}
         </div>
       </section>
 

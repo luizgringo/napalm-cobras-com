@@ -30,17 +30,17 @@
 }
 
 .timeline {
-  @apply mt-12 border-l-2 border-blood/40;
+  @apply mt-12 space-y-12 border-l-2 border-blood/40;
 }
 .timeline__item {
-  @apply relative pb-10 pl-8 last:pb-0;
+  @apply relative pl-10 last:pb-0;
 }
 .timeline__dot {
-  @apply absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-blood;
+  @apply absolute -left-[7px] top-2 h-3 w-3 rounded-full bg-blood ring-4 ring-smoke;
 }
 .timeline__year {
-  @apply font-display text-3xl text-paper;
+  @apply font-display text-3xl leading-none text-paper;
 }
 .timeline__text {
-  @apply mt-2 text-paper/80;
+  @apply mt-3 max-w-prose leading-relaxed text-paper/80;
 }

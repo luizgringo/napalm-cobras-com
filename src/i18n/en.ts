@@ -32,7 +32,7 @@ export const en: typeof pt = {
     membersTitle: "The line-up",
     watchLive: "Watch live",
     liveCaption: "Metalpunk Overkill · live · Goblin TV",
-    scrollHint: "Enter · scroll · survive",
+    scrollHint: "See the band in action",
     snake: {
       enable: "Enable snake animation",
       disable: "Disable snake animation",
@@ -40,9 +40,9 @@ export const en: typeof pt = {
     rooms: {
       studio: {
         label: "Studio",
-        title: "The sonic cave",
+        title: "Straight from the studio",
         subtitle:
-          'Plug the headphones. Hit play. The EP "Homens Brancos de Terno" spits out of the speaker.',
+          'Put on your headphones and hit play. Listen to the EP "Homens Brancos de Terno" in full, with all the band\'s intensity.',
         cta: "Full EP on Bandcamp",
       },
       stage: {

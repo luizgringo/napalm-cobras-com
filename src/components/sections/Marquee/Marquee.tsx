@@ -10,7 +10,7 @@ export function Marquee({ words }: { words: string[] }) {
           <Fragment key={index}>
             <span className={styles.marquee__word}>{word}</span>
             <span className={styles.marquee__cross} aria-hidden="true">
-              ✠
+              𖤐
             </span>
           </Fragment>
         ))}

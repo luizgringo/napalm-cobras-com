@@ -30,7 +30,7 @@ export const pt = {
     membersTitle: "A formação",
     watchLive: "Assistir ao vivo",
     liveCaption: "Metalpunk Overkill · ao vivo · Goblin TV",
-    scrollHint: "Entre · role · sobreviva",
+    scrollHint: "Veja a banda em ação",
     snake: {
       enable: "Ativar animação da cobra",
       disable: "Desativar animação da cobra",
@@ -38,9 +38,9 @@ export const pt = {
     rooms: {
       studio: {
         label: "Studio",
-        title: "A caverna sonora",
+        title: "Direto do estúdio",
         subtitle:
-          'Coloque o fone. Aperte o play. O EP "Homens Brancos de Terno" cospe fora do alto-falante.',
+          'Coloque os fones e dê play. Ouça o EP "Homens Brancos de Terno" na íntegra, com toda a intensidade da banda.',
         cta: "EP completo no Bandcamp",
       },
       stage: {

@@ -192,6 +192,13 @@ export const pt = {
     rights: "Todos os direitos reservados.",
     builtIn: "Belo Horizonte / MG",
   },
+  notFound: {
+    eyebrow: "Erro 404",
+    title: "Página não encontrada",
+    text: "A página que você procura saiu de turnê, mudou de endereço ou nunca existiu. Volte ao início e siga o som.",
+    home: "Voltar ao início",
+    music: "Ouvir a banda",
+  },
 };
 
 export type Lang = typeof pt;

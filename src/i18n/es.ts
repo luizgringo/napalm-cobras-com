@@ -194,4 +194,11 @@ export const es: Lang = {
     rights: "Todos los derechos reservados.",
     builtIn: "Belo Horizonte / MG",
   },
+  notFound: {
+    eyebrow: "Error 404",
+    title: "Página no encontrada",
+    text: "La página que buscás se fue de gira, cambió de dirección o nunca existió. Volvé al inicio y seguí el ruido.",
+    home: "Volver al inicio",
+    music: "Escuchar a la banda",
+  },
 };

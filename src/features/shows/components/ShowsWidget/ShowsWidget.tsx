@@ -1,9 +1,21 @@
 "use client";
 
+/**
+ * Client component that mounts the official Bandsintown events widget and
+ * loads its third-party script.
+ */
+
 import Script from "next/script";
 import { SITE } from "@/config/site";
 import styles from "./ShowsWidget.module.css";
 
+/**
+ * Renders the Bandsintown widget initializer anchor and loads the widget script.
+ *
+ * @param props - Component props.
+ * @param props.fallback - Text shown via `<noscript>` when JavaScript is disabled.
+ * @remarks Client component; injects the Bandsintown widget at runtime.
+ */
 export function ShowsWidget({ fallback }: { fallback: string }) {
   return (
     <div className={styles["embed-frame"]}>

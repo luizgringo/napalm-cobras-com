@@ -1,3 +1,7 @@
+/**
+ * Localized press/EPK page. Async Server Component that renders press clipping,
+ * downloadable assets (press release, rider, stage map), and a media kit link.
+ */
 import { Download, FileText, FolderOpen, Newspaper } from "lucide-react";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/sections/Reveal";
@@ -10,8 +14,16 @@ import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import styles from "./page.module.css";
 
+/** Props for the press route, carrying the async `locale` route param. */
 type Props = { params: Promise<{ locale: string }> };
 
+/**
+ * Builds localized metadata for the press page.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The localized {@link Metadata} for the press page.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);
@@ -23,6 +35,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/**
+ * Press page (async Server Component). Renders the press clipping grid, the
+ * downloadable EPK assets, and the media kit link using localized content.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The rendered press page.
+ */
 export default async function PressPage({ params }: Props) {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);

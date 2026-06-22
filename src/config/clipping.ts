@@ -1,11 +1,30 @@
+/**
+ * Press clipping configuration for the Napalm Cobras website.
+ *
+ * @remarks
+ * Holds the curated list of media articles and social posts about the band,
+ * each backed by a Google Drive file, plus a helper to build the public view URL.
+ */
+
+/**
+ * A single press mention referencing a Google Drive-hosted document.
+ */
 export interface ClippingItem {
+  /** Google Drive file id used to build the public view URL. */
   id: string;
+  /** Name of the media outlet or author that published the piece. */
   outlet: string;
+  /** Headline or title of the clipping. */
   title: string;
+  /** Publication year, when known. */
   year?: string;
+  /** Whether the clipping is a formal article or a social media post. */
   kind: "article" | "post";
 }
 
+/**
+ * Ordered collection of press clippings shown on the press page.
+ */
 export const CLIPPING: ClippingItem[] = [
   {
     id: "1yOV0qcCW_funye-y3BpoJckQq79taGVG",
@@ -75,6 +94,12 @@ export const CLIPPING: ClippingItem[] = [
   },
 ];
 
+/**
+ * Builds the public Google Drive view URL for a clipping file.
+ *
+ * @param id - Google Drive file id of the clipping.
+ * @returns The full Google Drive `/view` URL for the file.
+ */
 export function clippingHref(id: string): string {
   return `https://drive.google.com/file/d/${id}/view`;
 }

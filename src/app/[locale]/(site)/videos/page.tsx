@@ -1,3 +1,8 @@
+/**
+ * Localized videos page. Async Server Component that renders a featured video,
+ * a grid of YouTube embeds, and a link to the band's YouTube channel, plus
+ * live-video JSON-LD.
+ */
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/sections/Reveal";
@@ -10,8 +15,16 @@ import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import styles from "./page.module.css";
 
+/** Props for the videos route, carrying the async `locale` route param. */
 type Props = { params: Promise<{ locale: string }> };
 
+/**
+ * Builds localized metadata for the videos page.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The localized {@link Metadata} for the videos page.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);
@@ -23,6 +36,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/**
+ * Videos page (async Server Component). Renders live-video JSON-LD, the featured
+ * video embed, the full video grid, and a YouTube channel link.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The rendered videos page.
+ */
 export default async function VideosPage({ params }: Props) {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);

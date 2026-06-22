@@ -1,3 +1,8 @@
+/**
+ * Localized music page. Async Server Component that renders featured releases
+ * with Spotify embeds, per-release credits, the discography, and streaming
+ * links, plus album JSON-LD.
+ */
 import type { Metadata } from "next";
 import { LinkedText } from "@/components/sections/LinkedText";
 import { LinkGrid } from "@/components/sections/LinkGrid";
@@ -13,8 +18,10 @@ import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import styles from "./page.module.css";
 
+/** Props for the music route, carrying the async `locale` route param. */
 type Props = { params: Promise<{ locale: string }> };
 
+/** Streaming platforms listed in the "listen everywhere" section. */
 const LISTEN_LINKS: SocialLinkDef[] = [
   { name: "Spotify", key: "spotifyArtist" },
   { name: "Bandcamp", key: "bandcamp" },
@@ -27,14 +34,21 @@ const LISTEN_LINKS: SocialLinkDef[] = [
   { name: "Qobuz", key: "qobuz" },
 ];
 
+/** A highlighted release rendered with a Spotify embed and streaming links. */
 interface FeaturedRelease {
+  /** Spotify album/track id, also used to look up localized credits. */
   id: string;
+  /** Display title of the release. */
   title: string;
+  /** Short meta line (e.g. format and year). */
   meta: string;
+  /** Spotify embed URL for the player iframe. */
   spotifyEmbed: string;
+  /** Streaming destinations with their display name and URL. */
   streaming: readonly { name: string; url: string }[];
 }
 
+/** Manually curated list of featured releases shown at the top of the page. */
 const FEATURED_RELEASES: FeaturedRelease[] = [
   {
     id: "1oON2uCjZrnaHiNhClDijT",
@@ -62,6 +76,13 @@ const FEATURED_RELEASES: FeaturedRelease[] = [
   },
 ];
 
+/**
+ * Builds localized metadata for the music page.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The localized {@link Metadata} for the music page.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);
@@ -73,6 +94,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/**
+ * Music page (async Server Component). Renders album JSON-LD, featured releases
+ * with embeds and credits, the discography grid, and a streaming link grid.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The rendered music page.
+ * @remarks Featured release credits are resolved per locale; the section
+ * background alternates ("smoke") for odd-indexed releases.
+ */
 export default async function MusicPage({ params }: Props) {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);

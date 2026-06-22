@@ -1,13 +1,33 @@
+/**
+ * Show flyer gallery configuration for the Napalm Cobras website.
+ *
+ * @remarks
+ * Provides the chronological archive of show/event flyers rendered in the
+ * gallery, ordered from the most recent show to the oldest.
+ */
+
+/**
+ * A single show flyer entry displayed in the gallery.
+ */
 export interface Flyer {
+  /** Public path to the flyer image asset. */
   src: string;
+  /** Event title shown alongside the flyer. */
   title: string;
+  /** Year of the event, when known. */
   year?: string;
+  /** Venue and city/state where the show happened. */
   venue?: string;
+  /** Comma-separated list of bands on the bill. */
   lineup?: string;
 }
 
+/** Base public directory where flyer image assets are stored. */
 const FLYERS_DIR = "/assets/images/flyers";
 
+/**
+ * Chronological archive of show flyers, ordered newest first.
+ */
 export const FLYERS: Flyer[] = [
   {
     src: `${FLYERS_DIR}/2026-06-13.webp`,

@@ -1,8 +1,19 @@
+/**
+ * Renders the list of upcoming shows with date, venue, location, and a
+ * tickets link per event.
+ */
+
 import { ExternalLink } from "lucide-react";
 import primitives from "@/styles/primitives.module.css";
 import type { BandsintownEvent } from "../../services/bandsintown";
 import styles from "./ShowsList.module.css";
 
+/**
+ * Formats an event datetime as a Brazilian Portuguese (pt-BR) date.
+ *
+ * @param datetime - The event datetime string.
+ * @returns The formatted date (e.g. "01 jan. 2026").
+ */
 function formatDate(datetime: string) {
   const date = new Date(datetime);
   return new Intl.DateTimeFormat("pt-BR", {
@@ -12,6 +23,14 @@ function formatDate(datetime: string) {
   }).format(date);
 }
 
+/**
+ * Renders a list of upcoming shows.
+ *
+ * @param props - Component props.
+ * @param props.events - The events to display.
+ * @param props.ticketsLabel - Localized label for the tickets link.
+ * @remarks Server component.
+ */
 export function ShowsList({
   events,
   ticketsLabel,

@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Client component that renders the Instagram feed: profile header
+ * (avatar, handle, follower count, follow CTA) plus an animated grid of posts.
+ */
+
 import { motion } from "framer-motion";
 import { Heart, Instagram, MessageCircle, Play } from "lucide-react";
 import Image from "next/image";
@@ -10,13 +15,24 @@ import type { InstagramFeedData } from "../services/behold";
 import { useInstagramFeed } from "./InstagramFeed.hooks";
 import styles from "./InstagramFeed.module.css";
 
+/** Props for {@link InstagramFeed}. */
 interface InstagramFeedProps {
+  /** Normalized Instagram profile and posts to render. */
   feed: InstagramFeedData;
+  /** Localized label for the "follow" call-to-action button. */
   followLabel: string;
+  /** Localized label shown after the follower count (e.g. "followers"). */
   followersLabel: string;
+  /** External URL to the Instagram profile. */
   profileHref: string;
 }
 
+/**
+ * Renders the Instagram feed as a profile header and an animated post grid.
+ *
+ * @param props - See {@link InstagramFeedProps}.
+ * @remarks Client component (uses framer-motion animations).
+ */
 export function InstagramFeed({
   feed,
   followLabel,

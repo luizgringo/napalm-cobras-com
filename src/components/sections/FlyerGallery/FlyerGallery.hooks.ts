@@ -1,6 +1,25 @@
+/**
+ * Logic layer for the `FlyerGallery` component: manages lightbox open/close
+ * state, wrap-around navigation and keyboard/scroll-lock side effects.
+ */
+
 import { useCallback, useEffect, useState } from "react";
 import type { Flyer } from "@/config/flyers";
 
+/**
+ * Encapsulates the flyer lightbox behavior: tracks the active flyer index,
+ * exposes open/close/navigate actions, locks body scroll while open and wires
+ * up Escape/Arrow keyboard controls.
+ *
+ * @param flyers - The flyers being browsed; its length bounds navigation.
+ * @returns An object with:
+ * - `activeFlyer`: the currently opened flyer, or `null` when closed;
+ * - `openLightbox`: opens the lightbox at the given flyer index;
+ * - `closeLightbox`: closes the lightbox;
+ * - `navigate`: moves by a signed offset with wrap-around (e.g. `-1`/`1`).
+ * @remarks While open, body scrolling is disabled and a `keydown` listener
+ * handles Escape (close) and ArrowLeft/ArrowRight (navigate).
+ */
 export function useFlyerLightbox(flyers: Flyer[]) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 

@@ -1,4 +1,16 @@
+/**
+ * Brazilian Portuguese (pt) translation dictionary for the Napalm Cobras website.
+ *
+ * @remarks
+ * This is the canonical/base dictionary: its shape defines the {@link Lang}
+ * type that all other locales must conform to. Keys are grouped by site area.
+ */
+
+/**
+ * Brazilian Portuguese translations, grouped by site area.
+ */
 export const pt = {
+  /** Navigation menu labels. */
   nav: {
     home: "Início",
     band: "Banda",
@@ -9,6 +21,7 @@ export const pt = {
     press: "Imprensa",
     contact: "Contato",
   },
+  /** SEO/meta strings: site name, tagline and home page title/description. */
   meta: {
     siteName: "Napalm Cobras",
     tagline: "Metalpunk de Belo Horizonte",
@@ -16,6 +29,7 @@ export const pt = {
     homeDesc:
       'Banda de Metalpunk formada em Belo Horizonte em 2021. Ouça o EP "Homens Brancos de Terno" e veja os próximos shows.',
   },
+  /** Home page copy: hero, CTAs and the studio/stage/tour/feed rooms. */
   home: {
     eyebrow: "Belo Horizonte / Brasil — desde 2021",
     heroLine1: "Napalm",
@@ -69,6 +83,7 @@ export const pt = {
       },
     },
   },
+  /** Band page copy: bio, members, line-up labels and timeline. */
   band: {
     title: "A Banda",
     intro:
@@ -117,6 +132,7 @@ export const pt = {
       },
     ],
   },
+  /** Music page copy: streaming, tracklist, credits and discography. */
   music: {
     title: "Música",
     intro:
@@ -135,6 +151,7 @@ export const pt = {
       { title: "The Hog", meta: "Single · 2025" },
     ],
   },
+  /** Shows page copy: schedule, Bandsintown fallback and booking. */
   shows: {
     title: "Shows",
     intro: "Próximas datas e histórico de shows via Bandsintown. Para booking, fale conosco.",
@@ -142,6 +159,7 @@ export const pt = {
     openBandsintown: "Abrir no Bandsintown",
     booking: "Booking & contratação",
   },
+  /** Videos page copy: featured live video, gallery and clip kind labels. */
   videos: {
     title: "Vídeos",
     intro: "Show ao vivo, clipes e registros do circuito.",
@@ -156,6 +174,7 @@ export const pt = {
       session: "Encontracena",
     },
   },
+  /** Gallery page copy: flyer archive and lightbox controls. */
   gallery: {
     title: "História & Flyers",
     intro:
@@ -165,6 +184,7 @@ export const pt = {
     prev: "Anterior",
     next: "Próximo",
   },
+  /** Press page copy: press kit documents, clipping and booking. */
   press: {
     title: "Imprensa & Contratação",
     intro:
@@ -181,6 +201,7 @@ export const pt = {
     clippingIntro: "A banda na imprensa e na mídia.",
     read: "Ver matéria",
   },
+  /** Contact page copy: booking, follow and email labels. */
   contact: {
     title: "Contato",
     intro: "Para booking, imprensa, parcerias e colaborações.",
@@ -188,10 +209,12 @@ export const pt = {
     follow: "Acompanhe",
     emailLabel: "E-mail",
   },
+  /** Footer copy: rights notice and location line. */
   footer: {
     rights: "Todos os direitos reservados.",
     builtIn: "Belo Horizonte / MG",
   },
+  /** 404 page copy. */
   notFound: {
     eyebrow: "Erro 404",
     title: "Página não encontrada",
@@ -201,4 +224,11 @@ export const pt = {
   },
 };
 
+/**
+ * Shape of a complete translation dictionary, inferred from {@link pt}.
+ *
+ * @remarks
+ * Every locale dictionary (e.g. `en`, `es`) must satisfy this type, ensuring
+ * all locales expose the same keys.
+ */
 export type Lang = typeof pt;

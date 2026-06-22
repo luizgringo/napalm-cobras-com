@@ -1,11 +1,24 @@
 "use client";
 
+/**
+ * Footer module — renders the site-wide footer (brand, social links, contact
+ * and copyright). Structure lives here, styling in `Footer.module.css`.
+ */
+
 import { SITE } from "@/config/site";
 import { useI18n } from "@/contexts/i18n-context";
 import { SOCIAL_ICONS } from "@/lib/social-icons";
 import primitives from "@/styles/primitives.module.css";
 import styles from "./Footer.module.css";
 
+/**
+ * Site-wide footer rendering the band brand, localized tagline, social media
+ * links, contact email and the dynamic copyright line.
+ *
+ * Client Component: relies on the `useI18n` context for translated strings.
+ *
+ * @returns The footer landmark for every page.
+ */
 export function Footer() {
   const { t } = useI18n();
   return (

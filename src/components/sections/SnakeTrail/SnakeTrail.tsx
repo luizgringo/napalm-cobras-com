@@ -1,5 +1,14 @@
 "use client";
 
+/**
+ * Client decorative overlay drawing a cobra that slithers down the home page in
+ * sync with scroll progress.
+ *
+ * @remarks
+ * Structure lives here, styling in `SnakeTrail.module.css`, and the scroll-driven
+ * reveal/head-tracking logic is encapsulated in the {@link useSnakeTrail} hook.
+ */
+
 import { motion } from "framer-motion";
 import { TRAIL_PATH, useSnakeTrail } from "./SnakeTrail.hooks";
 import styles from "./SnakeTrail.module.css";
@@ -9,6 +18,9 @@ import styles from "./SnakeTrail.module.css";
  * is drawn as a layered SVG (tube + scale bands + sheen) revealed top-to-bottom,
  * and a naja head follows the reveal front, facing the direction of travel.
  * Pure decoration — pointer-events disabled, aria-hidden.
+ *
+ * @returns The full-page decorative cobra overlay.
+ * @remarks Client component (`"use client"`).
  */
 export function SnakeTrail() {
   const { containerRef, pathRef, revealHeight, headLeft, headTop, headAngle } = useSnakeTrail();
@@ -71,6 +83,12 @@ export function SnakeTrail() {
   );
 }
 
+/**
+ * Renders the cobra's naja head as a standalone SVG (hood, eyes, fangs and an
+ * animated flicking tongue).
+ *
+ * @returns The cobra head SVG used as the trail's leading element.
+ */
 function CobraHead() {
   return (
     <svg

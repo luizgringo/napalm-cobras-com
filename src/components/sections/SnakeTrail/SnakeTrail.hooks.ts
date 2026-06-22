@@ -1,3 +1,8 @@
+/**
+ * Logic layer for the `SnakeTrail` component: maps scroll progress to the body
+ * reveal height and computes the head's position and heading along the path.
+ */
+
 import {
   useMotionValue,
   useMotionValueEvent,
@@ -7,12 +12,28 @@ import {
 } from "framer-motion";
 import { useCallback, useEffect, useRef } from "react";
 
+/** SVG path (in the 0–100 viewBox) describing the serpentine trail the cobra follows. */
 export const TRAIL_PATH =
   "M50 0 C 12 7, 88 15, 50 23 C 12 31, 88 39, 50 47 C 12 55, 88 63, 50 71 C 12 79, 88 87, 50 96 C 38 99, 56 100, 50 100";
 
+/** Number of binary-search iterations used to locate the head's point on the path. */
 const HEAD_PROBE_ITERATIONS = 18;
+/** Lookahead distance (in path length units) used to orient the head toward its travel direction. */
 const HEAD_LEAD_DISTANCE = 0.6;
 
+/**
+ * Encapsulates the `SnakeTrail` animation: smooths scroll progress, drives the
+ * clip-path reveal height, and continuously positions and rotates the cobra head
+ * along {@link TRAIL_PATH}.
+ *
+ * @returns An object with:
+ * - `containerRef`: ref for the overlay container (used to measure viewport size);
+ * - `pathRef`: ref to the SVG `<path>` sampled for head placement;
+ * - `revealHeight`: motion value driving the clip-path reveal rectangle height;
+ * - `headLeft`/`headTop`: motion values for the head's CSS position (as percentages);
+ * - `headAngle`: motion value for the head's rotation, aligned to its direction of travel.
+ * @remarks Re-measures on window resize and body size changes via a `ResizeObserver`.
+ */
 export function useSnakeTrail() {
   const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 70, damping: 26, mass: 0.5 });
@@ -28,6 +49,13 @@ export function useSnakeTrail() {
   const headLeft = useTransform(headX, (value) => `${value}%`);
   const headTop = useTransform(headY, (value) => `${value}%`);
 
+  /**
+   * Places and orients the head for a given scroll progress by binary-searching
+   * the path for the point at the matching vertical position and looking ahead
+   * to derive the travel angle.
+   *
+   * @param progress - Normalized scroll progress in the `[0, 1]` range.
+   */
   const moveHeadToProgress = useCallback(
     (progress: number) => {
       const path = pathRef.current;

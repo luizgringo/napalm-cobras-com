@@ -1,3 +1,7 @@
+/**
+ * Localized contact page. Async Server Component that renders booking info,
+ * social/streaming links, and an embedded Instagram feed.
+ */
 import { Mail } from "lucide-react";
 import type { Metadata } from "next";
 import { LinkGrid } from "@/components/sections/LinkGrid";
@@ -12,8 +16,10 @@ import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import styles from "./page.module.css";
 
+/** Props for the contact route, carrying the async `locale` route param. */
 type Props = { params: Promise<{ locale: string }> };
 
+/** Ordered social and streaming destinations shown in the contact link grid. */
 const CONTACT_LINKS: SocialLinkDef[] = [
   { name: "Instagram", key: "instagram" },
   { name: "TikTok", key: "tiktok" },
@@ -31,6 +37,13 @@ const CONTACT_LINKS: SocialLinkDef[] = [
   { name: "Linktree", key: "linktree" },
 ];
 
+/**
+ * Builds localized metadata for the contact page.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The localized {@link Metadata} for the contact page.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);
@@ -42,6 +55,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/**
+ * Contact page (async Server Component). Renders the booking email, the social
+ * link grid, and the Instagram feed using localized content.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The rendered contact page.
+ */
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);

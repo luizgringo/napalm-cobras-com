@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * Header module — renders the site-wide navigation bar with brand, desktop nav,
+ * animated mobile menu and locale switcher. Structure lives here, styling in
+ * `Header.module.css` and navigation logic in `Header.hooks.ts`.
+ */
+
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -11,6 +17,15 @@ import { mergeClassNames } from "@/lib/utils";
 import { useLocaleSwitcher, useSiteNavigation } from "./Header.hooks";
 import styles from "./Header.module.css";
 
+/**
+ * Site-wide header with the band brand, desktop navigation, a toggleable
+ * animated mobile menu and the locale switcher. Active links are highlighted
+ * based on the current pathname.
+ *
+ * Client Component: uses i18n context, navigation hooks and framer-motion.
+ *
+ * @returns The header landmark for every page.
+ */
 export function Header() {
   const { t, lang } = useI18n();
   const { isMenuOpen, closeMenu, toggleMenu, localizePath, isActivePath } = useSiteNavigation(lang);
@@ -86,6 +101,12 @@ export function Header() {
   );
 }
 
+/**
+ * Inline locale switcher rendering one link per available locale and marking
+ * the current one as active. Shared between the desktop nav and mobile menu.
+ *
+ * @returns A list of locale links pointing at the same page in each language.
+ */
 function LangSwitch() {
   const { lang } = useI18n();
   const { buildLocalePath } = useLocaleSwitcher();

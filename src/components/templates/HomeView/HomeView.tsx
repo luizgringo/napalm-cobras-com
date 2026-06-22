@@ -1,5 +1,12 @@
 "use client";
 
+/**
+ * HomeView module — top-level template for the homepage. Composes the hero,
+ * marquee and the themed "cave room" sections (studio, Instagram feed, live
+ * video and tour). Structure lives here, styling in `HomeView.module.css` and
+ * data/state logic in `HomeView.hooks.ts`.
+ */
+
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import Image from "next/image";
@@ -23,6 +30,7 @@ import primitives from "@/styles/primitives.module.css";
 import { useHomeView } from "./HomeView.hooks";
 import styles from "./HomeView.module.css";
 
+/** Scrolling marquee phrases describing the band's genres and origin. */
 const MARQUEE_WORDS = [
   "Sometimes Metal",
   "Sometimes Punk",
@@ -37,6 +45,18 @@ const MARQUEE_WORDS = [
   "Napalm Cobras",
 ];
 
+/**
+ * Homepage template composing the hero, marquee and themed cave-room sections
+ * (studio player & credits, Instagram feed, live video and upcoming tour).
+ *
+ * Client Component: uses i18n context, framer-motion and the `useHomeView` hook.
+ *
+ * @param props - Component props.
+ * @param props.releases - Spotify releases used to build the discography player.
+ * @param props.events - Bandsintown events used to build the upcoming shows list.
+ * @param props.instagram - Instagram feed data, or `null` when unavailable (feed section is hidden).
+ * @returns The full homepage layout.
+ */
 export function HomeView({
   releases,
   events,
@@ -360,6 +380,11 @@ export function HomeView({
   );
 }
 
+/**
+ * Decorative corner brackets framing the hero section.
+ *
+ * @returns Four absolutely-positioned, aria-hidden corner markers.
+ */
 function CornerFrame() {
   return (
     <div aria-hidden className={styles.hero__frame}>

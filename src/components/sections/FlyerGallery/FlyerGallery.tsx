@@ -1,5 +1,15 @@
 "use client";
 
+/**
+ * Client gallery of gig flyers rendered as a slightly-rotated grid, with a
+ * full-screen animated lightbox for browsing flyers one by one. Falls back to
+ * styled placeholders when no flyers are available.
+ *
+ * @remarks
+ * Structure lives here, styling in `FlyerGallery.module.css`, and the lightbox
+ * state/keyboard logic is encapsulated in the {@link useFlyerLightbox} hook.
+ */
+
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
@@ -8,16 +18,30 @@ import type { Flyer } from "@/config/flyers";
 import { useFlyerLightbox } from "./FlyerGallery.hooks";
 import styles from "./FlyerGallery.module.css";
 
+/** Per-position rotation angles (in degrees) cycled across flyers for a pinned-up look. */
 const ROTATIONS = [-2, 1.5, -1, 2, -1.5, 1, -2, 1.5, -1];
 
+/** Props accepted by the {@link FlyerGallery} component. */
 interface FlyerGalleryProps {
+  /** Flyers to display; an empty list renders placeholder tiles. */
   flyers: Flyer[];
+  /** Localized label shown inside placeholder tiles. */
   placeholder: string;
+  /** Accessible label for the lightbox close button. */
   closeLabel: string;
+  /** Accessible label for the lightbox previous button. */
   prevLabel: string;
+  /** Accessible label for the lightbox next button. */
   nextLabel: string;
 }
 
+/**
+ * Renders the flyer grid and, when a flyer is opened, the animated lightbox.
+ *
+ * @param props - See {@link FlyerGalleryProps}.
+ * @returns The flyer grid (with placeholders when empty) and the lightbox overlay.
+ * @remarks Client component (`"use client"`).
+ */
 export function FlyerGallery({
   flyers,
   placeholder,

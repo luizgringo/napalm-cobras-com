@@ -1,3 +1,7 @@
+/**
+ * Localized band page. Async Server Component that renders band members, bio,
+ * and a history timeline from the locale dictionary.
+ */
 import type { Metadata } from "next";
 import Image from "next/image";
 import { LinkedText } from "@/components/sections/LinkedText";
@@ -10,8 +14,16 @@ import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import styles from "./page.module.css";
 
+/** Props for the band route, carrying the async `locale` route param. */
 type Props = { params: Promise<{ locale: string }> };
 
+/**
+ * Builds localized metadata for the band page.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The localized {@link Metadata} for the band page.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);
@@ -23,6 +35,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/**
+ * Band page (async Server Component). Renders the page hero, members grid, bio
+ * paragraphs, and the history timeline using localized content.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The rendered band page.
+ */
 export default async function BandPage({ params }: Props) {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);

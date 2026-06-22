@@ -1,3 +1,10 @@
+/**
+ * NotFoundView module — top-level template for the 404 page. Renders a full
+ * `<html>` document (header, glitch 404 screen with recovery links, footer)
+ * using the default locale. Structure lives here, styling in
+ * `NotFoundView.module.css`.
+ */
+
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -9,6 +16,15 @@ import { AppProviders } from "@/providers/app-providers";
 import primitives from "@/styles/primitives.module.css";
 import styles from "./NotFoundView.module.css";
 
+/**
+ * Full-document 404 template rendering its own `<html>`/`<body>` with the
+ * header, a glitch "404" screen, recovery links and the footer, localized to
+ * the default locale.
+ *
+ * Server Component: resolves translations synchronously via `getDictionary`.
+ *
+ * @returns The complete not-found page document.
+ */
 export function NotFoundView() {
   const t = getDictionary(defaultLocale);
 

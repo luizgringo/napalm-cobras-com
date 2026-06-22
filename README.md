@@ -1,175 +1,200 @@
 # Napalm Cobras
 
-Site oficial da banda **Napalm Cobras** — Metalpunk de Belo Horizonte / MG.
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-0055FF?logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Biome](https://img.shields.io/badge/Biome-2-60A5FA?logo=biome&logoColor=white)](https://biomejs.dev/)
+[![pnpm](https://img.shields.io/badge/pnpm-9-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?logo=vercel&logoColor=white)](https://www.napalmcobras.com)
 
-Construído com **Next.js 16 (App Router)**, **React 19**, **TypeScript** estrito, **Tailwind CSS v4**, **Framer Motion** e **Biome**. Internacionalizado por URL (`/pt`, `/en`, `/es`) com renderização estática (SSG/ISR) para máxima performance e SEO.
+Official website of **Napalm Cobras** — Metalpunk from Belo Horizonte / MG, Brazil.
 
-- Produção: <https://www.napalmcobras.com>
+Built with **Next.js 16 (App Router)**, **React 19**, strict **TypeScript**, **Tailwind CSS v4**, **Framer Motion** and **Biome**. Internationalized by URL (`/pt`, `/en`, `/es`) with static rendering (SSG/ISR) for maximum performance and SEO.
 
-## Sumário
+- Production: <https://www.napalmcobras.com>
+
+![Napalm Cobras homepage](docs/home.png)
+
+## Table of contents
 
 - [Stack](#stack)
-- [Requisitos](#requisitos)
-- [Começando](#começando)
+- [Requirements](#requirements)
+- [Getting started](#getting-started)
 - [Scripts](#scripts)
-- [Variáveis de ambiente](#variáveis-de-ambiente)
-- [Estrutura](#estrutura)
-- [Rotas & páginas](#rotas--páginas)
-- [Internacionalização](#internacionalização)
-- [Integrações (Tier 1 / Tier 2)](#integrações-tier-1--tier-2)
-- [Conteúdo & configuração](#conteúdo--configuração)
+- [Environment variables](#environment-variables)
+- [Architecture](#architecture)
+- [Project structure](#project-structure)
+- [Routes & pages](#routes--pages)
+- [Internationalization](#internationalization)
+- [Integrations (Tier 1 / Tier 2)](#integrations-tier-1--tier-2)
+- [Content & configuration](#content--configuration)
 - [Homepage & Snake Mode](#homepage--snake-mode)
 - [SEO](#seo)
-- [Deploy](#deploy)
+- [Deployment](#deployment)
 
 ## Stack
 
 - **Next.js 16** — App Router, SSG/ISR, `next/image`, `next/font`, `next/script`
-- **React 19** + **TypeScript 5.8** (modo estrito)
+- **React 19** + **TypeScript 5.8** (strict mode)
 - **Tailwind CSS v4** (`@tailwindcss/postcss`) + CSS Modules
-- **Framer Motion** — animações (componente `Reveal`, salas da home, trilha da cobra)
-- **shadcn/ui** + **Radix UI** — primitivos de UI acessíveis
-- **react-icons** / **lucide-react** — ícones (incl. ícones de marca para streamings)
-- **Biome** — lint e formatação (substitui ESLint + Prettier)
-- **Husky** — git hooks
-- **pnpm** — gerenciador de pacotes
-- **Vercel** — deploy, **Analytics** e **Speed Insights**
+- **Framer Motion** — animations (`Reveal` component, home "rooms", snake trail, page transitions)
+- **clsx** + **tailwind-merge** — class name composition (`mergeClassNames`)
+- **react-icons** / **lucide-react** — icons (incl. brand icons for streaming services)
+- **Biome** — linting and formatting (replaces ESLint + Prettier)
+- **Husky** — git hooks (pre-commit runs Biome)
+- **pnpm** — package manager
+- **Vercel** — deployment, **Analytics** and **Speed Insights**
 
-## Requisitos
+## Requirements
 
-- **Node.js** 20+ (recomendado LTS)
-- **pnpm** 9+ (`corepack enable` ativa o pnpm automaticamente)
+- **Node.js** 20+ (LTS recommended)
+- **pnpm** 9+ (`corepack enable` activates pnpm automatically)
 
-## Começando
+## Getting started
 
 ```bash
-# 1. Instalar dependências
+# 1. Install dependencies
 pnpm install
 
-# 2. Configurar variáveis de ambiente
+# 2. Configure environment variables
 cp .env.example .env
-# edite o .env conforme a seção "Variáveis de ambiente"
+# edit .env following the "Environment variables" section
 
-# 3. Ambiente de desenvolvimento
+# 3. Start the dev server
 pnpm dev
-# http://localhost:3000  (redireciona para o locale detectado, ex.: /pt)
+# http://localhost:3000  (redirects to the detected locale, e.g. /pt)
 ```
 
 ## Scripts
 
 ```bash
-pnpm dev      # ambiente de desenvolvimento
-pnpm build    # build de produção (SSG/ISR)
-pnpm start    # serve o build de produção
-pnpm lint     # Biome check (lint + formatação, sem escrever)
-pnpm format   # Biome check --write (formata e organiza imports)
+pnpm dev      # development server
+pnpm build    # production build (SSG/ISR)
+pnpm start    # serve the production build
+pnpm lint     # Biome check (lint + format, no writes)
+pnpm format   # Biome check --write (formats and organizes imports)
 ```
 
-## Variáveis de ambiente
+## Environment variables
 
-Todas as integrações funcionam **sem credenciais** (Tier 1, via embeds/links) e ganham dados dinâmicos quando as variáveis abaixo são preenchidas (Tier 2). Use `.env.example` como base.
+Every integration works **without credentials** (Tier 1, via embeds/links) and unlocks dynamic data once the variables below are provided (Tier 2). Use `.env.example` as a starting point.
 
-| Variável | Obrigatória | Descrição |
+| Variable | Required | Description |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Sim | URL canônica usada em metadata, Open Graph, sitemap e robots. |
-| `NEXT_PUBLIC_BANDSINTOWN_APP_ID` | Não | App ID público do Bandsintown. Habilita a agenda nativa + JSON-LD `MusicEvent`. |
-| `SPOTIFY_CLIENT_ID` | Não | Spotify Web API (Client Credentials) — dados de álbum/artista. |
-| `SPOTIFY_CLIENT_SECRET` | Não | Segredo do Spotify Web API. **Nunca commitar.** |
-| `BEHOLD_FEED_ID` | Não | ID do feed da [Behold.so](https://behold.so) para a grade do Instagram. |
+| `NEXT_PUBLIC_SITE_URL` | Yes | Canonical URL used in metadata, Open Graph, sitemap and robots. |
+| `NEXT_PUBLIC_BANDSINTOWN_APP_ID` | No | Public Bandsintown App ID. Enables the native schedule + `MusicEvent` JSON-LD. |
+| `SPOTIFY_CLIENT_ID` | No | Spotify Web API (Client Credentials) — album/artist data. |
+| `SPOTIFY_CLIENT_SECRET` | No | Spotify Web API secret. **Never commit it.** |
+| `BEHOLD_FEED_ID` | No | [Behold.so](https://behold.so) feed ID for the Instagram grid. |
 
-> O arquivo `.env` (com segredos reais) está no `.gitignore` e não deve ser versionado. Em produção, configure as variáveis no painel da Vercel.
+> The `.env` file (with real secrets) is in `.gitignore` and must not be versioned. In production, configure the variables in the Vercel dashboard.
 
-## Estrutura
+## Architecture
+
+Components follow the **Single Responsibility Principle (SRP)** with a three-file co-located pattern:
+
+- **`Component.tsx`** — structure only (JSX/markup). Reads data and handlers from its hook.
+- **`Component.module.css`** — styling (Tailwind via `@apply` + CSS Modules).
+- **`Component.hooks.ts`** — logic and encapsulation: state, effects, refs, derived values, motion values and handlers (e.g. `useHomeView`, `useSnakeTrail`, `useFlyerLightbox`, `useSiteNavigation`).
+
+Each component folder also exposes a barrel (`index.ts`) for clean imports. The entire `src/` tree is documented with **TSDoc** (English), including module overviews, components, hooks, services, types and configuration.
+
+## Project structure
 
 ```
 src/
-  app/                     # roteamento (App Router)
-    [locale]/(site)/       # páginas localizadas + layout, template, error
+  app/                     # routing (App Router)
+    [locale]/(site)/       # localized pages + layout, template, error
       band | music | shows | videos | gallery | press | contact
       page.tsx             # home
     layout.tsx             # root (metadata, fonts, globals, providers)
     not-found.tsx
     sitemap.ts | robots.ts
   components/
-    layout/                # Header, Footer
-    sections/              # blocos animados (Reveal, CaveRoom, LinkGrid,
-                           #   LinkedText, SnakeTrail, SnakeToggle, embeds...)
-    templates/             # views de página (HomeView, PageHero/SectionTitle)
-    site/                  # componentes específicos do site
+    layout/                # Header (+ Header.hooks), Footer
+    sections/              # animated/structural blocks, each as
+                           #   .tsx + .module.css (+ .hooks.ts when stateful):
+                           #   AudioPlayer, CaveRoom, FlyerGallery, GlitchText,
+                           #   LinkGrid, LinkedText, Marquee, Reveal,
+                           #   SnakeToggle, SnakeTrail
+    templates/             # page views (HomeView + HomeView.hooks,
+                           #   NotFoundView, SectionTitle/PageHero)
     seo/                   # JsonLd
-    ui/                    # shadcn/ui
   config/                  # site.ts, navigation.ts, flyers.ts, clipping.ts
-  contexts/                # i18n-context (dicionário por locale)
-  features/                # integrações por domínio:
+  contexts/                # i18n-context (per-locale dictionary)
+  features/                # domain integrations:
     shows/                 #   Bandsintown
     music/                 #   Spotify Web API + embeds
-    instagram/ social/     #   feed/seguir Instagram (Behold.so)
-  i18n/                    # config + dicionários pt/en/es
+    instagram/ social/     #   Instagram feed/follow (Behold.so)
+  i18n/                    # config + pt/en/es dictionaries
   lib/                     # seo, fonts, utils, api/http, social-icons
   providers/               # AppProviders
   styles/                  # globals.css, primitives.module.css
-  types/                   # tipos compartilhados
-public/assets/             # imagens (membros, flyers, hero) e svgs
+  types/                   # shared types
+  proxy.ts                 # locale detection & redirect (Next.js 16)
+public/assets/             # images (members, flyers, hero) and svgs
 ```
 
-## Rotas & páginas
+## Routes & pages
 
-Todas as rotas são prefixadas pelo locale (`/[locale]/...`). Definição do menu em `src/config/navigation.ts`.
+Every route is locale-prefixed (`/[locale]/...`). The menu is defined in `src/config/navigation.ts`.
 
-| Rota | Página | Conteúdo |
+| Route | Page | Content |
 | --- | --- | --- |
-| `/[locale]` | Home | Hero + "salas" animadas (Studio, Stage, Tour, Feed), Snake Mode. |
-| `/[locale]/band` | Banda | Biografia, integrantes e timeline (com links inline via `LinkedText`). |
-| `/[locale]/music` | Música | Lançamentos em destaque, players (Spotify), ficha técnica e streamings. |
-| `/[locale]/shows` | Shows | Agenda (Bandsintown) e booking. |
-| `/[locale]/videos` | Vídeos | Show ao vivo, clipes e registros. |
-| `/[locale]/gallery` | Galeria | Flyers de shows (`config/flyers.ts`) com lightbox. |
-| `/[locale]/press` | Imprensa | Press release, rider, mapa de palco e Clipping (`config/clipping.ts`). |
-| `/[locale]/contact` | Contato | Booking, e-mail e grade de redes/streamings (`LinkGrid`). |
+| `/[locale]` | Home | Hero + animated "rooms" (Studio, Stage, Tour, Feed), Snake Mode. |
+| `/[locale]/band` | Band | Biography, members and timeline (with inline links via `LinkedText`). |
+| `/[locale]/music` | Music | Featured releases, players (Spotify), credits and streaming links. |
+| `/[locale]/shows` | Shows | Schedule (Bandsintown) and booking. |
+| `/[locale]/videos` | Videos | Live show, clips and recordings. |
+| `/[locale]/gallery` | Gallery | Show flyers (`config/flyers.ts`) with lightbox. |
+| `/[locale]/press` | Press | Press release, rider, stage plot and Clipping (`config/clipping.ts`). |
+| `/[locale]/contact` | Contact | Booking, e-mail and a grid of social/streaming links (`LinkGrid`). |
 
-## Internacionalização
+## Internationalization
 
-- Locales: `pt` (padrão), `en`, `es`.
-- O `proxy.ts` (antiga convenção `middleware`, renomeada no Next.js 16) detecta o idioma (cookie / `Accept-Language`) e redireciona `/` para o locale apropriado.
-- Os dicionários ficam em `src/i18n/{pt,en,es}.ts` e são **tipados a partir de `pt`** — adicionar uma chave em `pt` torna obrigatório traduzi-la em `en` e `es` (erro de compilação caso contrário).
+- Locales: `pt` (default), `en`, `es`.
+- `proxy.ts` (the former `middleware` convention, renamed in Next.js 16) detects the language (cookie / `Accept-Language`) and redirects `/` to the appropriate locale.
+- Dictionaries live in `src/i18n/{pt,en,es}.ts` and are **typed from `pt`** via the `Lang` type — adding a key in `pt` makes translating it in `en` and `es` mandatory (compile error otherwise).
 
-## Integrações (Tier 1 / Tier 2)
+## Integrations (Tier 1 / Tier 2)
 
-- **Bandsintown** (`features/shows`): widget oficial por padrão; agenda nativa + JSON-LD `MusicEvent` quando `NEXT_PUBLIC_BANDSINTOWN_APP_ID` está definido.
-- **Spotify** (`features/music`): players embutidos sempre; metadados de álbum/artista via Web API quando `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET` estão definidos (com lista curada de lançamentos como fallback).
-- **Bandcamp**: players embutidos.
-- **Instagram** (`features/instagram` / `features/social`): bloco "seguir" por padrão; grade do feed quando `BEHOLD_FEED_ID` está definido (Behold.so).
+- **Bandsintown** (`features/shows`): official widget by default; native schedule + `MusicEvent` JSON-LD when `NEXT_PUBLIC_BANDSINTOWN_APP_ID` is set.
+- **Spotify** (`features/music`): embedded players always; album/artist metadata via the Web API when `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET` are set (falls back to a curated release list).
+- **Bandcamp**: embedded players.
+- **Instagram** (`features/instagram` / `features/social`): "follow" block by default; feed grid when `BEHOLD_FEED_ID` is set (Behold.so).
 
-## Conteúdo & configuração
+## Content & configuration
 
-A maior parte do conteúdo é editável em arquivos de configuração tipados, sem mexer nos componentes:
+Most content is editable in typed configuration files, without touching components:
 
-- `src/config/site.ts` — dados centrais da banda: redes sociais, streamings, álbum/EP, integrantes, imprensa, créditos de lançamentos (`RELEASE_CREDITS`) e a lista de links inline (`BAND_LINKS`) usada pelo `LinkedText` na página `/band`.
-- `src/config/flyers.ts` — flyers da galeria (`{ src, title, year, venue, lineup }`).
-- `src/config/clipping.ts` — matérias/notícias da seção Clipping em `/press`.
-- `src/config/navigation.ts` — itens do menu.
-- `src/i18n/{pt,en,es}.ts` — todos os textos (incluindo bio e timeline da banda).
+- `src/config/site.ts` — core band data: socials, streaming services, album/EP, members, press, release credits (`RELEASE_CREDITS`) and the inline link list (`BAND_LINKS`) used by `LinkedText` on `/band`.
+- `src/config/flyers.ts` — gallery flyers (`{ src, title, year, venue, lineup }`).
+- `src/config/clipping.ts` — press/news items for the Clipping section on `/press`.
+- `src/config/navigation.ts` — menu items.
+- `src/i18n/{pt,en,es}.ts` — all copy (including the band bio and timeline).
 
-### Adicionar flyers à galeria
+### Adding flyers to the gallery
 
-1. Coloque as imagens em `public/assets/images/flyers/`.
-2. Acrescente o item ao array `FLYERS` em `src/config/flyers.ts`.
+1. Drop the images in `public/assets/images/flyers/`.
+2. Append the item to the `FLYERS` array in `src/config/flyers.ts`.
 
 ## Homepage & Snake Mode
 
-A home é organizada em "salas" animadas (Studio, Stage, Tour, Feed) com `framer-motion`. O **Snake Mode** é uma trilha de cobra que segue o cursor.
+The home page is organized into animated "rooms" (Studio, Stage, Tour, Feed) powered by `framer-motion`. **Snake Mode** is a cobra trail that slithers down the page as you scroll.
 
-- O site **inicia com o Snake Mode desligado (OFF)** por padrão.
-- A preferência é persistida em `localStorage` (`SNAKE_STORAGE_KEY`): a trilha só aparece automaticamente se o visitante já tiver ativado antes.
-- O usuário liga/desliga pelo botão `SnakeToggle` (canto da home).
+- The site **starts with Snake Mode OFF** by default.
+- The preference is persisted in `localStorage` (`SNAKE_STORAGE_KEY`): the trail only appears automatically if the visitor enabled it before.
+- Users toggle it via the `SnakeToggle` button (home corner). The trail is rendered through a React portal into the page root so it spans the full scroll height.
 
 ## SEO
 
-- Metadata por página e por locale (títulos, descrições, Open Graph) via `lib/seo`.
-- `app/sitemap.ts` e `app/robots.ts` gerados a partir de `NEXT_PUBLIC_SITE_URL`.
-- Dados estruturados JSON-LD (`components/seo/JsonLd`) — ex.: `MusicGroup` e `MusicEvent`.
-- Imagens otimizadas com `next/image`; fontes com `next/font`.
+- Per-page, per-locale metadata (titles, descriptions, Open Graph) via `lib/seo`.
+- `app/sitemap.ts` and `app/robots.ts` generated from `NEXT_PUBLIC_SITE_URL`.
+- Structured JSON-LD data (`components/seo/JsonLd`) — e.g. `MusicGroup` and `MusicEvent`.
+- Images optimized with `next/image`; fonts with `next/font`.
 
-## Deploy
+## Deployment
 
-Otimizado para **Vercel**. Configure as variáveis do `.env.example` no painel do projeto — em especial `NEXT_PUBLIC_SITE_URL`, que define a URL canônica usada em metadata, sitemap e robots. `@vercel/analytics` e `@vercel/speed-insights` já estão integrados.
+Optimized for **Vercel**. Configure the `.env.example` variables in the project dashboard — especially `NEXT_PUBLIC_SITE_URL`, which sets the canonical URL used in metadata, sitemap and robots. `@vercel/analytics` and `@vercel/speed-insights` are already integrated.

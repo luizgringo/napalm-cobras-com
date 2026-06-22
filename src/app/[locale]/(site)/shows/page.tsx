@@ -1,3 +1,7 @@
+/**
+ * Localized shows page. Async Server Component that lists upcoming shows (with
+ * event JSON-LD) or a fallback widget, plus booking and Bandsintown links.
+ */
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -11,8 +15,16 @@ import { buildMetadata } from "@/lib/seo";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 
+/** Props for the shows route, carrying the async `locale` route param. */
 type Props = { params: Promise<{ locale: string }> };
 
+/**
+ * Builds localized metadata for the shows page.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The localized {@link Metadata} for the shows page.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);
@@ -24,6 +36,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/**
+ * Shows page (async Server Component). Fetches upcoming shows and renders the
+ * event list with JSON-LD, or a fallback widget when none are available.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The rendered shows page.
+ * @remarks When no events are returned, the Bandsintown {@link ShowsWidget}
+ * fallback is shown instead of the list.
+ */
 export default async function ShowsPage({ params }: Props) {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);

@@ -1,44 +1,87 @@
+/**
+ * Service for fetching the band's discography from the Spotify Web API,
+ * authenticating via the Client Credentials flow and merging API results
+ * with a curated fallback list.
+ *
+ * @remarks Data source: Spotify Web API (https://api.spotify.com/v1).
+ */
+
 import { SITE } from "@/config/site";
 import { fetchJson } from "@/lib/api/http";
 
+/** A normalized Spotify release (album or single) consumed by the UI. */
 export interface SpotifyRelease {
+  /** Spotify album/release id. */
   id: string;
+  /** Release title. */
   name: string;
+  /** Release type (e.g. "album", "single"). */
   type: string;
+  /** Release year (4-digit string). */
   year: string;
+  /** Total number of tracks. */
   totalTracks: number;
+  /** Cover image URL. */
   image: string;
+  /** Spotify embed URL for the release. */
   embedUrl: string;
+  /** Public Spotify URL for the release. */
   spotifyUrl: string;
 }
 
+/** Raw Spotify image object. */
 interface SpotifyImage {
+  /** Image URL. */
   url: string;
+  /** Image width in pixels. */
   width: number;
+  /** Image height in pixels. */
   height: number;
 }
 
+/** Raw album item as returned by the Spotify albums endpoint. */
 interface SpotifyAlbumItem {
+  /** Spotify album id. */
   id: string;
+  /** Album title. */
   name: string;
+  /** Album type (e.g. "album", "single"). */
   album_type: string;
+  /** Release date string. */
   release_date: string;
+  /** Total number of tracks. */
   total_tracks: number;
+  /** Available cover images. */
   images: SpotifyImage[];
+  /** External links, including the public Spotify URL. */
   external_urls: { spotify: string };
 }
 
+/** Raw response from the Spotify artist albums endpoint. */
 interface SpotifyAlbumsResponse {
+  /** The list of album items. */
   items: SpotifyAlbumItem[];
 }
 
+/** Raw response from the Spotify token endpoint. */
 interface SpotifyTokenResponse {
+  /** OAuth access token. */
   access_token: string;
 }
 
+/** Spotify OAuth token endpoint. */
 const TOKEN_URL = "https://accounts.spotify.com/api/token";
+/** Base URL of the Spotify Web API. */
 const API_BASE = "https://api.spotify.com/v1";
 
+/**
+ * Obtains a Spotify access token using the Client Credentials flow.
+ *
+ * @returns The access token, or `null` when credentials are not configured.
+ * @remarks
+ * Requires the `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` environment
+ * variables. The token request is cached/revalidated every 3600 seconds.
+ */
 async function getAccessToken(): Promise<string | null> {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -60,10 +103,23 @@ async function getAccessToken(): Promise<string | null> {
   return token?.access_token ?? null;
 }
 
+/**
+ * Builds a Spotify embed URL for an album id.
+ *
+ * @param albumId - The Spotify album id.
+ * @returns The embed URL.
+ */
 function toEmbedUrl(albumId: string): string {
   return `https://open.spotify.com/embed/album/${albumId}?utm_source=generator&theme=0`;
 }
 
+/**
+ * Maps a raw Spotify album item to a normalized {@link SpotifyRelease},
+ * preferring the medium cover image and applying URL fallbacks.
+ *
+ * @param item - The raw album item.
+ * @returns The normalized release.
+ */
 function toRelease(item: SpotifyAlbumItem): SpotifyRelease {
   return {
     id: item.id,
@@ -77,6 +133,7 @@ function toRelease(item: SpotifyAlbumItem): SpotifyRelease {
   };
 }
 
+/** Hand-picked releases used as a fallback and to guarantee key releases appear. */
 const CURATED_RELEASES: SpotifyRelease[] = [
   {
     id: "1oON2uCjZrnaHiNhClDijT",
@@ -100,6 +157,12 @@ const CURATED_RELEASES: SpotifyRelease[] = [
   },
 ];
 
+/**
+ * Removes releases with duplicate names (case-insensitive), keeping the first.
+ *
+ * @param releases - The releases to deduplicate.
+ * @returns The deduplicated releases.
+ */
 function dedupeByName(releases: SpotifyRelease[]): SpotifyRelease[] {
   const seen = new Set<string>();
   return releases.filter((release) => {
@@ -112,6 +175,13 @@ function dedupeByName(releases: SpotifyRelease[]): SpotifyRelease[] {
   });
 }
 
+/**
+ * Merges API releases with the curated list (avoiding name duplicates) and
+ * sorts the result by year, newest first.
+ *
+ * @param apiReleases - Releases fetched from the Spotify API.
+ * @returns The merged, sorted releases.
+ */
 function mergeWithCurated(apiReleases: SpotifyRelease[]): SpotifyRelease[] {
   const seen = new Set(apiReleases.map((release) => release.name.toLowerCase()));
   const merged = [...apiReleases];
@@ -124,10 +194,27 @@ function mergeWithCurated(apiReleases: SpotifyRelease[]): SpotifyRelease[] {
   return merged.sort((first, second) => second.year.localeCompare(first.year));
 }
 
+/**
+ * Comparator that orders album items by release date, newest first.
+ *
+ * @param first - The first album item.
+ * @param second - The second album item.
+ * @returns A negative, zero, or positive number per `Array.prototype.sort`.
+ */
 function byNewest(first: SpotifyAlbumItem, second: SpotifyAlbumItem): number {
   return (second.release_date ?? "").localeCompare(first.release_date ?? "");
 }
 
+/**
+ * Fetches the band's discography from the Spotify Web API and merges it with
+ * the curated release list.
+ *
+ * @returns The list of releases; falls back to the curated list when the API
+ * is unavailable or unauthenticated.
+ * @remarks
+ * Authenticates via {@link getAccessToken} (Client Credentials flow). The
+ * albums request is cached/revalidated every 86400 seconds (24 hours).
+ */
 export async function getDiscography(): Promise<SpotifyRelease[]> {
   const token = await getAccessToken();
   if (!token) {

@@ -1,5 +1,30 @@
+/**
+ * Central site configuration and release-credit data for Napalm Cobras.
+ *
+ * @remarks
+ * This module exposes the global {@link SITE} object (band identity, social
+ * links, discography, members, press kit and videos), the per-release credits
+ * accessor {@link getReleaseCredits}, and the curated {@link BAND_LINKS} used
+ * across the site. It is the single source of truth for static band metadata.
+ */
 import type { Locale } from "@/i18n/config";
 
+/**
+ * Global, immutable band configuration consumed throughout the site.
+ *
+ * @remarks
+ * Groups together the band's core data:
+ * - identity: `name`, `url`, `email`, `city`, `region`, `country`, `foundedYear`
+ * - `socials`: canonical URLs for every social/streaming profile
+ * - `follow`: ordered list of profiles surfaced in "follow" sections
+ * - `bandsintown` / `spotify`: external integration ids
+ * - `streaming`: where the album can be streamed/bought
+ * - `album`: featured EP metadata, tracks and embed URLs
+ * - `members`: current line-up with photos
+ * - `press`: press-kit document and media folder links
+ * - `liveVideoId` / `videos`: featured live video and video gallery
+ * - `featuredTrackTitle` / `featuredTrackMeta`: highlighted track labels
+ */
 export const SITE = {
   name: "Napalm Cobras",
   url: "https://www.napalmcobras.com",
@@ -102,26 +127,46 @@ export const SITE = {
   featuredTrackMeta: "EP · 5 faixas · 2023",
 } as const;
 
+/**
+ * A labeled outbound link used in release credits and band link lists.
+ */
 export interface CreditLink {
+  /** Human-readable text shown for the link. */
   label: string;
+  /** Destination URL. */
   href: string;
 }
 
+/** Map of a localized string keyed by {@link Locale}. */
 type LocalizedText = Record<Locale, string>;
+/** Map of a localized list of strings keyed by {@link Locale}. */
 type LocalizedList = Record<Locale, string[]>;
 
+/**
+ * Release credits stored with every supported locale, before resolution.
+ */
 interface LocalizedReleaseCredits {
+  /** Localized prose describing the release. */
   description: LocalizedText;
+  /** Localized bullet-point facts about the release. */
   facts: LocalizedList;
+  /** Optional related links (studios, collaborators). */
   links?: CreditLink[];
 }
 
+/**
+ * Release credits already resolved to a single locale for rendering.
+ */
 export interface ReleaseCredits {
+  /** Prose describing the release in the requested locale. */
   description: string;
+  /** Bullet-point facts about the release in the requested locale. */
   facts: string[];
+  /** Optional related links (studios, collaborators). */
   links?: CreditLink[];
 }
 
+/** Per-release localized credits keyed by Spotify album/track id. */
 const RELEASE_CREDITS: Record<string, LocalizedReleaseCredits> = {
   "3Cn3q1dhBmDmE8ctivbMLp": {
     description: {
@@ -178,6 +223,14 @@ const RELEASE_CREDITS: Record<string, LocalizedReleaseCredits> = {
   },
 };
 
+/**
+ * Resolves the localized credits for a given release.
+ *
+ * @param albumId - Spotify album/track id used as the credits key.
+ * @param locale - Locale to resolve the localized text and facts into.
+ * @returns The credits for the requested locale, or `null` when no credits
+ * exist for the given id.
+ */
 export function getReleaseCredits(albumId: string, locale: Locale): ReleaseCredits | null {
   const credits = RELEASE_CREDITS[albumId];
   if (!credits) {
@@ -190,6 +243,9 @@ export function getReleaseCredits(albumId: string, locale: Locale): ReleaseCredi
   };
 }
 
+/**
+ * Curated list of partners, venues, bands and collaborators linked across the site.
+ */
 export const BAND_LINKS: CreditLink[] = [
   { label: "Festival de Inverno de Ouro Preto", href: "https://fiu.ufop.br/" },
   {

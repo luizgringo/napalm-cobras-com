@@ -1,5 +1,22 @@
+/**
+ * SectionTitle module — reusable page hero/section heading. Structure lives
+ * here, styling in `SectionTitle.module.css`.
+ */
+
 import styles from "./SectionTitle.module.css";
 
+/**
+ * Page hero heading rendering an optional eyebrow, a main title, an optional
+ * intro paragraph and a decorative rule.
+ *
+ * Server Component.
+ *
+ * @param props - Component props.
+ * @param props.eyebrow - Optional small label shown above the title.
+ * @param props.title - The main heading text.
+ * @param props.intro - Optional introductory paragraph below the title.
+ * @returns A section element used as a page/section header.
+ */
 export function PageHero({
   eyebrow,
   title,

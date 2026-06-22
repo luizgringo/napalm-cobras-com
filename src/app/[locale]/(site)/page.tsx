@@ -1,3 +1,7 @@
+/**
+ * Localized home page. Async Server Component that aggregates discography,
+ * upcoming shows, and the Instagram feed, then renders the home template.
+ */
 import type { Metadata } from "next";
 import { HomeView } from "@/components/templates/HomeView";
 import { getInstagramFeed } from "@/features/instagram";
@@ -6,8 +10,16 @@ import { getUpcomingShows } from "@/features/shows";
 import { getDictionary, type Locale } from "@/i18n/config";
 import { buildMetadata } from "@/lib/seo";
 
+/** Props for the home route, carrying the async `locale` route param. */
 type Props = { params: Promise<{ locale: string }> };
 
+/**
+ * Builds localized metadata for the home page.
+ *
+ * @param props - Route props.
+ * @param props.params - Promise resolving to the route params containing `locale`.
+ * @returns The localized {@link Metadata} for the home page.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale);
@@ -20,6 +32,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/**
+ * Home page (async Server Component). Fetches discography, upcoming shows, and
+ * the Instagram feed in parallel and passes them to the home view.
+ *
+ * @returns The rendered home view.
+ * @remarks Data is fetched concurrently with `Promise.all`; a missing shows
+ * result falls back to an empty array.
+ */
 export default async function HomePage() {
   const [releases, events, instagram] = await Promise.all([
     getDiscography(),

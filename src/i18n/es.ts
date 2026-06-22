@@ -1,6 +1,17 @@
+/**
+ * Spanish (es) translation dictionary for the Napalm Cobras website.
+ *
+ * @remarks
+ * Mirrors the structure of the base {@link Lang} dictionary so every locale
+ * exposes the same keys. Keys are grouped by site area.
+ */
 import type { Lang } from "./pt";
 
+/**
+ * Spanish translations, grouped by site area.
+ */
 export const es: Lang = {
+  /** Navigation menu labels. */
   nav: {
     home: "Inicio",
     band: "Banda",
@@ -11,6 +22,7 @@ export const es: Lang = {
     press: "Prensa",
     contact: "Contacto",
   },
+  /** SEO/meta strings: site name, tagline and home page title/description. */
   meta: {
     siteName: "Napalm Cobras",
     tagline: "Metalpunk de Belo Horizonte, Brasil",
@@ -18,6 +30,7 @@ export const es: Lang = {
     homeDesc:
       'Banda de Metalpunk formada en Belo Horizonte en 2021. Escuchá el EP "Homens Brancos de Terno" y veános en vivo.',
   },
+  /** Home page copy: hero, CTAs and the studio/stage/tour/feed rooms. */
   home: {
     eyebrow: "Belo Horizonte / Brasil — desde 2021",
     heroLine1: "Napalm",
@@ -71,6 +84,7 @@ export const es: Lang = {
       },
     },
   },
+  /** Band page copy: bio, members, line-up labels and timeline. */
   band: {
     title: "La Banda",
     intro:
@@ -119,6 +133,7 @@ export const es: Lang = {
       },
     ],
   },
+  /** Music page copy: streaming, tracklist, credits and discography. */
   music: {
     title: "Música",
     intro:
@@ -137,6 +152,7 @@ export const es: Lang = {
       { title: "The Hog", meta: "Single · 2025" },
     ],
   },
+  /** Shows page copy: schedule, Bandsintown fallback and booking. */
   shows: {
     title: "Conciertos",
     intro: "Próximas fechas e historial vía Bandsintown. Para booking, contactanos.",
@@ -144,6 +160,7 @@ export const es: Lang = {
     openBandsintown: "Abrir en Bandsintown",
     booking: "Booking y contratación",
   },
+  /** Videos page copy: featured live video, gallery and clip kind labels. */
   videos: {
     title: "Videos",
     intro: "Show en vivo, clips y registros de gira.",
@@ -158,6 +175,7 @@ export const es: Lang = {
       session: "Encontracena",
     },
   },
+  /** Gallery page copy: flyer archive and lightbox controls. */
   gallery: {
     title: "Historia & Flyers",
     intro:
@@ -167,6 +185,7 @@ export const es: Lang = {
     prev: "Anterior",
     next: "Siguiente",
   },
+  /** Press page copy: press kit documents, clipping and booking. */
   press: {
     title: "Prensa y Contratación",
     intro:
@@ -183,6 +202,7 @@ export const es: Lang = {
     clippingIntro: "La banda en la prensa y los medios.",
     read: "Ver nota",
   },
+  /** Contact page copy: booking, follow and email labels. */
   contact: {
     title: "Contacto",
     intro: "Para booking, prensa, alianzas y colaboraciones.",
@@ -190,10 +210,12 @@ export const es: Lang = {
     follow: "Seguinos",
     emailLabel: "E-mail",
   },
+  /** Footer copy: rights notice and location line. */
   footer: {
     rights: "Todos los derechos reservados.",
     builtIn: "Belo Horizonte / MG",
   },
+  /** 404 page copy. */
   notFound: {
     eyebrow: "Error 404",
     title: "Página no encontrada",

@@ -1,17 +1,33 @@
 "use client";
 
+/**
+ * Client section wrapper presenting page content as a numbered "room" in the
+ * studio/cave metaphor that the visitor scrolls through.
+ *
+ * @remarks
+ * Structure lives here, styling in `CaveRoom.module.css`, and the scroll-driven
+ * parallax logic is encapsulated in the {@link useCaveRoomParallax} hook.
+ */
+
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { mergeClassNames } from "@/lib/utils";
 import { useCaveRoomParallax } from "./CaveRoom.hooks";
 import styles from "./CaveRoom.module.css";
 
+/** Props accepted by the {@link CaveRoom} component. */
 interface CaveRoomProps {
+  /** Zero-padded room number shown in the chip (e.g. `"01"`). */
   index: string; // "01"
+  /** Short uppercase room label, also rendered as the parallax background text (e.g. `"STUDIO"`). */
   label: string; // "STUDIO"
+  /** Heading content for the room. */
   title: ReactNode;
+  /** Optional supporting copy rendered below the title. */
   subtitle?: ReactNode;
+  /** Room body content. */
   children: ReactNode;
+  /** Visual background tint variant. Defaults to `"ink"`. */
   tint?: "ink" | "smoke";
 }
 
@@ -19,6 +35,10 @@ interface CaveRoomProps {
  * One "room" in the imagined studio/cave the visitor walks through.
  * Provides a parallax background label, a numbered chapter chip and
  * a corner doorframe drawn in the brutalist border style.
+ *
+ * @param props - See {@link CaveRoomProps}.
+ * @returns The room section markup.
+ * @remarks Client component (`"use client"`).
  */
 export function CaveRoom({ index, label, title, subtitle, children, tint = "ink" }: CaveRoomProps) {
   const { sectionRef, backgroundY, backgroundOpacity } = useCaveRoomParallax();

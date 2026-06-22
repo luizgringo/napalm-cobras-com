@@ -1,5 +1,15 @@
 "use client";
 
+/**
+ * Client component that renders the Spotify release player: a "now playing"
+ * header, an optional discography tab selector and an embedded Spotify iframe.
+ *
+ * @remarks
+ * Structure lives here, styling in `AudioPlayer.module.css`, and the
+ * presentation logic (selected release resolution and metadata formatting) is
+ * encapsulated in the {@link useAudioPlayer} hook.
+ */
+
 import { Volume2 } from "lucide-react";
 import type { SpotifyRelease } from "@/features/music/services/spotify";
 import type { Locale } from "@/i18n/config";
@@ -7,15 +17,30 @@ import { mergeClassNames } from "@/lib/utils";
 import { useAudioPlayer } from "./AudioPlayer.hooks";
 import styles from "./AudioPlayer.module.css";
 
+/** Props accepted by the {@link AudioPlayer} component. */
 interface AudioPlayerProps {
+  /** Spotify releases available for playback and selection. */
   releases: SpotifyRelease[];
+  /** Identifier of the release currently selected. */
   selectedId: string;
+  /** Callback invoked with the release id when a tab is chosen. */
   onSelect: (releaseId: string) => void;
+  /** Active locale used to localize release metadata. */
   locale: Locale;
+  /** External Bandcamp URL opened by the footer call-to-action. */
   bandcampHref: string;
+  /** Localized label for the Bandcamp call-to-action link. */
   cta: string;
 }
 
+/**
+ * Renders the now-playing header, optional discography selector and the
+ * embedded Spotify player for the selected release.
+ *
+ * @param props - See {@link AudioPlayerProps}.
+ * @returns The player markup, or `null` when no release can be resolved.
+ * @remarks Client component (`"use client"`).
+ */
 export function AudioPlayer({
   releases,
   selectedId,

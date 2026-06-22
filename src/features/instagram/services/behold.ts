@@ -1,8 +1,8 @@
 import { fetchJson } from "@/lib/api/http";
 
-export type InstagramMediaType = "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+type InstagramMediaType = "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
 
-export interface InstagramPost {
+interface InstagramPost {
   id: string;
   permalink: string;
   caption: string;
@@ -16,7 +16,7 @@ export interface InstagramPost {
   isReel: boolean;
 }
 
-export interface InstagramProfile {
+interface InstagramProfile {
   username: string;
   biography: string;
   profilePictureUrl: string;

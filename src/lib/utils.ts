@@ -5,8 +5,6 @@ export function mergeClassNames(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const cn = mergeClassNames;
-
 export function prettyHost(url: string): string {
   return url
     .replace(/^https?:\/\//, "")

@@ -1,7 +1,2 @@
 export { InstagramFeed } from "./components/InstagramFeed";
-export {
-  getInstagramFeed,
-  type InstagramFeedData,
-  type InstagramPost,
-  type InstagramProfile,
-} from "./services/behold";
+export { getInstagramFeed, type InstagramFeedData } from "./services/behold";

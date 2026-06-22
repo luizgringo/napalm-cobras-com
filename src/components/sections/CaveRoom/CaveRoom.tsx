@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { type ReactNode, useRef } from "react";
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { mergeClassNames } from "@/lib/utils";
+import { useCaveRoomParallax } from "./CaveRoom.hooks";
 import styles from "./CaveRoom.module.css";
 
 interface CaveRoomProps {
@@ -20,13 +21,7 @@ interface CaveRoomProps {
  * a corner doorframe drawn in the brutalist border style.
  */
 export function CaveRoom({ index, label, title, subtitle, children, tint = "ink" }: CaveRoomProps) {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
-  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.06, 0]);
+  const { sectionRef, backgroundY, backgroundOpacity } = useCaveRoomParallax();
 
   return (
     <section
@@ -36,7 +31,6 @@ export function CaveRoom({ index, label, title, subtitle, children, tint = "ink"
         tint === "smoke" && styles["cave-room--smoke"],
       )}
     >
-      {/* Huge parallax label in the background */}
       <motion.div
         aria-hidden
         style={{ y: backgroundY, opacity: backgroundOpacity }}

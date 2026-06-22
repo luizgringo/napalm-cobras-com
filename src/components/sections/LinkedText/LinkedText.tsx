@@ -1,8 +1,5 @@
 import type { CreditLink } from "@/config/site";
-
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
+import { buildLinkedSegments } from "./LinkedText.hooks";
 
 export function LinkedText({
   text,
@@ -13,29 +10,23 @@ export function LinkedText({
   links?: CreditLink[];
   linkClassName?: string;
 }) {
-  if (!links || links.length === 0) {
-    return <>{text}</>;
-  }
-
-  const pattern = new RegExp(`(${links.map((link) => escapeRegExp(link.label)).join("|")})`, "g");
-  const segments = text.split(pattern);
+  const segments = buildLinkedSegments(text, links);
 
   return (
     <>
       {segments.map((segment, index) => {
-        const link = links.find((item) => item.label === segment);
-        if (!link) {
-          return segment;
+        if (segment.kind === "text") {
+          return segment.value;
         }
         return (
           <a
-            key={`${link.href}-${index}`}
-            href={link.href}
+            key={`${segment.href}-${index}`}
+            href={segment.href}
             target="_blank"
             rel="noreferrer"
             className={linkClassName}
           >
-            {segment}
+            {segment.value}
           </a>
         );
       })}

@@ -1,18 +1,8 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { TRAIL_PATH, useSnakeTrail } from "./SnakeTrail.hooks";
 import styles from "./SnakeTrail.module.css";
-
-const TRAIL_PATH =
-  "M50 0 C 12 7, 88 15, 50 23 C 12 31, 88 39, 50 47 C 12 55, 88 63, 50 71 C 12 79, 88 87, 50 96 C 38 99, 56 100, 50 100";
 
 /**
  * Cobra that slithers down the entire home page as the user scrolls. The body
@@ -21,78 +11,7 @@ const TRAIL_PATH =
  * Pure decoration — pointer-events disabled, aria-hidden.
  */
 export function SnakeTrail() {
-  const { scrollYProgress } = useScroll();
-  const smooth = useSpring(scrollYProgress, { stiffness: 70, damping: 26, mass: 0.5 });
-  const revealHeight = useTransform(smooth, (value) => value * 100 + 6);
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
-  const size = useRef({ width: 1, height: 1 });
-
-  const headX = useMotionValue(50);
-  const headY = useMotionValue(0);
-  const headAngle = useMotionValue(90);
-
-  const left = useTransform(headX, (value) => `${value}%`);
-  const top = useTransform(headY, (value) => `${value}%`);
-
-  const updateHead = (progress: number) => {
-    const path = pathRef.current;
-    if (!path) {
-      return;
-    }
-    const length = path.getTotalLength();
-    const targetY = progress * 100 + 0.5;
-    let low = 0;
-    let high = length;
-    for (let i = 0; i < 18; i += 1) {
-      const mid = (low + high) / 2;
-      if (path.getPointAtLength(mid).y < targetY) {
-        low = mid;
-      } else {
-        high = mid;
-      }
-    }
-    const at = (low + high) / 2;
-    const point = path.getPointAtLength(at);
-    const lead = path.getPointAtLength(Math.min(length, at + 0.6));
-    const angle =
-      Math.atan2(
-        (lead.y - point.y) * size.current.height,
-        (lead.x - point.x) * size.current.width,
-      ) *
-      (180 / Math.PI);
-    headX.set(point.x);
-    headY.set(point.y);
-    headAngle.set(angle);
-  };
-
-  useMotionValueEvent(smooth, "change", updateHead);
-
-  useEffect(() => {
-    let frame = 0;
-    const measure = () => {
-      const rect = containerRef.current?.getBoundingClientRect();
-      size.current = {
-        width: rect?.width || window.innerWidth,
-        height: rect?.height || 1,
-      };
-      updateHead(smooth.get());
-    };
-    const schedule = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(measure);
-    };
-    measure();
-    window.addEventListener("resize", schedule);
-    const observer = new ResizeObserver(schedule);
-    observer.observe(document.body);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("resize", schedule);
-      observer.disconnect();
-    };
-  });
+  const { containerRef, pathRef, revealHeight, headLeft, headTop, headAngle } = useSnakeTrail();
 
   return (
     <div ref={containerRef} aria-hidden className={styles["snake-trail"]}>
@@ -138,7 +57,13 @@ export function SnakeTrail() {
 
       <motion.div
         className={styles["snake-trail__head"]}
-        style={{ left, top, rotate: headAngle, translateX: "-82%", translateY: "-50%" }}
+        style={{
+          left: headLeft,
+          top: headTop,
+          rotate: headAngle,
+          translateX: "-82%",
+          translateY: "-50%",
+        }}
       >
         <CobraHead />
       </motion.div>

@@ -1,18 +1,5 @@
 @reference "../../../styles/globals.css";
 
-.section-title {
-  @apply mb-10;
-}
-.section-title__eyebrow {
-  @apply mb-3 font-mono text-xs uppercase tracking-[0.3em] text-blood;
-}
-.section-title__heading {
-  @apply font-display text-5xl text-paper md:text-7xl;
-}
-.section-title__rule {
-  @apply mt-4 h-1 w-24 bg-blood;
-}
-
 .page-hero {
   @apply noise border-b border-paper/10 bg-gradient-to-b from-smoke to-ink;
 }

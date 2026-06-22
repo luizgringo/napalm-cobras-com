@@ -1,7 +1,7 @@
 import { SITE } from "@/config/site";
 import { fetchJson } from "@/lib/api/http";
 
-export interface BandsintownVenue {
+interface BandsintownVenue {
   name: string;
   city: string;
   region?: string;

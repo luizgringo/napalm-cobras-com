@@ -1,10 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AudioPlayer } from "@/components/sections/AudioPlayer";
 import { CaveRoom } from "@/components/sections/CaveRoom";
@@ -14,47 +13,29 @@ import { Marquee } from "@/components/sections/Marquee";
 import { Reveal } from "@/components/sections/Reveal";
 import { SnakeToggle } from "@/components/sections/SnakeToggle";
 import { SnakeTrail } from "@/components/sections/SnakeTrail";
-import { getReleaseCredits, SITE } from "@/config/site";
+import { SITE } from "@/config/site";
 import { useI18n } from "@/contexts/i18n-context";
 import { InstagramFeed, type InstagramFeedData } from "@/features/instagram";
 import type { SpotifyRelease } from "@/features/music/services/spotify";
 import type { BandsintownEvent } from "@/features/shows";
-import type { Locale } from "@/i18n/config";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
+import { useHomeView } from "./HomeView.hooks";
 import styles from "./HomeView.module.css";
 
-const fallbackRelease: SpotifyRelease = {
-  id: SITE.spotify.albumId,
-  name: SITE.album.title,
-  type: SITE.album.type.toLowerCase(),
-  year: SITE.album.year,
-  totalTracks: SITE.album.tracks.length,
-  image: "",
-  embedUrl: SITE.album.spotifyEmbed,
-  spotifyUrl: SITE.socials.spotify,
-};
-
-const SNAKE_STORAGE_KEY = "napalm-snake-trail";
-
-const DATE_LOCALES: Record<Locale, string> = {
-  pt: "pt-BR",
-  en: "en-US",
-  es: "es-ES",
-};
-
-function formatEventDay(datetime: string): string {
-  const date = new Date(datetime);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  return `${day}.${month}`;
-}
-
-function formatEventWeekday(datetime: string, locale: Locale): string {
-  return new Intl.DateTimeFormat(DATE_LOCALES[locale], { weekday: "short" })
-    .format(new Date(datetime))
-    .toUpperCase();
-}
+const MARQUEE_WORDS = [
+  "Sometimes Metal",
+  "Sometimes Punk",
+  "Always Antifascist",
+  "From Belo Horizonte",
+  "Minas Gerais",
+  "Brasil",
+  "Speed Metal",
+  "Crust",
+  "Punk",
+  "Hard Rock",
+  "Napalm Cobras",
+];
 
 export function HomeView({
   releases,
@@ -66,49 +47,32 @@ export function HomeView({
   instagram: InstagramFeedData | null;
 }) {
   const { t, lang } = useI18n();
-  const discography = releases.length > 0 ? releases : [fallbackRelease];
-  const upcomingShows = events.slice(0, 3);
-  const [selectedReleaseId, setSelectedReleaseId] = useState(discography[0].id);
-  const selectedCredits = getReleaseCredits(selectedReleaseId, lang);
-  const heroRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
-
-  const localize = (path: string) => `/${lang}${path}`;
-
-  const [snakeEnabled, setSnakeEnabled] = useState(false);
-  const [snakeRoot, setSnakeRoot] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    setSnakeEnabled(window.localStorage.getItem(SNAKE_STORAGE_KEY) === "on");
-    setSnakeRoot(document.getElementById("site-root"));
-  }, []);
-
-  const toggleSnake = () => {
-    setSnakeEnabled((enabled) => {
-      const next = !enabled;
-      window.localStorage.setItem(SNAKE_STORAGE_KEY, next ? "on" : "off");
-      return next;
-    });
-  };
+  const {
+    discography,
+    upcomingShows,
+    selectedReleaseId,
+    setSelectedReleaseId,
+    selectedCredits,
+    heroRef,
+    heroStyle,
+    isSnakeEnabled,
+    snakePortalTarget,
+    toggleSnake,
+    localizePath,
+  } = useHomeView({ releases, events, locale: lang });
 
   return (
     <>
-      {snakeEnabled && snakeRoot && createPortal(<SnakeTrail />, snakeRoot)}
+      {isSnakeEnabled && snakePortalTarget && createPortal(<SnakeTrail />, snakePortalTarget)}
       <SnakeToggle
-        active={snakeEnabled}
+        active={isSnakeEnabled}
         onToggle={toggleSnake}
         labelEnable={t.home.snake.enable}
         labelDisable={t.home.snake.disable}
       />
 
       <section ref={heroRef} className={styles.hero}>
-        <motion.div
-          style={{ y: heroY, scale: heroScale, opacity: heroOpacity }}
-          className={styles.hero__bg}
-        >
+        <motion.div style={heroStyle} className={styles.hero__bg}>
           <Image
             src="/assets/images/band-hero.png"
             alt=""
@@ -182,7 +146,7 @@ export function HomeView({
               <Play size={14} fill="currentColor" /> {t.home.listenNow}
             </a>
             <Link
-              href={localize("/shows")}
+              href={localizePath("/shows")}
               className={mergeClassNames(
                 primitives.cta,
                 primitives["cta--outline"],
@@ -211,21 +175,7 @@ export function HomeView({
         </div>
       </section>
 
-      <Marquee
-        words={[
-          "Sometimes Metal",
-          "Sometimes Punk",
-          "Always Antifascist",
-          "From Belo Horizonte",
-          "Minas Gerais",
-          "Brasil",
-          "Speed Metal",
-          "Crust",
-          "Punk",
-          "Hard Rock",
-          "Napalm Cobras",
-        ]}
-      />
+      <Marquee words={MARQUEE_WORDS} />
 
       <div id="studio">
         <CaveRoom
@@ -282,7 +232,7 @@ export function HomeView({
                   </AnimatePresence>
                 </div>
                 <Link
-                  href={localize("/music")}
+                  href={localizePath("/music")}
                   className={mergeClassNames(
                     primitives["link-inline"],
                     styles["credits-card__link"],
@@ -344,24 +294,20 @@ export function HomeView({
           {upcomingShows.length > 0 ? (
             <>
               <div className={styles.tour}>
-                {upcomingShows.map((event) => (
+                {upcomingShows.map((show) => (
                   <a
-                    key={event.id}
-                    href={event.url}
+                    key={show.id}
+                    href={show.url}
                     target="_blank"
                     rel="noreferrer"
                     className={styles.tour__card}
                   >
                     <p className={mergeClassNames(primitives.eyebrow, primitives["eyebrow--sm"])}>
-                      // {formatEventWeekday(event.datetime, lang)}
+                      // {show.weekday}
                     </p>
-                    <p className={styles.tour__date}>{formatEventDay(event.datetime)}</p>
-                    <p className={styles.tour__venue}>{event.venue.name}</p>
-                    <p className={primitives.label}>
-                      {[event.venue.city, event.venue.region, event.venue.country]
-                        .filter(Boolean)
-                        .join(" · ")}
-                    </p>
+                    <p className={styles.tour__date}>{show.day}</p>
+                    <p className={styles.tour__venue}>{show.venueName}</p>
+                    <p className={primitives.label}>{show.location}</p>
                     <span className={styles.tour__tickets}>
                       {t.home.rooms.tour.tickets} <ArrowRight size={14} />
                     </span>
@@ -371,7 +317,7 @@ export function HomeView({
               </div>
               <div className={styles.tour__cta}>
                 <Link
-                  href={localize("/shows")}
+                  href={localizePath("/shows")}
                   className={mergeClassNames(
                     primitives.cta,
                     primitives["cta--paper"],
@@ -390,7 +336,7 @@ export function HomeView({
               <p className={styles["tour-empty__text"]}>{t.home.rooms.tour.emptyText}</p>
               <div className={styles["tour-empty__actions"]}>
                 <Link
-                  href={localize("/shows")}
+                  href={localizePath("/shows")}
                   className={mergeClassNames(
                     primitives.cta,
                     primitives["cta--paper"],
@@ -400,7 +346,7 @@ export function HomeView({
                   {t.home.rooms.tour.cta} <ArrowRight size={14} />
                 </Link>
                 <Link
-                  href={localize("/gallery")}
+                  href={localizePath("/gallery")}
                   className={mergeClassNames(primitives.cta, primitives["cta--outline"])}
                 >
                   {t.home.rooms.tour.pastFlyers} <ArrowRight size={14} />

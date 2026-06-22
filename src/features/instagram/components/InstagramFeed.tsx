@@ -7,6 +7,7 @@ import { Reveal } from "@/components/sections/Reveal";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import type { InstagramFeedData } from "../services/behold";
+import { useInstagramFeed } from "./InstagramFeed.hooks";
 import styles from "./InstagramFeed.module.css";
 
 interface InstagramFeedProps {
@@ -16,20 +17,13 @@ interface InstagramFeedProps {
   profileHref: string;
 }
 
-function formatCount(value: number): string {
-  if (value >= 1000) {
-    return `${(value / 1000).toFixed(1).replace(/\.0$/, "")}k`;
-  }
-  return String(value);
-}
-
 export function InstagramFeed({
   feed,
   followLabel,
   followersLabel,
   profileHref,
 }: InstagramFeedProps) {
-  const { profile, posts } = feed;
+  const { profile, posts, formatCount } = useInstagramFeed(feed);
 
   return (
     <Reveal>

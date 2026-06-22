@@ -102,8 +102,6 @@ export const SITE = {
   featuredTrackMeta: "EP · 5 faixas · 2023",
 } as const;
 
-export type VideoKind = (typeof SITE.videos)[number]["kind"];
-
 export interface CreditLink {
   label: string;
   href: string;

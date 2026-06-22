@@ -18,13 +18,13 @@ import { SITE } from "@/config/site";
 
 type SocialKey = keyof typeof SITE.socials;
 
-export const DeezerIcon: IconType = ({ size = 16, ...props }) => (
+const DeezerIcon: IconType = ({ size = 16, ...props }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...props}>
     <path d="M18.81 4.16v3.03H24V4.16h-5.19zM0 9.59v3.03h5.19V9.59H0zm6.27 0v3.03h5.19V9.59H6.27zm6.27 0v3.03h5.19V9.59h-5.19zm6.27 0v3.03H24V9.59h-5.19zM0 15.02v3.03h5.19v-3.03H0zm6.27 0v3.03h5.19v-3.03H6.27zm6.27 0v3.03h5.19v-3.03h-5.19zm6.27 0v3.03H24v-3.03h-5.19z" />
   </svg>
 );
 
-export const QobuzIcon: IconType = ({ size = 16, ...props }) => (
+const QobuzIcon: IconType = ({ size = 16, ...props }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"

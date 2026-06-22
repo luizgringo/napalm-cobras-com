@@ -1,15 +1,4 @@
-import type { ReactNode } from "react";
 import styles from "./SectionTitle.module.css";
-
-export function SectionTitle({ eyebrow, children }: { eyebrow?: string; children: ReactNode }) {
-  return (
-    <div className={styles["section-title"]}>
-      {eyebrow && <p className={styles["section-title__eyebrow"]}>// {eyebrow}</p>}
-      <h2 className={styles["section-title__heading"]}>{children}</h2>
-      <div className={styles["section-title__rule"]} />
-    </div>
-  );
-}
 
 export function PageHero({
   eyebrow,

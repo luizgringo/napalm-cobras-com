@@ -3,9 +3,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
 import { Reveal } from "@/components/sections/Reveal";
 import type { Flyer } from "@/config/flyers";
+import { useFlyerLightbox } from "./FlyerGallery.hooks";
 import styles from "./FlyerGallery.module.css";
 
 const ROTATIONS = [-2, 1.5, -1, 2, -1.5, 1, -2, 1.5, -1];
@@ -25,42 +25,7 @@ export function FlyerGallery({
   prevLabel,
   nextLabel,
 }: FlyerGalleryProps) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const close = useCallback(() => setActiveIndex(null), []);
-
-  const goTo = useCallback(
-    (direction: number) => {
-      setActiveIndex((current) => {
-        if (current === null) {
-          return current;
-        }
-        return (current + direction + flyers.length) % flyers.length;
-      });
-    },
-    [flyers.length],
-  );
-
-  useEffect(() => {
-    if (activeIndex === null) {
-      return;
-    }
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        close();
-      } else if (event.key === "ArrowRight") {
-        goTo(1);
-      } else if (event.key === "ArrowLeft") {
-        goTo(-1);
-      }
-    };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [activeIndex, close, goTo]);
+  const { activeFlyer, openLightbox, closeLightbox, navigate } = useFlyerLightbox(flyers);
 
   if (flyers.length === 0) {
     return (
@@ -84,8 +49,6 @@ export function FlyerGallery({
     );
   }
 
-  const active = activeIndex === null ? null : flyers[activeIndex];
-
   return (
     <>
       <div className={styles["flyer-grid"]}>
@@ -93,7 +56,7 @@ export function FlyerGallery({
           <Reveal key={flyer.src} delay={index * 0.05}>
             <button
               type="button"
-              onClick={() => setActiveIndex(index)}
+              onClick={() => openLightbox(index)}
               style={{ transform: `rotate(${ROTATIONS[index % ROTATIONS.length]}deg)` }}
               className={styles.flyer}
             >
@@ -114,20 +77,20 @@ export function FlyerGallery({
       </div>
 
       <AnimatePresence>
-        {active && (
+        {activeFlyer && (
           <motion.div
             className={styles.lightbox}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            onClick={close}
+            onClick={closeLightbox}
           >
             <button
               type="button"
               aria-label={closeLabel}
               className={styles.lightbox__close}
-              onClick={close}
+              onClick={closeLightbox}
             >
               <X size={28} />
             </button>
@@ -138,14 +101,14 @@ export function FlyerGallery({
               className={`${styles.lightbox__nav} ${styles["lightbox__nav--prev"]}`}
               onClick={(event) => {
                 event.stopPropagation();
-                goTo(-1);
+                navigate(-1);
               }}
             >
               <ChevronLeft size={32} />
             </button>
 
             <motion.figure
-              key={active.src}
+              key={activeFlyer.src}
               className={styles.lightbox__figure}
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -155,8 +118,8 @@ export function FlyerGallery({
             >
               <div className={styles.lightbox__frame}>
                 <Image
-                  src={active.src}
-                  alt={active.title}
+                  src={activeFlyer.src}
+                  alt={activeFlyer.title}
                   fill
                   sizes="92vw"
                   className={styles.lightbox__img}
@@ -165,14 +128,14 @@ export function FlyerGallery({
               </div>
               <figcaption className={styles.lightbox__caption}>
                 <span className={styles["lightbox__caption-title"]}>
-                  {active.title}
-                  {active.year ? ` · ${active.year}` : ""}
+                  {activeFlyer.title}
+                  {activeFlyer.year ? ` · ${activeFlyer.year}` : ""}
                 </span>
-                {active.venue ? (
-                  <span className={styles["lightbox__caption-meta"]}>{active.venue}</span>
+                {activeFlyer.venue ? (
+                  <span className={styles["lightbox__caption-meta"]}>{activeFlyer.venue}</span>
                 ) : null}
-                {active.lineup ? (
-                  <span className={styles["lightbox__caption-meta"]}>{active.lineup}</span>
+                {activeFlyer.lineup ? (
+                  <span className={styles["lightbox__caption-meta"]}>{activeFlyer.lineup}</span>
                 ) : null}
               </figcaption>
             </motion.figure>
@@ -183,7 +146,7 @@ export function FlyerGallery({
               className={`${styles.lightbox__nav} ${styles["lightbox__nav--next"]}`}
               onClick={(event) => {
                 event.stopPropagation();
-                goTo(1);
+                navigate(1);
               }}
             >
               <ChevronRight size={32} />

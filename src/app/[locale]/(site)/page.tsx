@@ -3,8 +3,8 @@
  * upcoming shows, and the Instagram feed, then renders the home template.
  */
 import type { Metadata } from "next";
-import { HomeView } from "@/components/templates/HomeView";
 import { PageSchema } from "@/components/seo/PageSchema";
+import { HomeView } from "@/components/templates/HomeView";
 import { getInstagramFeed } from "@/features/instagram";
 import { getDiscography } from "@/features/music/services/spotify";
 import { getUpcomingShows } from "@/features/shows";

@@ -6,8 +6,8 @@
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/sections/Reveal";
-import { PageSchema } from "@/components/seo/PageSchema";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { SITE } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";

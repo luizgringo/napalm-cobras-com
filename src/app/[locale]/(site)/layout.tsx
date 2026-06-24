@@ -9,8 +9,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { isLocale, type Locale, locales } from "@/i18n/config";
-import { fontVariables } from "@/lib/fonts";
 import { siteSchemaGraph } from "@/lib/aeo-schema";
+import { fontVariables } from "@/lib/fonts";
 import { AppProviders } from "@/providers/app-providers";
 import styles from "./layout.module.css";
 

@@ -172,9 +172,9 @@ export interface ReleaseCredits {
 const RELEASE_CREDITS: Record<string, LocalizedReleaseCredits> = {
   "3L3xyru2MIclkXCaDCkflf": {
     description: {
-      pt: 'Em 2024, a Napalm Cobras gravou e lançou seu primeiro disco ao vivo durante o festival Metalpunk Overkill, em Belo Horizonte, dividindo o palco com a lendária banda americana Master. O registro aconteceu na Caverna Rock Pub em 6 de abril de 2024 e foi uma produção Goblin Filmes, com transmissão pela Goblin TV.',
-      en: 'In 2024, Napalm Cobras recorded and released their first live album during the Metalpunk Overkill festival in Belo Horizonte, sharing the stage with the legendary American band Master. The recording took place at Caverna Rock Pub on April 6, 2024, produced by Goblin Filmes and broadcast by Goblin TV.',
-      es: 'En 2024, Napalm Cobras grabó y lanzó su primer disco en vivo durante el festival Metalpunk Overkill, en Belo Horizonte, compartiendo el escenario con la legendaria banda estadounidense Master. La grabación tuvo lugar en la Caverna Rock Pub el 6 de abril de 2024 y fue una producción de Goblin Filmes, con transmisión de Goblin TV.',
+      pt: "Em 2024, a Napalm Cobras gravou e lançou seu primeiro disco ao vivo durante o festival Metalpunk Overkill, em Belo Horizonte, dividindo o palco com a lendária banda americana Master. O registro aconteceu na Caverna Rock Pub em 6 de abril de 2024 e foi uma produção Goblin Filmes, com transmissão pela Goblin TV.",
+      en: "In 2024, Napalm Cobras recorded and released their first live album during the Metalpunk Overkill festival in Belo Horizonte, sharing the stage with the legendary American band Master. The recording took place at Caverna Rock Pub on April 6, 2024, produced by Goblin Filmes and broadcast by Goblin TV.",
+      es: "En 2024, Napalm Cobras grabó y lanzó su primer disco en vivo durante el festival Metalpunk Overkill, en Belo Horizonte, compartiendo el escenario con la legendaria banda estadounidense Master. La grabación tuvo lugar en la Caverna Rock Pub el 6 de abril de 2024 y fue una producción de Goblin Filmes, con transmisión de Goblin TV.",
     },
     facts: {
       pt: [

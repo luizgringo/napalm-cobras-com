@@ -55,7 +55,7 @@ export const es: Lang = {
         label: "Studio",
         title: "Directo del estudio",
         subtitle:
-          'Ponte los auriculares y dale play. Escucha el EP "Homens Brancos de Terno" completo, con toda la intensidad de la banda.',
+          "Ponte los auriculares y dale play. Recorre la discografía — EP, singles y álbum en vivo, todo en un mismo reproductor.",
         cta: "EP completo en Bandcamp",
       },
       stage: {

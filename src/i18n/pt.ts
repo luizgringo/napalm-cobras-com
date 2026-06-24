@@ -54,7 +54,7 @@ export const pt = {
         label: "Studio",
         title: "Direto do estúdio",
         subtitle:
-          'Coloque os fones e dê play. Ouça o EP "Homens Brancos de Terno" na íntegra, com toda a intensidade da banda.',
+          "Coloque os fones e dê play. Navegue pela discografia — EP, singles e álbum ao vivo, tudo no mesmo player.",
         cta: "EP completo no Bandcamp",
       },
       stage: {

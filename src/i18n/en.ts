@@ -55,7 +55,7 @@ export const en: Lang = {
         label: "Studio",
         title: "Straight from the studio",
         subtitle:
-          'Put on your headphones and hit play. Listen to the EP "Homens Brancos de Terno" in full, with all the band\'s intensity.',
+          "Put on your headphones and hit play. Browse the discography — EP, singles and live album, all in one player.",
         cta: "Full EP on Bandcamp",
       },
       stage: {

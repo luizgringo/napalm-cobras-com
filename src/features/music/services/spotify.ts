@@ -136,6 +136,16 @@ function toRelease(item: SpotifyAlbumItem): SpotifyRelease {
 /** Hand-picked releases used as a fallback and to guarantee key releases appear. */
 const CURATED_RELEASES: SpotifyRelease[] = [
   {
+    id: "3L3xyru2MIclkXCaDCkflf",
+    name: "Ao Vivo No Metalpunk Overkill",
+    type: "album",
+    year: "2024",
+    totalTracks: 11,
+    image: "",
+    embedUrl: toEmbedUrl("3L3xyru2MIclkXCaDCkflf"),
+    spotifyUrl: "https://open.spotify.com/intl-pt/album/3L3xyru2MIclkXCaDCkflf",
+  },
+  {
     id: "1oON2uCjZrnaHiNhClDijT",
     name: "Longo Caminho Para Casa",
     type: "single",
@@ -183,8 +193,13 @@ function dedupeByName(releases: SpotifyRelease[]): SpotifyRelease[] {
  * @returns The merged, sorted releases.
  */
 function mergeWithCurated(apiReleases: SpotifyRelease[]): SpotifyRelease[] {
-  const seen = new Set(apiReleases.map((release) => release.name.toLowerCase()));
-  const merged = [...apiReleases];
+  const curatedByName = new Map(
+    CURATED_RELEASES.map((release) => [release.name.toLowerCase(), release]),
+  );
+  const merged = apiReleases.map(
+    (release) => curatedByName.get(release.name.toLowerCase()) ?? release,
+  );
+  const seen = new Set(merged.map((release) => release.name.toLowerCase()));
   for (const release of CURATED_RELEASES) {
     if (!seen.has(release.name.toLowerCase())) {
       merged.push(release);

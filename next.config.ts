@@ -17,7 +17,7 @@ const contentSecurityPolicy = [
   "form-action 'self'",
   "script-src 'self' 'unsafe-inline' https://widgetv3.bandsintown.com https://rest.bandsintown.com https://va.vercel-scripts.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://i.ytimg.com https://i.scdn.co https://image-cdn-fa.spotifycdn.com https://f4.bcbits.com https://behold.pictures https://cdn2.behold.pictures",
+  "img-src 'self' data: https://i.ytimg.com https://i.scdn.co https://image-cdn-fa.spotifycdn.com https://f4.bcbits.com https://behold.pictures https://cdn2.behold.pictures https://*.cdninstagram.com",
   "font-src 'self' data:",
   "connect-src 'self' https://rest.bandsintown.com https://widgetv3.bandsintown.com https://*.bandsintown.com https://behold.pictures https://cdn2.behold.pictures",
   "frame-src https://open.spotify.com https://www.youtube.com https://www.youtube-nocookie.com https://bandcamp.com https://*.bandcamp.com https://widgetv3.bandsintown.com https://widget.bandsintown.com https://www.bandsintown.com",
@@ -51,6 +51,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "f4.bcbits.com" },
       { protocol: "https", hostname: "behold.pictures" },
       { protocol: "https", hostname: "cdn2.behold.pictures" },
+      { protocol: "https", hostname: "*.cdninstagram.com" },
     ],
   },
   async headers() {

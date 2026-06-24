@@ -31,6 +31,7 @@ const LISTEN_LINKS: SocialLinkDef[] = [
   { name: "Deezer", key: "deezer" },
   { name: "Apple Music", key: "appleMusic" },
   { name: "Amazon Music", key: "amazonMusic" },
+  { name: "Tidal", key: "tidal" },
   { name: "Qobuz", key: "qobuz" },
 ];
 
@@ -50,6 +51,25 @@ interface FeaturedRelease {
 
 /** Manually curated list of featured releases shown at the top of the page. */
 const FEATURED_RELEASES: FeaturedRelease[] = [
+  {
+    id: "3L3xyru2MIclkXCaDCkflf",
+    title: "Ao Vivo No Metalpunk Overkill",
+    meta: "Álbum · 2024",
+    spotifyEmbed:
+      "https://open.spotify.com/embed/album/3L3xyru2MIclkXCaDCkflf?utm_source=generator&theme=0",
+    streaming: [
+      {
+        name: "Spotify",
+        url: "https://open.spotify.com/intl-pt/album/3L3xyru2MIclkXCaDCkflf",
+      },
+      { name: "Deezer", url: "https://www.deezer.com/br/album/993106241" },
+      {
+        name: "Apple Music",
+        url: "https://music.apple.com/br/album/ao-vivo-no-metalpunk-overkill-ao-vivo/1755909103",
+      },
+      { name: "Tidal", url: "https://listen.tidal.com/album/528680900" },
+    ],
+  },
   {
     id: "1oON2uCjZrnaHiNhClDijT",
     title: "Longo Caminho Para Casa",

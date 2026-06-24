@@ -48,6 +48,7 @@ export const SITE = {
     appleMusic: "https://music.apple.com/br/artist/napalm-cobras/1684328626",
     amazonMusic: "https://music.amazon.com.br/artists/B0C3DSM6PR/napalm-cobras",
     qobuz: "https://play.qobuz.com/artist/18217806",
+    tidal: "https://listen.tidal.com/artist/39009000",
     linktree: "https://linktr.ee/napalmcobras",
   },
   follow: [
@@ -83,6 +84,7 @@ export const SITE = {
     },
     { name: "Amazon Music", url: "https://music.amazon.com.br/albums/B0C3DV7FK7" },
     { name: "Qobuz", url: "https://play.qobuz.com/album/udtebi91720uc" },
+    { name: "Tidal", url: "https://listen.tidal.com/album/291164290" },
   ],
   album: {
     title: "Homens Brancos de Terno",
@@ -168,6 +170,47 @@ export interface ReleaseCredits {
 
 /** Per-release localized credits keyed by Spotify album/track id. */
 const RELEASE_CREDITS: Record<string, LocalizedReleaseCredits> = {
+  "3L3xyru2MIclkXCaDCkflf": {
+    description: {
+      pt: 'Em 2024, a Napalm Cobras gravou e lançou seu primeiro disco ao vivo durante o festival Metalpunk Overkill, em Belo Horizonte, dividindo o palco com a lendária banda americana Master. O registro aconteceu na Caverna Rock Pub em 6 de abril de 2024 e foi uma produção Goblin Filmes, com transmissão pela Goblin TV.',
+      en: 'In 2024, Napalm Cobras recorded and released their first live album during the Metalpunk Overkill festival in Belo Horizonte, sharing the stage with the legendary American band Master. The recording took place at Caverna Rock Pub on April 6, 2024, produced by Goblin Filmes and broadcast by Goblin TV.',
+      es: 'En 2024, Napalm Cobras grabó y lanzó su primer disco en vivo durante el festival Metalpunk Overkill, en Belo Horizonte, compartiendo el escenario con la legendaria banda estadounidense Master. La grabación tuvo lugar en la Caverna Rock Pub el 6 de abril de 2024 y fue una producción de Goblin Filmes, con transmisión de Goblin TV.',
+    },
+    facts: {
+      pt: [
+        "Metalpunk Overkill — Caverna Rock Pub, Belo Horizonte, 06.04.2024",
+        "Produção: Goblin Filmes / Goblin TV · Goblin Underground TV",
+        "Direção e edição: Lucas Hell",
+        "Câmera: Lucas Hell & Daniel Tulher",
+        "Som: Manfredo Savassi",
+      ],
+      en: [
+        "Metalpunk Overkill — Caverna Rock Pub, Belo Horizonte, 06.04.2024",
+        "Production: Goblin Filmes / Goblin TV · Goblin Underground TV",
+        "Direction & editing: Lucas Hell",
+        "Camera: Lucas Hell & Daniel Tulher",
+        "Sound: Manfredo Savassi",
+      ],
+      es: [
+        "Metalpunk Overkill — Caverna Rock Pub, Belo Horizonte, 06.04.2024",
+        "Producción: Goblin Filmes / Goblin TV · Goblin Underground TV",
+        "Dirección y edición: Lucas Hell",
+        "Cámara: Lucas Hell y Daniel Tulher",
+        "Sonido: Manfredo Savassi",
+      ],
+    },
+    links: [
+      { label: "Metalpunk Overkill", href: "https://www.instagram.com/metalpunkoverkill/" },
+      { label: "Master", href: "https://www.instagram.com/masterbandofficial/" },
+      { label: "Caverna Rock Pub", href: "https://www.facebook.com/cavernarockpubbh" },
+      { label: "Goblin Filmes", href: "https://www.goblinfilmes.com.br/" },
+      { label: "Goblin TV", href: "https://www.youtube.com/@GoblinUndergroundTV/" },
+      {
+        label: "Goblin Underground TV",
+        href: "https://www.instagram.com/goblinundergroundtv/",
+      },
+    ],
+  },
   "3Cn3q1dhBmDmE8ctivbMLp": {
     description: {
       pt: 'No final de 2022, a Napalm Cobras gravou o seu primeiro EP, intitulado "Homens Brancos de Terno", no Estúdio Moai em Belo Horizonte, sob a supervisão de Fabricio Borges e Débora Coimbra. A mixagem ficou por conta do Felipe Sad, enquanto a masterização foi realizada por Joona Lukala, no estúdio Noise for Fiction em Tuulissuo, Lieto, na Finlândia.',

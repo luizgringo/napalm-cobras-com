@@ -146,6 +146,7 @@ export const en: Lang = {
     listenAllTitle: "Where to listen",
     listenAllSubtitle: "Listen to Napalm Cobras on your platform of choice.",
     discography: [
+      { title: "Ao Vivo No Metalpunk Overkill", meta: "Album · 2024" },
       { title: "Homens Brancos de Terno", meta: "EP · 2023" },
       { title: "Metalpunk Overkill (Live)", meta: "Live · 2024" },
       { title: "Longo Caminho Para Casa", meta: "Single · 2024" },

@@ -4,6 +4,7 @@
  */
 import type { Metadata } from "next";
 import { FlyerGallery } from "@/components/sections/FlyerGallery";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { FLYERS } from "@/config/flyers";
 import { getDictionary, type Locale } from "@/i18n/config";
@@ -46,6 +47,7 @@ export default async function GalleryPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema pathname={`/${locale}/gallery`} />
       <PageHero eyebrow="Visual Archive" title={t.gallery.title} intro={t.gallery.intro} />
 
       <section>

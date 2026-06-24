@@ -4,6 +4,7 @@
  */
 import type { Metadata } from "next";
 import { HomeView } from "@/components/templates/HomeView";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { getInstagramFeed } from "@/features/instagram";
 import { getDiscography } from "@/features/music/services/spotify";
 import { getUpcomingShows } from "@/features/shows";
@@ -40,7 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * @remarks Data is fetched concurrently with `Promise.all`; a missing shows
  * result falls back to an empty array.
  */
-export default async function HomePage() {
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
   const [releases, events, instagram] = await Promise.all([
     getDiscography(),
     getUpcomingShows(),
@@ -48,6 +50,7 @@ export default async function HomePage() {
   ]);
   return (
     <>
+      <PageSchema pathname={`/${locale}`} />
       <link rel="preload" as="image" href="/assets/images/band-hero.webp" type="image/webp" />
       <HomeView releases={releases} events={events ?? []} instagram={instagram} />
     </>

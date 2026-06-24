@@ -10,7 +10,7 @@ import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { isLocale, type Locale, locales } from "@/i18n/config";
 import { fontVariables } from "@/lib/fonts";
-import { organizationJsonLd } from "@/lib/seo";
+import { siteSchemaGraph } from "@/lib/aeo-schema";
 import { AppProviders } from "@/providers/app-providers";
 import styles from "./layout.module.css";
 
@@ -63,7 +63,7 @@ export default async function LocaleLayout({
         <link rel="alternate" type="application/json" href="/ai-index.json" title="AI Index" />
       </head>
       <body>
-        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={siteSchemaGraph()} />
         <AppProviders locale={locale as Locale}>
           <div id="site-root" className={styles.site}>
             <Header />

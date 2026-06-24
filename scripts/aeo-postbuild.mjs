@@ -10,13 +10,20 @@ const resolved = resolveConfig({
   outDir: join(projectRoot, "public"),
   contentDir: join(projectRoot, ".aeo"),
   pages: aeoConfig.pages,
+  generators: {
+    ...aeoConfig.generators,
+    robotsTxt: false,
+    llmsTxt: false,
+  },
 });
 
 const result = await generateAEOFiles(resolved);
 
-const sitemapPath = join(projectRoot, "public", "sitemap.xml");
-if (existsSync(sitemapPath)) {
-  unlinkSync(sitemapPath);
+for (const file of ["sitemap.xml", "llms.txt"]) {
+  const filePath = join(projectRoot, "public", file);
+  if (existsSync(filePath)) {
+    unlinkSync(filePath);
+  }
 }
 
 if (result.files.length > 0) {

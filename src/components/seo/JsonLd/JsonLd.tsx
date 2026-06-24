@@ -33,12 +33,19 @@ function serializeJsonLd(data: Record<string, unknown>): string {
  * @remarks The payload is escaped by {@link serializeJsonLd} so external-sourced
  * values cannot break out of the `<script>` context.
  */
-export function JsonLd({ data }: { data: Record<string, unknown> }) {
+export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
+  const payload = Array.isArray(data)
+    ? {
+        "@context": "https://schema.org",
+        "@graph": data.map(({ "@context": _context, ...rest }) => rest),
+      }
+    : data;
+
   return (
     <script
       type="application/ld+json"
       // biome-ignore lint/security/noDangerouslySetInnerHtml: structured data injection (escaped)
-      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(payload) }}
     />
   );
 }

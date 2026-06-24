@@ -6,6 +6,7 @@
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/sections/Reveal";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { SITE } from "@/config/site";
@@ -50,6 +51,7 @@ export default async function VideosPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema pathname={`/${locale}/videos`} />
       <JsonLd data={liveVideoJsonLd()} />
       <PageHero eyebrow="Live & Visuals" title={t.videos.title} intro={t.videos.intro} />
 

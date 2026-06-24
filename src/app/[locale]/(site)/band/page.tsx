@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { LinkedText } from "@/components/sections/LinkedText";
 import { Reveal } from "@/components/sections/Reveal";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { BAND_LINKS, SITE } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";
@@ -49,6 +50,7 @@ export default async function BandPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema pathname={`/${locale}/band`} />
       <PageHero eyebrow={t.meta.tagline} title={t.band.title} intro={t.band.intro} />
 
       <section className={mergeClassNames(primitives.section, primitives["section--smoke"])}>

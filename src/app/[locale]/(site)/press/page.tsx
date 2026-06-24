@@ -5,6 +5,7 @@
 import { Download, FileText, FolderOpen, Newspaper } from "lucide-react";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/sections/Reveal";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { CLIPPING, clippingHref } from "@/config/clipping";
 import { SITE } from "@/config/site";
@@ -73,6 +74,7 @@ export default async function PressPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema pathname={`/${locale}/press`} />
       <PageHero eyebrow="EPK" title={t.press.title} intro={t.press.intro} />
 
       <section className={primitives.section}>

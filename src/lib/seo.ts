@@ -110,7 +110,7 @@ export function organizationJsonLd() {
       SITE.socials.instagram,
       SITE.socials.bandcamp,
       SITE.socials.youtube,
-      SITE.socials.spotify,
+      SITE.socials.spotifyArtist,
       SITE.socials.bandsintown,
     ],
     member: [

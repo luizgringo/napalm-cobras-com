@@ -1,0 +1,9 @@
+@reference "../../../styles/globals.css";
+
+.faq {
+  @apply sr-only;
+}
+
+.faq__item + .faq__item {
+  @apply mt-4;
+}

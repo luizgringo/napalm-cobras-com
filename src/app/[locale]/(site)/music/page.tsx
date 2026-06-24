@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { LinkedText } from "@/components/sections/LinkedText";
 import { LinkGrid } from "@/components/sections/LinkGrid";
 import { Reveal } from "@/components/sections/Reveal";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { getReleaseCredits, SITE } from "@/config/site";
@@ -130,6 +131,7 @@ export default async function MusicPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema pathname={`/${locale}/music`} />
       <JsonLd data={albumJsonLd()} />
       <PageHero eyebrow={t.music.discographyTitle} title={t.music.title} intro={t.music.intro} />
 

@@ -6,6 +6,7 @@ import { Mail } from "lucide-react";
 import type { Metadata } from "next";
 import { LinkGrid } from "@/components/sections/LinkGrid";
 import { Reveal } from "@/components/sections/Reveal";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { SITE } from "@/config/site";
 import { InstagramFeed } from "@/features/social";
@@ -69,6 +70,7 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema pathname={`/${locale}/contact`} />
       <PageHero eyebrow="Get in touch" title={t.contact.title} intro={t.contact.intro} />
 
       <section className={primitives.section}>

@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/sections/Reveal";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { SITE } from "@/config/site";
@@ -53,6 +54,7 @@ export default async function ShowsPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema pathname={`/${locale}/shows`} />
       <PageHero eyebrow="Live" title={t.shows.title} intro={t.shows.intro} />
 
       <section className={mergeClassNames(primitives.section, primitives["section--smoke"])}>

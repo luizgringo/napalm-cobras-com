@@ -1,0 +1,9 @@
+@reference "../../../styles/globals.css";
+
+.lazy-iframe {
+  @apply w-full;
+}
+
+.lazy-iframe iframe {
+  @apply block w-full border-0;
+}

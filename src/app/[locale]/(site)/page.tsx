@@ -50,8 +50,14 @@ export default async function HomePage({ params }: Props) {
   ]);
   return (
     <>
+      <link
+        rel="preload"
+        href="/assets/images/band-hero.webp"
+        as="image"
+        type="image/webp"
+        fetchPriority="high"
+      />
       <PageSchema pathname={`/${locale}`} />
-      <link rel="preload" as="image" href="/assets/images/band-hero.webp" type="image/webp" />
       <HomeView releases={releases} events={events ?? []} instagram={instagram} />
     </>
   );

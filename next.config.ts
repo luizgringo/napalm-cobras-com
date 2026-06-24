@@ -1,4 +1,9 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { NextConfig } from "next";
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
+const polyfillStub = path.join(rootDir, "src/lib/modern-polyfill-stub.js");
 
 /**
  * Content Security Policy (Report-Only).
@@ -40,9 +45,22 @@ const securityHeaders = [
   },
 ];
 
+const polyfillAliases = {
+  "@next/polyfill-module": polyfillStub,
+  "next/dist/build/polyfills/polyfill-module": polyfillStub,
+};
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
+  turbopack: {
+    resolveAlias: polyfillAliases,
+  },
   images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
     remotePatterns: [
       { protocol: "https", hostname: "i.ytimg.com" },
       { protocol: "https", hostname: "i.scdn.co" },
@@ -55,6 +73,15 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
+  },
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        ...polyfillAliases,
+      };
+    }
+    return config;
   },
 };
 

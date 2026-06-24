@@ -100,7 +100,7 @@ export function InstagramFeed({
                 src={post.imageUrl}
                 alt={buildInstagramPostAlt(post.caption, profile.username, postAltFallback)}
                 fill
-                sizes="(max-width: 768px) 50vw, 33vw"
+                sizes="(max-width: 768px) 45vw, (max-width: 1200px) 30vw, 384px"
                 className={styles.post__img}
               />
               {post.mediaType !== "IMAGE" ? (

@@ -59,6 +59,8 @@ export default async function LocaleLayout({
           type="font/woff"
           crossOrigin="anonymous"
         />
+        <link rel="preconnect" href="https://behold.pictures" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn2.behold.pictures" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs" />
         <link rel="alternate" type="application/json" href="/ai-index.json" title="AI Index" />
         <JsonLd data={siteSchemaGraph()} />

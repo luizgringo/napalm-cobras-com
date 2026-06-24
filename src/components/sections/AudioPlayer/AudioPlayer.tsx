@@ -11,6 +11,7 @@
  */
 
 import { Volume2 } from "lucide-react";
+import { LazyIframe } from "@/components/sections/LazyIframe";
 import type { SpotifyRelease } from "@/features/music/services/spotify";
 import type { Locale } from "@/i18n/config";
 import { mergeClassNames } from "@/lib/utils";
@@ -97,11 +98,11 @@ export function AudioPlayer({
       ) : null}
 
       <div className={styles["audio-player__embed"]}>
-        <iframe
+        <LazyIframe
           key={selectedRelease.id}
           title={`${selectedRelease.name} — Spotify`}
           src={selectedRelease.embedUrl}
-          loading="lazy"
+          minHeight={420}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           allowFullScreen
         />

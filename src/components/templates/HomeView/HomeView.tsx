@@ -9,6 +9,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
@@ -24,13 +25,16 @@ import { SnakeTrail } from "@/components/sections/SnakeTrail";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/contexts/i18n-context";
 import type { InstagramFeedData } from "@/features/instagram";
-import { InstagramFeed } from "@/features/instagram";
 import type { SpotifyRelease } from "@/features/music/services/spotify";
 import type { BandsintownEvent } from "@/features/shows";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import { useHomeView } from "./HomeView.hooks";
 import styles from "./HomeView.module.css";
+
+const InstagramFeed = dynamic(() =>
+  import("@/features/instagram").then((module) => module.InstagramFeed),
+);
 
 /** Scrolling marquee phrases describing the band's genres and origin. */
 const MARQUEE_WORDS = [
@@ -99,6 +103,8 @@ export function HomeView({
             alt={t.a11y.images.hero}
             fill
             priority
+            unoptimized
+            fetchPriority="high"
             sizes="100vw"
             className={styles["hero__bg-img"]}
           />

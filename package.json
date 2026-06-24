@@ -5,7 +5,7 @@
   "packageManager": "pnpm@9.3.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "postbuild": "node scripts/aeo-postbuild.mjs",
     "start": "next start",
     "lint": "biome check .",
@@ -44,5 +44,13 @@
     "overrides": {
       "postcss@<8.5.10": "^8.5.10"
     }
-  }
+  },
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 111",
+    "safari >= 16.4",
+    "not dead",
+    "not op_mini all"
+  ]
 }

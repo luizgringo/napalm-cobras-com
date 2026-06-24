@@ -4,7 +4,6 @@
  * scroll parallax and the persisted "snake trail" toggle.
  */
 
-import { useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { getReleaseCredits, SITE } from "@/config/site";
 import type { SpotifyRelease } from "@/features/music/services/spotify";
@@ -140,13 +139,6 @@ export function useHomeView({ releases, events, locale }: UseHomeViewParams) {
   const selectedCredits = getReleaseCredits(selectedReleaseId, locale);
 
   const heroRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
 
   const [isSnakeEnabled, setSnakeEnabled] = useState(false);
   const [snakePortalTarget, setSnakePortalTarget] = useState<HTMLElement | null>(null);
@@ -173,7 +165,6 @@ export function useHomeView({ releases, events, locale }: UseHomeViewParams) {
     setSelectedReleaseId,
     selectedCredits,
     heroRef,
-    heroStyle: { y: heroY, scale: heroScale, opacity: heroOpacity },
     isSnakeEnabled,
     snakePortalTarget,
     toggleSnake,

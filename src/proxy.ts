@@ -46,6 +46,18 @@ function resolveLocale(request: NextRequest): string {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (
+    pathname.endsWith(".md") ||
+    pathname === "/robots.txt" ||
+    pathname === "/llms.txt" ||
+    pathname === "/llms-full.txt" ||
+    pathname === "/docs.json" ||
+    pathname === "/ai-index.json" ||
+    pathname === "/schema.json"
+  ) {
+    return NextResponse.next();
+  }
+
   const hasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
@@ -64,5 +76,7 @@ export function proxy(request: NextRequest) {
  * internals, API routes, static assets and well-known SEO files.
  */
 export const config = {
-  matcher: ["/((?!_next|api|assets|og|favicon.ico|robots.txt|sitemap.xml).*)"],
+  matcher: [
+    "/((?!_next|api|assets|og|favicon.ico|robots.txt|sitemap.xml|llms.txt|llms-full.txt|docs.json|ai-index.json|schema.json).*)",
+  ],
 };

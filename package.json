@@ -6,15 +6,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/aeo-postbuild.mjs",
     "start": "next start",
     "lint": "biome check .",
     "format": "biome check --write .",
+    "aeo:check": "node scripts/aeo-check.mjs",
+    "aeo:report": "node scripts/aeo-report.mjs",
     "prepare": "husky"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "aeo.js": "^0.0.14",
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
     "lucide-react": "^0.575.0",

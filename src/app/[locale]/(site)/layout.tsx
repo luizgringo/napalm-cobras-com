@@ -51,6 +51,17 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={fontVariables}>
+      <head>
+        <link
+          rel="preload"
+          href="/assets/fonts/Cattedrale-Demo-Regular.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs" />
+        <link rel="alternate" type="application/json" href="/ai-index.json" title="AI Index" />
+      </head>
       <body>
         <JsonLd data={organizationJsonLd()} />
         <AppProviders locale={locale as Locale}>

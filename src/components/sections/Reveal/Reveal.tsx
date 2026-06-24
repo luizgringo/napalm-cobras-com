@@ -12,8 +12,8 @@ import type { ReactNode } from "react";
 
 /** Framer Motion variants for the hidden and revealed states of the wrapper. */
 const revealVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { y: 16 },
+  show: { y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 /**

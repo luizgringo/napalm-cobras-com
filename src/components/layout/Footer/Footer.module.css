@@ -10,10 +10,10 @@
   @apply font-display text-3xl text-paper;
 }
 .footer__tagline {
-  @apply mt-2 font-mono text-xs uppercase tracking-widest text-paper/60;
+  @apply mt-2 font-mono text-xs uppercase tracking-widest text-paper/75;
 }
 .footer__note {
-  @apply mt-2 font-mono text-[10px] uppercase tracking-widest text-paper/50;
+  @apply mt-2 font-mono text-[10px] uppercase tracking-widest text-paper/70;
 }
 .footer__socials {
   @apply mt-3 flex flex-wrap gap-2;
@@ -28,5 +28,5 @@
   @apply border-t border-paper/10;
 }
 .footer__copy {
-  @apply mx-auto max-w-7xl px-4 py-4 font-mono text-[10px] uppercase tracking-widest text-paper/40 md:px-8;
+  @apply mx-auto max-w-7xl px-4 py-4 font-mono text-[10px] uppercase tracking-widest text-paper/75 md:px-8;
 }

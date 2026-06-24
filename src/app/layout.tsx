@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   description: SITE.album.title,
   applicationName: SITE.name,
   robots: { index: true, follow: true },
+  alternates: {
+    types: {
+      "text/plain": [{ url: "/llms.txt", title: "LLMs" }],
+    },
+  },
 };
 
 /**

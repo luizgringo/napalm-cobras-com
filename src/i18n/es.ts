@@ -21,6 +21,8 @@ export const es: Lang = {
     gallery: "Galería",
     press: "Prensa",
     contact: "Contacto",
+    menuOpen: "Abrir menú",
+    menuClose: "Cerrar menú",
   },
   /** SEO/meta strings: site name, tagline and home page title/description. */
   meta: {
@@ -46,6 +48,8 @@ export const es: Lang = {
     watchLive: "Ver en vivo",
     liveCaption: "Metalpunk Overkill · en vivo · Goblin TV",
     scrollHint: "Ve la banda en acción",
+    loadPlayer: "Cargar reproductor",
+    watchVideo: "Ver video",
     snake: {
       enable: "Activar animación de la serpiente",
       disable: "Desactivar animación de la serpiente",
@@ -139,6 +143,7 @@ export const es: Lang = {
     intro:
       'Del EP debut "Homens Brancos de Terno" al sencillo "Longo Caminho Para Casa": escuchá a Napalm Cobras en Bandcamp, Spotify y los principales servicios de streaming.',
     listenOn: "Escuchar en",
+    loadPlayer: "Cargar reproductor de Spotify",
     tracklistTitle: "Temas",
     discographyTitle: "Discografía",
     creditsTitle: "Ficha técnica",

@@ -10,16 +10,16 @@
   @apply min-w-0;
 }
 .audio-player__eyebrow {
-  @apply font-mono text-[10px] uppercase tracking-[0.3em] text-blood;
+  @apply font-mono text-[10px] uppercase tracking-[0.3em] text-blood-bright;
 }
 .audio-player__title {
   @apply mt-2 truncate font-display text-2xl uppercase text-paper md:text-3xl;
 }
 .audio-player__meta {
-  @apply mt-1 font-mono text-xs uppercase tracking-widest text-paper/60;
+  @apply mt-1 font-mono text-xs uppercase tracking-widest text-paper/75;
 }
 .audio-player__badge {
-  @apply shrink-0 border border-blood px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-blood;
+  @apply shrink-0 border border-blood px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-blood-bright;
 }
 .audio-player__selector {
   @apply mt-5 flex flex-wrap gap-2;
@@ -34,7 +34,7 @@
   @apply font-display text-base uppercase leading-none text-paper;
 }
 .audio-player__tab-meta {
-  @apply font-mono text-[10px] uppercase tracking-widest text-paper/50;
+  @apply font-mono text-[10px] uppercase tracking-widest text-paper/70;
 }
 .audio-player__embed {
   @apply mt-6 overflow-hidden border border-paper/10;

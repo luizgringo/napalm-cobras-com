@@ -5,11 +5,9 @@
   @apply relative isolate min-h-[100svh] overflow-hidden;
 }
 .hero__bg {
-  @apply absolute inset-0 -z-10;
-}
-.hero__img {
-  @apply object-cover opacity-40 grayscale contrast-125;
-  object-position: center 18%;
+  @apply absolute inset-0 -z-10 bg-cover bg-center opacity-40 grayscale contrast-125;
+  background-image: url("/assets/images/band-hero.webp");
+  background-position: center 18%;
 }
 .hero__veil {
   @apply absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/70 to-ink;
@@ -39,7 +37,7 @@
   @apply noise relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-24 pt-28 md:px-8 md:pt-36;
 }
 .hero__eyebrow {
-  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood;
+  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood-bright;
 }
 .hero__title {
   @apply mt-4 font-brand text-[18vw] leading-[0.85] tracking-tight text-paper md:text-[13rem];
@@ -51,7 +49,7 @@
   @apply block text-blood;
 }
 .hero__sub {
-  @apply mt-8 max-w-xl font-mono text-sm uppercase tracking-widest text-paper/70;
+  @apply mt-8 max-w-xl font-mono text-sm uppercase tracking-widest text-paper/80;
 }
 .hero__actions {
   @apply mt-10 flex flex-wrap gap-4;
@@ -60,7 +58,7 @@
   @apply absolute bottom-8 left-1/2 -translate-x-1/2 text-center;
 }
 .hero__scroll-text {
-  @apply font-mono text-[10px] uppercase tracking-[0.4em] text-paper/50;
+  @apply font-mono text-[10px] uppercase tracking-[0.4em] text-paper/75;
 }
 .hero__scroll-icon {
   @apply mt-2 flex justify-center text-blood;

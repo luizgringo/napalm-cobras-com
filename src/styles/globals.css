@@ -28,6 +28,7 @@
   --color-ink: var(--ink);
   --color-paper: var(--paper);
   --color-blood: var(--blood);
+  --color-blood-bright: var(--blood-bright);
   --color-smoke: var(--smoke);
   --color-bone: var(--bone);
 
@@ -47,6 +48,7 @@
   --paper: #f5f1e8;
   --bone: #d9d3c2;
   --blood: #c8102e;
+  --blood-bright: #ff5a6e;
 
   --background: var(--ink);
   --foreground: var(--paper);

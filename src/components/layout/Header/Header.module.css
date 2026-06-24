@@ -45,7 +45,7 @@
   @apply ml-2 flex gap-1 border border-paper/20 p-0.5;
 }
 .lang-switch__item {
-  @apply cursor-pointer px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-paper/60 hover:text-paper;
+  @apply cursor-pointer px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-paper/75 hover:text-paper;
 }
 .lang-switch__item--active {
   @apply bg-blood text-paper;

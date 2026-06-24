@@ -9,11 +9,12 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import { AudioPlayer } from "@/components/sections/AudioPlayer";
 import { CaveRoom } from "@/components/sections/CaveRoom";
+import { EmbedFacade } from "@/components/sections/EmbedFacade";
 import { GlitchText } from "@/components/sections/GlitchText";
 import { LinkedText } from "@/components/sections/LinkedText";
 import { Marquee } from "@/components/sections/Marquee";
@@ -22,13 +23,18 @@ import { SnakeToggle } from "@/components/sections/SnakeToggle";
 import { SnakeTrail } from "@/components/sections/SnakeTrail";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/contexts/i18n-context";
-import { InstagramFeed, type InstagramFeedData } from "@/features/instagram";
+import type { InstagramFeedData } from "@/features/instagram";
 import type { SpotifyRelease } from "@/features/music/services/spotify";
 import type { BandsintownEvent } from "@/features/shows";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import { useHomeView } from "./HomeView.hooks";
 import styles from "./HomeView.module.css";
+
+const InstagramFeed = dynamic(
+  () => import("@/features/instagram").then((module) => module.InstagramFeed),
+  { ssr: false },
+);
 
 /** Scrolling marquee phrases describing the band's genres and origin. */
 const MARQUEE_WORDS = [
@@ -74,7 +80,6 @@ export function HomeView({
     setSelectedReleaseId,
     selectedCredits,
     heroRef,
-    heroStyle,
     isSnakeEnabled,
     snakePortalTarget,
     toggleSnake,
@@ -92,38 +97,17 @@ export function HomeView({
       />
 
       <section ref={heroRef} className={styles.hero}>
-        <motion.div style={heroStyle} className={styles.hero__bg}>
-          <Image
-            src="/assets/images/band-hero.png"
-            alt=""
-            aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            className={styles.hero__img}
-          />
+        <div className={styles.hero__bg} aria-hidden>
           <div className={styles.hero__veil} />
-        </motion.div>
+        </div>
 
         <CornerFrame />
         <div aria-hidden className={styles.hero__scanlines} />
 
         <div className={styles.hero__content}>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className={styles.hero__eyebrow}
-          >
-            // {t.home.eyebrow}
-          </motion.p>
+          <p className={styles.hero__eyebrow}>// {t.home.eyebrow}</p>
 
-          <motion.h1
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className={styles.hero__title}
-          >
+          <h1 className={styles.hero__title}>
             <GlitchText as="span" className={styles["hero__title-line"]}>
               {t.home.heroLine1}
             </GlitchText>
@@ -136,23 +120,11 @@ export function HomeView({
             >
               {t.home.heroLine2}
             </GlitchText>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className={styles.hero__sub}
-          >
-            {t.home.heroSub}
-          </motion.p>
+          <p className={styles.hero__sub}>{t.home.heroSub}</p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className={styles.hero__actions}
-          >
+          <div className={styles.hero__actions}>
             <a
               href="#studio"
               className={mergeClassNames(
@@ -175,23 +147,14 @@ export function HomeView({
             >
               {t.home.nextShows} <ArrowRight size={14} />
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
-            className={styles.hero__scroll}
-          >
+          <div className={styles.hero__scroll}>
             <p className={styles["hero__scroll-text"]}>{t.home.scrollHint}</p>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              className={styles["hero__scroll-icon"]}
-            >
+            <div className={styles["hero__scroll-icon"]}>
               <ChevronDown size={20} />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -291,13 +254,12 @@ export function HomeView({
       >
         <Reveal>
           <div className={styles["video-frame"]}>
-            <iframe
-              className={styles["video-frame__embed"]}
-              src={`https://www.youtube.com/embed/${SITE.liveVideoId}`}
+            <EmbedFacade
               title="Metalpunk Overkill - Napalm Cobras"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+              src={`https://www.youtube.com/embed/${SITE.liveVideoId}`}
+              playLabel={t.home.watchVideo}
+              variant="video"
+              poster={`https://i.ytimg.com/vi/${SITE.liveVideoId}/hqdefault.jpg`}
             />
             <span className={styles["video-frame__tag"]}>{t.home.liveCaption}</span>
           </div>

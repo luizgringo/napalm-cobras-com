@@ -60,7 +60,9 @@ export function Header() {
           type="button"
           onClick={toggleMenu}
           className={styles.header__toggle}
-          aria-label="menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav"
+          aria-label={isMenuOpen ? t.nav.menuClose : t.nav.menuOpen}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -69,6 +71,7 @@ export function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
+            id="mobile-nav"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

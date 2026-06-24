@@ -22,7 +22,6 @@ const contentSecurityPolicy = [
   "connect-src 'self' https://rest.bandsintown.com https://widgetv3.bandsintown.com https://*.bandsintown.com https://behold.pictures https://cdn2.behold.pictures",
   "frame-src https://open.spotify.com https://www.youtube.com https://www.youtube-nocookie.com https://bandcamp.com https://*.bandcamp.com https://widgetv3.bandsintown.com https://widget.bandsintown.com https://www.bandsintown.com",
   "media-src 'self' https:",
-  "upgrade-insecure-requests",
 ].join("; ");
 
 /** HTTP security headers applied to every route. */

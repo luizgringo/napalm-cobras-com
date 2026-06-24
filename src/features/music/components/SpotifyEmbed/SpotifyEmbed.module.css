@@ -1,0 +1,11 @@
+@reference "../../../../styles/globals.css";
+
+.spotify-embed {
+  @apply overflow-hidden border border-paper/10 bg-smoke;
+}
+
+.spotify-embed iframe {
+  @apply block w-full;
+  height: 420px;
+  border: 0;
+}

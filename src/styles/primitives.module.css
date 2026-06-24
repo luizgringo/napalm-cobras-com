@@ -4,13 +4,13 @@
    Importe como `import p from "@/styles/primitives.module.css"`. */
 
 .eyebrow {
-  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood;
+  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood-bright;
 }
 .eyebrow--sm {
   @apply text-[10px];
 }
 .eyebrow--wide {
-  @apply tracking-[0.4em] text-paper/50;
+  @apply tracking-[0.4em] text-paper/70;
 }
 .eyebrow--spaced {
   @apply mt-8;
@@ -20,10 +20,10 @@
 }
 
 .label {
-  @apply font-mono text-xs uppercase tracking-widest text-paper/60;
+  @apply font-mono text-xs uppercase tracking-widest text-paper/75;
 }
 .label--sm {
-  @apply text-[10px] text-paper/50;
+  @apply text-[10px] text-paper/70;
 }
 
 .cta {

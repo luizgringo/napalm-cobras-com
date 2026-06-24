@@ -1,0 +1,23 @@
+@reference "../../../styles/globals.css";
+
+.embed-facade {
+  @apply relative flex w-full items-center justify-center overflow-hidden border border-paper/10 bg-smoke;
+}
+.embed-facade--video {
+  @apply aspect-video;
+}
+.embed-facade--player {
+  height: 420px;
+}
+.embed-facade__poster {
+  @apply object-cover opacity-60;
+}
+.embed-facade__veil {
+  @apply absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20;
+}
+.embed-facade__trigger {
+  @apply relative z-10 inline-flex items-center gap-3 border-2 border-paper bg-ink/80 px-6 py-4 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:border-blood hover:bg-blood hover:text-paper;
+}
+.embed-facade__embed {
+  @apply block h-full w-full border-0;
+}

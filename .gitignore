@@ -27,6 +27,16 @@ dist
 # Vercel
 .vercel
 
+# AEO (gerado no postbuild)
+public/robots.txt
+public/llms.txt
+public/llms-full.txt
+public/docs.json
+public/ai-index.json
+public/schema.json
+public/*.md
+.aeo/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -25,7 +25,7 @@
   @apply text-blood;
 }
 .feed__followers {
-  @apply font-mono text-[11px] uppercase tracking-widest text-paper/50;
+  @apply font-mono text-[11px] uppercase tracking-widest text-paper/70;
 }
 
 .feed__grid {

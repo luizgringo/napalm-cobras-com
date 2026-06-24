@@ -3,6 +3,7 @@
  */
 
 import { SITE } from "@/config/site";
+import styles from "./SpotifyEmbed.module.css";
 
 /** Props for {@link SpotifyEmbed}. */
 interface SpotifyEmbedProps {
@@ -13,24 +14,23 @@ interface SpotifyEmbedProps {
 }
 
 /**
- * Renders a lazy-loaded Spotify player as an iframe.
+ * Renders an embedded Spotify player iframe.
  *
- * @param props - See {@link SpotifyEmbedProps}; both fields are optional.
- * @remarks Server component (renders a static iframe).
+ * @param props - See {@link SpotifyEmbedProps}.
  */
 export function SpotifyEmbed({
   src = SITE.album.spotifyEmbed,
   title = "Spotify — Homens Brancos de Terno",
-}: SpotifyEmbedProps = {}) {
+}: SpotifyEmbedProps) {
   return (
-    <iframe
-      title={title}
-      src={src}
-      width="100%"
-      height={352}
-      loading="lazy"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      style={{ border: 0, borderRadius: 12 }}
-    />
+    <div className={styles["spotify-embed"]}>
+      <iframe
+        title={title}
+        src={src}
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
   );
 }

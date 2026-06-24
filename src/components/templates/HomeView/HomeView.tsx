@@ -9,7 +9,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import { AudioPlayer } from "@/components/sections/AudioPlayer";
@@ -24,17 +24,13 @@ import { SnakeTrail } from "@/components/sections/SnakeTrail";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/contexts/i18n-context";
 import type { InstagramFeedData } from "@/features/instagram";
+import { InstagramFeed } from "@/features/instagram";
 import type { SpotifyRelease } from "@/features/music/services/spotify";
 import type { BandsintownEvent } from "@/features/shows";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import { useHomeView } from "./HomeView.hooks";
 import styles from "./HomeView.module.css";
-
-const InstagramFeed = dynamic(
-  () => import("@/features/instagram").then((module) => module.InstagramFeed),
-  { ssr: false },
-);
 
 /** Scrolling marquee phrases describing the band's genres and origin. */
 const MARQUEE_WORDS = [
@@ -97,8 +93,16 @@ export function HomeView({
       />
 
       <section ref={heroRef} className={styles.hero}>
-        <div className={styles.hero__bg} aria-hidden>
-          <div className={styles.hero__veil} />
+        <div className={styles.hero__bg}>
+          <Image
+            src="/assets/images/band-hero.webp"
+            alt={t.a11y.images.hero}
+            fill
+            priority
+            sizes="100vw"
+            className={styles["hero__bg-img"]}
+          />
+          <div className={styles.hero__veil} aria-hidden />
         </div>
 
         <CornerFrame />
@@ -241,6 +245,8 @@ export function HomeView({
             followLabel={t.home.rooms.feed.follow}
             followersLabel={t.home.rooms.feed.followers}
             profileHref={SITE.socials.instagram}
+            avatarAltTemplate={t.a11y.images.instagramAvatar}
+            postAltFallback={t.a11y.images.instagramPost}
           />
         </CaveRoom>
       ) : null}

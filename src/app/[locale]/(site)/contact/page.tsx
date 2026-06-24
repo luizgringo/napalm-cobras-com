@@ -117,7 +117,10 @@ export default async function ContactPage({ params }: Props) {
             <p className={mergeClassNames(primitives.eyebrow, primitives["eyebrow--block"])}>
               // Instagram
             </p>
-            <InstagramFeed followLabel={t.contact.follow} />
+            <InstagramFeed
+              followLabel={t.contact.follow}
+              postAltFallback={t.a11y.images.instagramPost}
+            />
           </Reveal>
         </div>
       </section>

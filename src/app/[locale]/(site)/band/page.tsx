@@ -10,6 +10,7 @@ import { PageSchema } from "@/components/seo/PageSchema";
 import { PageHero } from "@/components/templates/SectionTitle";
 import { BAND_LINKS, SITE } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";
+import { buildMemberAlt } from "@/lib/image-alt";
 import { buildMetadata } from "@/lib/seo";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
@@ -66,7 +67,7 @@ export default async function BandPage({ params }: Props) {
                   <div className={styles["member-card__media"]}>
                     <Image
                       src={SITE.members[index].photo}
-                      alt={member.name}
+                      alt={buildMemberAlt(member.name, member.role)}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className={styles["member-card__img"]}

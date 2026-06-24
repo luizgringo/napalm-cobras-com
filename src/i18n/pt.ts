@@ -220,6 +220,14 @@ export const pt = {
     rights: "Todos os direitos reservados.",
     builtIn: "Belo Horizonte / MG",
   },
+  /** Accessible image descriptions for SEO and screen readers. */
+  a11y: {
+    images: {
+      hero: "Napalm Cobras em show ao vivo — banda de metalpunk de Belo Horizonte, Minas Gerais",
+      instagramAvatar: "Foto de perfil do Instagram da Napalm Cobras (@{username})",
+      instagramPost: "Publicação do Instagram da Napalm Cobras (@{username})",
+    },
+  },
   /** 404 page copy. */
   notFound: {
     eyebrow: "Erro 404",

@@ -5,9 +5,11 @@
   @apply relative isolate min-h-[100svh] overflow-hidden;
 }
 .hero__bg {
-  @apply absolute inset-0 -z-10 bg-cover bg-center opacity-40 grayscale contrast-125;
-  background-image: url("/assets/images/band-hero.webp");
-  background-position: center 18%;
+  @apply absolute inset-0 -z-10 overflow-hidden opacity-40 grayscale contrast-125;
+}
+.hero__bg-img {
+  @apply object-cover;
+  object-position: center 18%;
 }
 .hero__veil {
   @apply absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/70 to-ink;

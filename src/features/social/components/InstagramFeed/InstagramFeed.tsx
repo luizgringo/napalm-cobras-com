@@ -5,6 +5,7 @@
 
 import { Instagram } from "lucide-react";
 import { SITE } from "@/config/site";
+import { buildInstagramPostAlt } from "@/lib/image-alt";
 import { getInstagramFeed } from "../../services/instagram";
 import styles from "./InstagramFeed.module.css";
 
@@ -16,7 +17,13 @@ import styles from "./InstagramFeed.module.css";
  * @returns The rendered feed grid or fallback CTA.
  * @remarks Async Server Component; fetches data via {@link getInstagramFeed}.
  */
-export async function InstagramFeed({ followLabel }: { followLabel: string }) {
+export async function InstagramFeed({
+  followLabel,
+  postAltFallback,
+}: {
+  followLabel: string;
+  postAltFallback: string;
+}) {
   const posts = await getInstagramFeed();
 
   if (!posts || posts.length === 0) {
@@ -48,7 +55,7 @@ export async function InstagramFeed({ followLabel }: { followLabel: string }) {
           {/* biome-ignore lint/performance/noImgElement: Instagram CDN hostnames are dynamic */}
           <img
             src={post.thumbnailUrl || post.mediaUrl}
-            alt={post.caption ?? "Instagram"}
+            alt={buildInstagramPostAlt(post.caption, "napalmcobras", postAltFallback)}
             loading="lazy"
             className={styles["ig-grid__img"]}
           />

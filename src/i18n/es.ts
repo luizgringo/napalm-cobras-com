@@ -221,6 +221,14 @@ export const es: Lang = {
     rights: "Todos los derechos reservados.",
     builtIn: "Belo Horizonte / MG",
   },
+  /** Accessible image descriptions for SEO and screen readers. */
+  a11y: {
+    images: {
+      hero: "Napalm Cobras en vivo — banda de metalpunk de Belo Horizonte, Brasil",
+      instagramAvatar: "Foto de perfil de Instagram de Napalm Cobras (@{username})",
+      instagramPost: "Publicación de Instagram de Napalm Cobras (@{username})",
+    },
+  },
   /** 404 page copy. */
   notFound: {
     eyebrow: "Error 404",

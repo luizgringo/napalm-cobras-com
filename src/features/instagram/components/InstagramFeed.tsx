@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { Heart, Instagram, MessageCircle, Play } from "lucide-react";
 import Image from "next/image";
 import { Reveal } from "@/components/sections/Reveal";
+import { buildInstagramAvatarAlt, buildInstagramPostAlt } from "@/lib/image-alt";
 import { mergeClassNames } from "@/lib/utils";
 import primitives from "@/styles/primitives.module.css";
 import type { InstagramFeedData } from "../services/behold";
@@ -25,6 +26,10 @@ interface InstagramFeedProps {
   followersLabel: string;
   /** External URL to the Instagram profile. */
   profileHref: string;
+  /** Localized template for the profile avatar alt text (`{username}` placeholder). */
+  avatarAltTemplate: string;
+  /** Localized fallback for post alt text when caption is missing (`{username}` placeholder). */
+  postAltFallback: string;
 }
 
 /**
@@ -38,6 +43,8 @@ export function InstagramFeed({
   followLabel,
   followersLabel,
   profileHref,
+  avatarAltTemplate,
+  postAltFallback,
 }: InstagramFeedProps) {
   const { profile, posts, formatCount } = useInstagramFeed(feed);
 
@@ -49,7 +56,7 @@ export function InstagramFeed({
             <span className={styles.feed__avatar}>
               <Image
                 src={profile.profilePictureUrl}
-                alt={profile.username}
+                alt={buildInstagramAvatarAlt(profile.username, avatarAltTemplate)}
                 fill
                 sizes="56px"
                 className={styles["feed__avatar-img"]}
@@ -91,7 +98,7 @@ export function InstagramFeed({
             >
               <Image
                 src={post.imageUrl}
-                alt={post.caption || `Post de ${profile.username}`}
+                alt={buildInstagramPostAlt(post.caption, profile.username, postAltFallback)}
                 fill
                 sizes="(max-width: 768px) 50vw, 33vw"
                 className={styles.post__img}

@@ -15,6 +15,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { Reveal } from "@/components/sections/Reveal";
 import type { Flyer } from "@/config/flyers";
+import { buildFlyerAlt } from "@/lib/image-alt";
 import { useFlyerLightbox } from "./FlyerGallery.hooks";
 import styles from "./FlyerGallery.module.css";
 
@@ -86,7 +87,7 @@ export function FlyerGallery({
             >
               <Image
                 src={flyer.src}
-                alt={flyer.title}
+                alt={buildFlyerAlt(flyer)}
                 fill
                 sizes="(max-width: 768px) 50vw, 33vw"
                 className={styles.flyer__img}
@@ -143,7 +144,7 @@ export function FlyerGallery({
               <div className={styles.lightbox__frame}>
                 <Image
                   src={activeFlyer.src}
-                  alt={activeFlyer.title}
+                  alt={buildFlyerAlt(activeFlyer)}
                   fill
                   sizes="92vw"
                   className={styles.lightbox__img}

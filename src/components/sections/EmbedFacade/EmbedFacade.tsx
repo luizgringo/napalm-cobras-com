@@ -47,7 +47,7 @@ export function EmbedFacade({ title, src, playLabel, variant, poster }: EmbedFac
         <>
           <Image
             src={poster}
-            alt=""
+            alt={title}
             fill
             sizes="(max-width: 768px) 100vw, 70vw"
             className={styles["embed-facade__poster"]}

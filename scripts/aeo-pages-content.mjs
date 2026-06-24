@@ -221,7 +221,8 @@ function bandContent(locale) {
     '2025: videoclip "The Hog" (homenaje a Muzzarelas)',
     "2026: escenario con The Varukers (Punk no Park, BH)",
   ];
-  const milestoneList = locale === "en" ? milestonesEn : locale === "es" ? milestonesEs : milestones;
+  const milestoneList =
+    locale === "en" ? milestonesEn : locale === "es" ? milestonesEs : milestones;
 
   return `${SUMMARY_HEADING[locale]}
 

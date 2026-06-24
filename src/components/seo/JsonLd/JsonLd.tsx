@@ -22,30 +22,32 @@ function serializeJsonLd(data: Record<string, unknown>): string {
 }
 
 /**
- * Injects a JSON-LD structured data block into the document for search engines.
+ * Injects one or more JSON-LD structured data blocks into the document.
  *
  * Server Component: serializes `data` and writes it via `dangerouslySetInnerHTML`.
+ * Each schema object is emitted as its own `<script>` tag so crawlers that do
+ * not expand `@graph` still detect Organization, WebPage and FAQPage types.
  *
  * @param props - Component props.
- * @param props.data - The structured data object serialized into the script tag.
- * @returns A `<script type="application/ld+json">` element.
+ * @param props.data - A single schema object or an array of schema objects.
+ * @returns One or more `<script type="application/ld+json">` elements.
  *
  * @remarks The payload is escaped by {@link serializeJsonLd} so external-sourced
  * values cannot break out of the `<script>` context.
  */
 export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
-  const payload = Array.isArray(data)
-    ? {
-        "@context": "https://schema.org",
-        "@graph": data.map(({ "@context": _context, ...rest }) => rest),
-      }
-    : data;
+  const items = Array.isArray(data) ? data : [data];
 
   return (
-    <script
-      type="application/ld+json"
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: structured data injection (escaped)
-      dangerouslySetInnerHTML={{ __html: serializeJsonLd(payload) }}
-    />
+    <>
+      {items.map((item, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: structured data injection (escaped)
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(item) }}
+        />
+      ))}
+    </>
   );
 }

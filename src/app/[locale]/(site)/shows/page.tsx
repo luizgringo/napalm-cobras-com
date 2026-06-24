@@ -68,7 +68,7 @@ export default async function ShowsPage({ params }: Props) {
           <Reveal>
             {events && events.length > 0 ? (
               <>
-                <JsonLd data={{ "@graph": showsJsonLd(events) }} />
+                <JsonLd data={showsJsonLd(events)} />
                 <ShowsList events={events} ticketsLabel="Tickets" />
               </>
             ) : (

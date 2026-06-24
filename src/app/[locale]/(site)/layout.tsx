@@ -61,9 +61,9 @@ export default async function LocaleLayout({
         />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs" />
         <link rel="alternate" type="application/json" href="/ai-index.json" title="AI Index" />
+        <JsonLd data={siteSchemaGraph()} />
       </head>
       <body>
-        <JsonLd data={siteSchemaGraph()} />
         <AppProviders locale={locale as Locale}>
           <div id="site-root" className={styles.site}>
             <Header />

@@ -11,7 +11,31 @@ const ORG_SAME_AS = [
   SITE.socials.youtube,
   SITE.socials.spotifyArtist,
   SITE.socials.bandsintown,
+  SITE.socials.soundcloud,
+  SITE.socials.tiktok,
+  SITE.socials.linktree,
 ];
+
+function organizationEntity(): Record<string, unknown> {
+  return {
+    "@type": "Organization",
+    name: SITE.name,
+    url: BASE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: ORG_LOGO,
+    },
+    image: ORG_LOGO,
+    sameAs: ORG_SAME_AS,
+  };
+}
+
+function organizationSchema(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    ...organizationEntity(),
+  };
+}
 
 export function siteSchemaGraph(): Record<string, unknown>[] {
   return [
@@ -21,15 +45,9 @@ export function siteSchemaGraph(): Record<string, unknown>[] {
       name: SITE.name,
       description: aeoConfig.description,
       url: BASE_URL,
+      publisher: organizationEntity(),
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: SITE.name,
-      url: BASE_URL,
-      logo: ORG_LOGO,
-      sameAs: ORG_SAME_AS,
-    },
+    organizationSchema(),
     organizationJsonLd(),
   ];
 }
@@ -48,6 +66,12 @@ export function pageSchemaGraph(pathname: string): Record<string, unknown>[] {
       name: page.title,
       description: page.description,
       url: pageUrl,
+      isPartOf: {
+        "@type": "WebSite",
+        name: SITE.name,
+        url: BASE_URL,
+      },
+      publisher: organizationEntity(),
     },
   ];
 

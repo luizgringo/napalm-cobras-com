@@ -52,6 +52,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={fontVariables}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <link
           rel="preload"
           href="/assets/fonts/Cattedrale-Demo-Regular.woff"

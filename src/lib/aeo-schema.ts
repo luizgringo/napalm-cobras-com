@@ -3,7 +3,7 @@ import { extractFaqsFromContent, getAeoPage } from "@/lib/aeo-content";
 import { BASE_URL, organizationJsonLd } from "@/lib/seo";
 import { aeoConfig } from "../../aeo.config.mjs";
 
-const ORG_LOGO = `${BASE_URL}/icon.svg`;
+const ORG_LOGO = `${BASE_URL}/assets/svgs/logo.svg`;
 
 const ORG_SAME_AS = [
   SITE.socials.instagram,

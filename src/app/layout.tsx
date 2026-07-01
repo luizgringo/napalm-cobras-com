@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   },
   description: SITE.album.title,
   applicationName: SITE.name,
+  icons: {
+    icon: [{ url: "/favicon.ico", type: "image/x-icon", sizes: "any" }],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/favicon.ico", type: "image/x-icon" }],
+  },
   robots: { index: true, follow: true },
   alternates: {
     types: {

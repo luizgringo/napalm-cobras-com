@@ -26,7 +26,7 @@ export const aeoConfig = {
     organization: {
       name: "Napalm Cobras",
       url: "https://www.napalmcobras.com",
-      logo: "https://www.napalmcobras.com/icon.svg",
+      logo: "https://www.napalmcobras.com/assets/svgs/logo.svg",
       sameAs: [
         "https://www.instagram.com/napalmcobras",
         "https://napalmcobras.bandcamp.com",

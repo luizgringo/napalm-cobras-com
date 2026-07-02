@@ -84,6 +84,7 @@
   html {
     background: var(--ink);
     color-scheme: dark;
+    overflow-x: clip;
   }
 
   body {
@@ -92,6 +93,8 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    width: 100%;
   }
 
   h1,

@@ -6,6 +6,7 @@
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/sections/Reveal";
+import { YouTubeEmbed } from "@/components/sections/YouTubeEmbed";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageSchema } from "@/components/seo/PageSchema";
 import { PageHero } from "@/components/templates/SectionTitle";
@@ -76,13 +77,10 @@ export default async function VideosPage({ params }: Props) {
           </Reveal>
           <Reveal delay={0.1}>
             <div className={styles["video-frame"]}>
-              <iframe
-                className={styles["video-frame__embed"]}
-                src={`https://www.youtube.com/embed/${SITE.liveVideoId}`}
+              <YouTubeEmbed
+                videoId={SITE.liveVideoId}
                 title="Metalpunk Overkill"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                playLabel={t.home.watchVideo}
               />
             </div>
             <p className={styles["video-frame__caption"]}>{t.videos.featuredCaption}</p>
@@ -108,13 +106,10 @@ export default async function VideosPage({ params }: Props) {
               <Reveal key={video.id} delay={index * 0.05}>
                 <article className={styles["video-card"]}>
                   <div className={styles["video-card__frame"]}>
-                    <iframe
-                      className={styles["video-card__embed"]}
-                      src={`https://www.youtube.com/embed/${video.id}`}
+                    <YouTubeEmbed
+                      videoId={video.id}
                       title={video.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
+                      playLabel={t.home.watchVideo}
                     />
                   </div>
                   <p className={styles["video-card__tag"]}>{t.videos.kinds[video.kind]}</p>

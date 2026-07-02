@@ -12,19 +12,31 @@ interface EmbedFacadeProps {
   playLabel: string;
   variant: "video" | "player";
   poster?: string;
+  fillParent?: boolean;
+  className?: string;
 }
 
-export function EmbedFacade({ title, src, playLabel, variant, poster }: EmbedFacadeProps) {
+export function EmbedFacade({
+  title,
+  src,
+  playLabel,
+  variant,
+  poster,
+  fillParent = false,
+  className,
+}: EmbedFacadeProps) {
   const [isActive, setIsActive] = useState(false);
+  const rootClassName = mergeClassNames(
+    styles["embed-facade"],
+    variant === "video" && !fillParent && styles["embed-facade--video"],
+    fillParent && styles["embed-facade--fill"],
+    variant === "player" && !fillParent && styles["embed-facade--player"],
+    className,
+  );
 
   if (isActive) {
     return (
-      <div
-        className={mergeClassNames(
-          styles["embed-facade"],
-          variant === "video" ? styles["embed-facade--video"] : styles["embed-facade--player"],
-        )}
-      >
+      <div className={rootClassName}>
         <iframe
           title={title}
           src={src}
@@ -37,12 +49,7 @@ export function EmbedFacade({ title, src, playLabel, variant, poster }: EmbedFac
   }
 
   return (
-    <div
-      className={mergeClassNames(
-        styles["embed-facade"],
-        variant === "video" ? styles["embed-facade--video"] : styles["embed-facade--player"],
-      )}
-    >
+    <div className={rootClassName}>
       {poster ? (
         <>
           <Image

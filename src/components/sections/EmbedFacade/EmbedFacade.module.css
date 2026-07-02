@@ -6,6 +6,9 @@
 .embed-facade--video {
   @apply aspect-video;
 }
+.embed-facade--fill {
+  @apply h-full min-h-0 w-full;
+}
 .embed-facade--player {
   height: 420px;
 }

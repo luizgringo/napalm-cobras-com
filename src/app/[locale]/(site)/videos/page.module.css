@@ -1,7 +1,7 @@
 @reference "../../../../styles/globals.css";
 
 .video-frame {
-  @apply mt-8 aspect-video border-2 border-paper/20 hard-shadow;
+  @apply mt-8 aspect-video overflow-hidden border-2 border-paper/20 hard-shadow;
 }
 .video-frame__embed {
   @apply h-full w-full;
@@ -17,13 +17,13 @@
   @apply flex flex-col;
 }
 .video-card__frame {
-  @apply aspect-video border-2 border-paper/20 transition-colors hard-shadow;
+  @apply aspect-video overflow-hidden border-2 border-paper/20 transition-colors hard-shadow;
 }
 .video-card:hover .video-card__frame {
   @apply border-blood;
 }
 .video-card__embed {
-  @apply h-full w-full;
+  @apply h-full w-full max-w-full;
 }
 .video-card__tag {
   @apply mt-4 font-mono text-[10px] uppercase tracking-widest text-blood;

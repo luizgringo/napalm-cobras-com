@@ -205,10 +205,13 @@ const RELEASE_CREDITS: Record<string, LocalizedReleaseCredits> = {
       { label: "Caverna Rock Pub", href: "https://www.facebook.com/cavernarockpubbh" },
       { label: "Goblin Filmes", href: "https://www.goblinfilmes.com.br/" },
       { label: "Goblin TV", href: "https://www.youtube.com/@GoblinUndergroundTV/" },
+      { label: "Lucas Hell", href: "https://www.instagram.com/lucas.videomakerbh/" },
+      { label: "Daniel Tulher", href: "https://www.instagram.com/danieltulher/" },
       {
         label: "Goblin Underground TV",
         href: "https://www.instagram.com/goblinundergroundtv/",
       },
+      { label: "Manfredo Savassi", href: "https://www.instagram.com/manfredo.savassi/" },
     ],
   },
   "3Cn3q1dhBmDmE8ctivbMLp": {

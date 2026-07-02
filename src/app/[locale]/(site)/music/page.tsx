@@ -69,6 +69,11 @@ const FEATURED_RELEASES: FeaturedRelease[] = [
         url: "https://music.apple.com/br/album/ao-vivo-no-metalpunk-overkill-ao-vivo/1755909103",
       },
       { name: "Tidal", url: "https://listen.tidal.com/album/528680900" },
+      { name: "Qobuz", url: "https://play.qobuz.com/album/jzhffbt406e2s" },
+      {
+        name: "YouTube Music",
+        url: "https://music.youtube.com/playlist?list=OLAK5uy_m0OXRIU9-IKgP8ZOvNs04MY_xW682LIOM",
+      },
     ],
   },
   {

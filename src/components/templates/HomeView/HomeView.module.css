@@ -2,7 +2,7 @@
 
 /* ---------- Hero ---------- */
 .hero {
-  @apply relative isolate min-h-[100svh] overflow-hidden;
+  @apply relative isolate min-h-0 overflow-hidden;
 }
 .hero__bg {
   @apply absolute inset-0 -z-10 overflow-hidden opacity-40 grayscale contrast-125;
@@ -32,28 +32,62 @@
   @apply scanlines pointer-events-none absolute inset-0 -z-10;
 }
 .hero__content {
-  @apply noise relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-24 pt-28 md:px-8 md:pt-36;
+  @apply noise relative mx-auto flex w-full max-w-7xl flex-col justify-start px-4 pb-12 md:px-8 md:pb-20;
+  min-height: 0;
+  padding-top: calc(100vw / 1.502);
 }
 .hero__eyebrow {
-  @apply font-mono text-xs uppercase tracking-[0.3em] text-blood-bright;
+  @apply shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-blood-bright md:text-xs md:tracking-[0.3em];
 }
 .hero__title {
-  @apply mt-4 font-brand text-[18vw] leading-[0.85] tracking-tight text-paper md:text-[13rem];
+  @apply mt-1.5 flex w-full flex-row flex-wrap items-baseline justify-start gap-x-[0.08em] font-brand leading-none tracking-tight md:mt-2;
+  font-size: clamp(3rem, 15vw, 8.5rem);
 }
 .hero__title-line {
-  @apply block;
+  @apply inline-block shrink-0 text-paper/75;
+  text-shadow:
+    0 2px 28px rgb(0 0 0 / 0.55),
+    0 0 1px rgb(0 0 0 / 0.85);
 }
 .hero__title-line--blood {
-  @apply block text-blood;
+  @apply text-blood/80;
+  text-shadow:
+    0 2px 28px rgb(0 0 0 / 0.55),
+    0 0 1px rgb(0 0 0 / 0.65);
 }
 .hero__sub {
-  @apply mt-8 max-w-xl font-mono text-sm uppercase tracking-widest text-paper/80;
+  @apply mt-3 max-w-xl shrink-0 font-mono text-[11px] uppercase tracking-widest text-paper/80 md:mt-4 md:text-sm;
 }
 .hero__actions {
-  @apply mt-10 flex flex-wrap gap-4;
+  @apply mt-5 shrink-0 flex flex-wrap gap-4 md:mt-6;
 }
 .hero__scroll {
-  @apply absolute bottom-8 left-1/2 -translate-x-1/2 text-center;
+  @apply mt-6 shrink-0 text-center;
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+  .hero {
+    @apply min-h-[100svh];
+  }
+
+  .hero__content {
+    @apply min-h-[100svh] justify-end pb-24;
+    padding-top: 5.5rem;
+  }
+
+  .hero__title {
+    font-size: clamp(3.5rem, 9vw, 8.5rem);
+  }
+
+  .hero__scroll {
+    @apply absolute bottom-8 left-1/2 mt-0 -translate-x-1/2;
+  }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+  .hero__content {
+    padding-top: 7rem;
+  }
 }
 .hero__scroll-text {
   @apply font-mono text-[10px] uppercase tracking-[0.4em] text-paper/75;

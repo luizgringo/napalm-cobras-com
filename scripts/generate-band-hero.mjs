@@ -6,7 +6,11 @@ import sharp from "sharp";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = join(ROOT, "assets-source/band-hero.JPG");
 const OUTPUT_DIR = join(ROOT, "public/assets/images/band-hero");
+const OG_OUTPUT = join(ROOT, "public/og/cover.jpg");
 const WIDTHS = [640, 960, 1280, 1400];
+const OG_WIDTH = 1200;
+const OG_HEIGHT = 630;
+const OG_FOCAL_Y = 0.24;
 
 function formatBytes(bytes) {
   if (bytes < 1024) {
@@ -46,6 +50,31 @@ async function generateWidth(source, width) {
   return { width, avifSize, webpSize, jpgSize };
 }
 
+async function generateOgCover(source) {
+  const metadata = await source.metadata();
+  const srcW = metadata.width ?? 0;
+  const srcH = metadata.height ?? 0;
+  const scale = Math.max(OG_WIDTH / srcW, OG_HEIGHT / srcH);
+  const scaledW = Math.round(srcW * scale);
+  const scaledH = Math.round(srcH * scale);
+  const left = Math.max(0, Math.round((scaledW - OG_WIDTH) / 2));
+  const focalY = scaledH * OG_FOCAL_Y;
+  const viewportFocalY = OG_HEIGHT * OG_FOCAL_Y;
+  const top = Math.max(0, Math.min(Math.round(focalY - viewportFocalY), scaledH - OG_HEIGHT));
+
+  await mkdir(dirname(OG_OUTPUT), { recursive: true });
+
+  const buffer = await source
+    .clone()
+    .resize(scaledW, scaledH)
+    .extract({ left, top, width: OG_WIDTH, height: OG_HEIGHT })
+    .jpeg({ quality: 85, mozjpeg: true, progressive: true })
+    .toBuffer();
+
+  await writeFile(OG_OUTPUT, buffer);
+  return (await stat(OG_OUTPUT)).size;
+}
+
 async function main() {
   await mkdir(OUTPUT_DIR, { recursive: true });
   const source = sharp(SOURCE).rotate();
@@ -64,7 +93,11 @@ async function main() {
       `  ${result.width}w  avif ${formatBytes(result.avifSize)}  webp ${formatBytes(result.webpSize)}  jpg ${formatBytes(result.jpgSize)}`,
     );
   }
-  console.log();
+
+  const ogSize = await generateOgCover(source);
+  console.log(
+    `\nOG cover: ${OG_OUTPUT.replace(ROOT, ".")} (${OG_WIDTH}x${OG_HEIGHT}, ${formatBytes(ogSize)})\n`,
+  );
 }
 
 main().catch((error) => {

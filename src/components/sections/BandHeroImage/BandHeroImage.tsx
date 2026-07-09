@@ -5,7 +5,8 @@
  * with layout tuned so all three band members stay visible across viewports.
  *
  * @remarks Regenerate assets with `pnpm generate:band-hero` (source:
- * `assets-source/band-hero.JPG`). Preload AVIF variants on the home route for LCP.
+ * `assets-source/band-hero.JPG`). Also regenerates `public/og/cover.jpg` for
+ * Open Graph. Preload AVIF variants on the home route for LCP.
  */
 
 import { mergeClassNames } from "@/lib/utils";

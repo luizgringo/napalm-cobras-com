@@ -10,6 +10,9 @@ import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import { defaultLocale, type Locale, locales } from "@/i18n/config";
 
+/** Default Open Graph / Twitter card image (1200×630, cropped from band hero). */
+export const OG_IMAGE = "/og/cover.jpg";
+
 /** Canonical site base URL, from env override or the configured site URL. */
 export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? SITE.url;
 
@@ -57,7 +60,7 @@ export function buildMetadata({
   path,
   title,
   description,
-  image = "/og/cover.jpg",
+  image = OG_IMAGE,
   absoluteTitle = false,
 }: PageMetaInput): Metadata {
   const canonical = localizedPath(locale, path);

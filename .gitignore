@@ -37,7 +37,9 @@ public/schema.json
 public/*.md
 .aeo/
 
-# Editor directories and files
+# Source assets (run pnpm generate:band-hero)
+assets-source/
+
 .vscode/*
 !.vscode/extensions.json
 .idea

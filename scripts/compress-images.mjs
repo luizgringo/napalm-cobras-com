@@ -52,9 +52,14 @@ async function collectFiles(dir, files = []) {
       continue;
     }
     const extension = extname(entry.name).toLowerCase();
-    if (RASTER_EXTENSIONS.has(extension)) {
-      files.push(fullPath);
+    if (!RASTER_EXTENSIONS.has(extension)) {
+      continue;
     }
+    const normalized = fullPath.replaceAll("\\", "/");
+    if (normalized.includes("/band-hero/")) {
+      continue;
+    }
+    files.push(fullPath);
   }
   return files;
 }

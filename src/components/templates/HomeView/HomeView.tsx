@@ -10,8 +10,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import Link from "next/link";
+import { BandHeroImage } from "@/components/sections/BandHeroImage";
 import { createPortal } from "react-dom";
 import { AudioPlayer } from "@/components/sections/AudioPlayer";
 import { CaveRoom } from "@/components/sections/CaveRoom";
@@ -98,16 +98,7 @@ export function HomeView({
 
       <section ref={heroRef} className={styles.hero}>
         <div className={styles.hero__bg}>
-          <Image
-            src="/assets/images/band-hero.webp"
-            alt={t.a11y.images.hero}
-            fill
-            priority
-            unoptimized
-            fetchPriority="high"
-            sizes="100vw"
-            className={styles["hero__bg-img"]}
-          />
+          <BandHeroImage alt={t.a11y.images.hero} />
           <div className={styles.hero__veil} aria-hidden />
         </div>
 

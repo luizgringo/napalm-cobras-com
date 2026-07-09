@@ -1,0 +1,18 @@
+@reference "../../../styles/globals.css";
+
+.root {
+  @apply absolute inset-0 block h-full w-full;
+}
+
+.img {
+  @apply h-full w-full;
+  object-fit: contain;
+  object-position: center top;
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+  .img {
+    object-fit: cover;
+    object-position: center 24%;
+  }
+}

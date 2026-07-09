@@ -13,6 +13,7 @@
     "aeo:check": "node scripts/aeo-check.mjs",
     "aeo:report": "node scripts/aeo-report.mjs",
     "compress:images": "node scripts/compress-images.mjs",
+    "generate:band-hero": "node scripts/generate-band-hero.mjs",
     "prepare": "husky"
   },
   "dependencies": {

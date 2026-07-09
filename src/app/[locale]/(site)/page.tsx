@@ -52,9 +52,11 @@ export default async function HomePage({ params }: Props) {
     <>
       <link
         rel="preload"
-        href="/assets/images/band-hero.webp"
+        href="/assets/images/band-hero/band-hero-640.avif"
+        imageSrcSet="/assets/images/band-hero/band-hero-640.avif 640w, /assets/images/band-hero/band-hero-960.avif 960w, /assets/images/band-hero/band-hero-1280.avif 1280w, /assets/images/band-hero/band-hero-1400.avif 1400w"
+        imageSizes="100vw"
         as="image"
-        type="image/webp"
+        type="image/avif"
         fetchPriority="high"
       />
       <PageSchema pathname={`/${locale}`} />

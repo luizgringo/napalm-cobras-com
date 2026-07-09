@@ -33,20 +33,14 @@ async function generateWidth(source, width) {
   });
 
   const baseName = `band-hero-${width}`;
-  const avifSize = await writeVariant(
-    resized,
-    join(OUTPUT_DIR, `${baseName}.avif`),
-    (pipeline) => pipeline.avif({ quality: 52, effort: 6 }).toBuffer(),
+  const avifSize = await writeVariant(resized, join(OUTPUT_DIR, `${baseName}.avif`), (pipeline) =>
+    pipeline.avif({ quality: 52, effort: 6 }).toBuffer(),
   );
-  const webpSize = await writeVariant(
-    resized,
-    join(OUTPUT_DIR, `${baseName}.webp`),
-    (pipeline) => pipeline.webp({ quality: 82, effort: 6, smartSubsample: true }).toBuffer(),
+  const webpSize = await writeVariant(resized, join(OUTPUT_DIR, `${baseName}.webp`), (pipeline) =>
+    pipeline.webp({ quality: 82, effort: 6, smartSubsample: true }).toBuffer(),
   );
-  const jpgSize = await writeVariant(
-    resized,
-    join(OUTPUT_DIR, `${baseName}.jpg`),
-    (pipeline) => pipeline.jpeg({ quality: 85, mozjpeg: true, progressive: true }).toBuffer(),
+  const jpgSize = await writeVariant(resized, join(OUTPUT_DIR, `${baseName}.jpg`), (pipeline) =>
+    pipeline.jpeg({ quality: 85, mozjpeg: true, progressive: true }).toBuffer(),
   );
 
   return { width, avifSize, webpSize, jpgSize };
@@ -57,9 +51,7 @@ async function main() {
   const source = sharp(SOURCE).rotate();
   const metadata = await source.metadata();
 
-  console.log(
-    `\nSource: ${SOURCE.replace(ROOT, ".")} (${metadata.width}x${metadata.height})\n`,
-  );
+  console.log(`\nSource: ${SOURCE.replace(ROOT, ".")} (${metadata.width}x${metadata.height})\n`);
 
   const results = [];
   for (const width of WIDTHS) {

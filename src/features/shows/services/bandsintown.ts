@@ -39,8 +39,8 @@ export interface BandsintownEvent {
  *
  * @returns The upcoming events, or `null` when the app id is not configured.
  * @remarks
- * Requires the `NEXT_PUBLIC_BANDSINTOWN_APP_ID` environment variable. The
- * response is cached/revalidated every 3600 seconds (1 hour).
+ * Requires the `NEXT_PUBLIC_BANDSINTOWN_APP_ID` environment variable.
+ * Fetches without Data Cache so new Bandsintown dates appear immediately.
  */
 export async function getUpcomingShows(): Promise<BandsintownEvent[] | null> {
   const appId = process.env.NEXT_PUBLIC_BANDSINTOWN_APP_ID;
@@ -49,7 +49,7 @@ export async function getUpcomingShows(): Promise<BandsintownEvent[] | null> {
   }
 
   const url = `https://rest.bandsintown.com/artists/id_${SITE.bandsintown.artistId}/events?app_id=${appId}&date=upcoming`;
-  return fetchJson<BandsintownEvent[]>(url, { revalidate: 3600 });
+  return fetchJson<BandsintownEvent[]>(url, { cache: "no-store" });
 }
 
 /**

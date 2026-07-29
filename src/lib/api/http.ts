@@ -10,8 +10,10 @@
  * Options for {@link fetchJson}, extending the standard `fetch` init.
  */
 interface FetchJsonOptions extends RequestInit {
-  /** Next.js ISR revalidation window in seconds (defaults to 3600). */
+  /** Next.js ISR revalidation window in seconds (defaults to 3600). Ignored when `cache` is `"no-store"`. */
   revalidate?: number;
+  /** Next.js cache tags for on-demand revalidation. */
+  tags?: string[];
 }
 
 /**
@@ -27,9 +29,14 @@ interface FetchJsonOptions extends RequestInit {
  * missing/failed response uniformly via the `null` result.
  */
 export async function fetchJson<T>(url: string, options: FetchJsonOptions = {}): Promise<T | null> {
-  const { revalidate = 3600, ...init } = options;
+  const { revalidate = 3600, tags, cache, ...init } = options;
   try {
-    const response = await fetch(url, { ...init, next: { revalidate } });
+    const response = await fetch(url, {
+      ...init,
+      ...(cache === "no-store"
+        ? { cache: "no-store" as const }
+        : { next: { revalidate, ...(tags?.length ? { tags } : {}) } }),
+    });
     if (!response.ok) {
       return null;
     }

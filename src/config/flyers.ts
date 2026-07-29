@@ -30,6 +30,20 @@ const FLYERS_DIR = "/assets/images/flyers";
  */
 export const FLYERS: Flyer[] = [
   {
+    src: `${FLYERS_DIR}/2026-09-19.webp`,
+    title: "Aquecimento Primavera Fun Fest",
+    year: "2026",
+    venue: "XBK · Anchieta, Belo Horizonte/MG",
+    lineup: "Water Rats (SP), Kardum (ES), Runa, Cordoba, Possuídos, Napalm Cobras",
+  },
+  {
+    src: `${FLYERS_DIR}/2026-08-15.webp`,
+    title: "Jujuba Quarentou",
+    year: "2026",
+    venue: "O Segredo · Centro, Belo Horizonte/MG",
+    lineup: "Morto, Isso, Napalm Cobras, DJ Lary Violet",
+  },
+  {
     src: `${FLYERS_DIR}/2026-06-13.webp`,
     title: "Punk no Park · Sociedade Armada",
     year: "2026",

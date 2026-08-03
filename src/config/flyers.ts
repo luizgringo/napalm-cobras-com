@@ -30,6 +30,13 @@ const FLYERS_DIR = "/assets/images/flyers";
  */
 export const FLYERS: Flyer[] = [
   {
+    src: `${FLYERS_DIR}/2026-10-17.webp`,
+    title: "Masters of Noise · Extreme Music Fest",
+    year: "2026",
+    venue: "Caverna Rock Pub · Belo Horizonte/MG",
+    lineup: "Napalm Cobras e dezenas de bandas do underground extremo",
+  },
+  {
     src: `${FLYERS_DIR}/2026-09-19.webp`,
     title: "Aquecimento Primavera Fun Fest",
     year: "2026",

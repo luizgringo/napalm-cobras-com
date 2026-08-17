@@ -44,7 +44,15 @@ export const FLYERS: Flyer[] = [
     lineup: "Water Rats (SP), Kardum (ES), Runa, Cordoba, Possuídos, Napalm Cobras",
   },
   {
+    src: `${FLYERS_DIR}/2026-09-05.webp`,
+    title: "Hell House Apresenta · Napalm Cobras",
+    year: "2026",
+    venue: "Hell House - Sorocaba/SP",
+    lineup: "Napalm Cobras",
+  },
+  {
     src: `${FLYERS_DIR}/2026-08-15.webp`,
+
     title: "Jujuba Quarentou",
     year: "2026",
     venue: "O Segredo · Centro, Belo Horizonte/MG",
